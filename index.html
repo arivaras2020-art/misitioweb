@@ -1,195 +1,114 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etech - Landing Page de E-Learning</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrial N°4 "José Hernández"</title>
+  <link rel="stylesheet" href="estilos/style.css">
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <div class="logo">Etech.</div>
-            <nav class="nav">
-                <ul>
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#courses">Cursos</a></li>
-                    <li><a href="#about">Acerca de</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
-            <button class="btn btn-login">Iniciar Sesión</button>
-        </div>
-    </header>
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="logo">Industrial N°4</div>
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </nav>
 
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Desarrolla tus habilidades de una manera nueva y única</h1>
-                <p>Explora un mundo de aprendizaje con nuestros cursos expertos.</p>
-                <div class="hero-actions">
-                    <button class="btn btn-primary">Empezar Ahora</button>
-                    <button class="btn btn-secondary">Ver Demo</button>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="mujer-aprendiendo.png" alt="Mujer joven aprendiendo en laptop">
-            </div>
-        </div>
-    </section>
+  <!-- Overlay Menu -->
+  <div class="overlay" id="overlay">
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Sobre Nosotros</a></li>
+      <li><a href="#tecnicaturas">Tecnicaturas</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
 
-    <section class="brand-logos">
-        <div class="container">
-            <img src="logo-duolingo.svg" alt="duolingo">
-            <img src="logo-magic-leap.svg" alt="magic leap">
-            <img src="logo-microsoft.svg" alt="microsoft">
-            <img src="logo-codecademy.svg" alt="codecademy">
-            <img src="logo-pinterest.svg" alt="pinterest">
-        </div>
-    </section>
+  <!-- HERO -->
+  <header id="inicio" class="hero">
+    <!-- Imagen aquí -->
+    <div class="overlay-hero"></div>
+    <div class="hero-content">
+      <h1>Bienvenidos a la Industrial N°4 "José Hernández"</h1>
+      <p>"La técnica abre puertas, tu esfuerzo las cruza"</p>
+    </div>
+  </header>
 
-    <section class="search-benefits-section">
-        <div class="container">
-            <div class="search-bar-area">
-                <h2 class="search-title">Buscar Cursos</h2>
-                <div class="search-form">
-                    <input type="text" placeholder="Escribe el nombre del curso...">
-                    <button class="btn btn-search">Buscar</button>
-                </div>
-            </div>
+  <!-- SOBRE NOSOTROS -->
+  <section id="nosotros" class="reveal section about">
+    <div class="img-container"><!-- Imagen aquí --></div>
+    <div class="text-container">
+      <h2>Sobre Nosotros</h2>
+      <p>Acompañamos a nuestros estudiantes en su desarrollo personal y profesional, fomentando el respeto, el esfuerzo y la creatividad.</p>
+      <p>Nuestra misión es formar personas íntegras y comprometidas con su comunidad, con una visión centrada en la innovación y el trabajo en equipo.</p>
+      <a href="#">Ver más sobre nuestra institución</a>
+    </div>
+  </section>
 
-            <div class="learning-benefits-grid">
-                <div class="student-photos">
-                    <div class="photo-card p-red"></div>
-                    <div class="photo-card p-orange"></div>
-                    <div class="photo-card p-purple"></div>
-                    <div class="photo-card p-blue"></div>
-                </div>
+  <!-- TECNICATURAS -->
+  <section id="tecnicaturas" class="reveal section tecnicaturas">
+    <div class="text-container">
+      <h2>Nuestras Tecnicaturas</h2>
+      <p>Formamos futuros profesionales en distintas áreas técnicas que contribuyen al conocimiento, la práctica y la innovación.</p>
+      <a href="#">Ver todas las tecnicaturas</a>
+    </div>
+    <div class="img-container"><!-- Imagen aquí --></div>
+  </section>
 
-                <div class="benefits-list">
-                    <h3>Beneficios de Nuestro Aprendizaje en Línea</h3>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Cursos cortos</li>
-                        <li><i class="fas fa-check-circle"></i> Horarios flexibles</li>
-                        <li><i class="fas fa-check-circle"></i> Tutores expertos</li>
-                        <li><i class="fas fa-check-circle"></i> Acceso 24/7</li>
-                        <li><i class="fas fa-check-circle"></i> Nuevas habilidades</li>
-                        <li><i class="fas fa-check-circle"></i> Certificados</li>
-                    </ul>
-                    <a href="#" class="view-free-courses">Ver cursos gratuitos <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- NOTICIAS -->
+  <section id="noticias" class="reveal section noticias">
+    <h2>Últimas Noticias</h2>
+    <div class="noticia">
+      <div class="img-container"><!-- Imagen aquí --></div>
+      <div class="text-container">
+        <h3>Participación en la Feria de Ciencia y Tecnología 2025</h3>
+        <p>Estudiantes de distintas tecnicaturas presentaron sus proyectos en la feria regional. Fue una experiencia enriquecedora que destacó el talento y la dedicación de nuestros alumnos.</p>
+        <p class="fecha">📅 Publicado el 10 de octubre de 2025</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="popular-courses-section">
-        <div class="container">
-            <h2>Nuestros Cursos Populares</h2>
-            <div class="courses-grid">
-                <div class="course-card">
-                    <div class="course-img-placeholder"></div>
-                    <h4>Diseño Web & UX/UI</h4>
-                    <p class="course-instructor">Por Jane Doe</p>
-                    <div class="course-info">
-                        <span><i class="fas fa-star"></i> 4.9</span>
-                        <span><i class="fas fa-users"></i> 100 estudiantes</span>
-                    </div>
-                    <div class="course-price">$199.00</div>
-                </div>
+  <!-- TESTIMONIOS -->
+  <section id="testimonios" class="reveal section testimonios">
+    <h2>Testimonios</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="img-container"><!-- Imagen aquí --></div>
+        <h3>María López</h3>
+        <p>"Gracias a la Industrial N°4 aprendí no solo conocimientos técnicos, sino también el valor del trabajo en equipo."</p>
+      </div>
+      <div class="card">
+        <div class="img-container"><!-- Imagen aquí --></div>
+        <h3>Sofía Ramírez</h3>
+        <p>"Los profesores siempre nos apoyaron en cada proyecto. Participar en la feria de ciencia me ayudó a descubrir mi pasión."</p>
+      </div>
+      <div class="card">
+        <div class="img-container"><!-- Imagen aquí --></div>
+        <h3>Laura Fernández</h3>
+        <p>"Ver el crecimiento de nuestras alumnas es lo mejor. Cada día demostramos que la educación técnica puede transformar vidas."</p>
+      </div>
+    </div>
+  </section>
 
-                <div class="course-card">
-                    <div class="course-img-placeholder"></div>
-                    <h4>Introducción a la Microestructura</h4>
-                    <p class="course-instructor">Por John Smith</p>
-                    <div class="course-info">
-                        <span><i class="fas fa-star"></i> 4.8</span>
-                        <span><i class="fas fa-users"></i> 85 estudiantes</span>
-                    </div>
-                    <div class="course-price">$250.00</div>
-                </div>
+  <!-- CONTACTO -->
+  <section id="contacto" class="reveal section contacto">
+    <h2>Contacto Rápido</h2>
+    <p>📞 2964-427207</p>
+    <p>✉️ indus4rh@gmail.com</p>
+    <p>📍 Mite 239, Río Gallegos</p>
+    <a href="#">Ver más información</a>
+  </section>
 
-                <div class="course-card">
-                    <div class="course-img-placeholder"></div>
-                    <h4>Python para Data Science</h4>
-                    <p class="course-instructor">Por Alice Johnson</p>
-                    <div class="course-info">
-                        <span><i class="fas fa-star"></i> 4.7</span>
-                        <span><i class="fas fa-users"></i> 120 estudiantes</span>
-                    </div>
-                    <div class="course-price">$180.00</div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer>
+    <p>© 2025 Industrial N°4 “José Hernández” - Todos los derechos reservados.</p>
+  </footer>
 
-    <section class="teacher-section">
-        <div class="container">
-            <div class="teacher-content">
-                <h2>Si eres un profesor certificado...</h2>
-                <h3>¡Conviértete en un instructor!</h3>
-                <p>Disfruta de muchos beneficios, incluyendo la gestión de tu propio contenido.</p>
-                <div class="teacher-perks">
-                    <span>Beneficio 1</span>
-                    <span>Beneficio 2</span>
-                    <span>Beneficio 3</span>
-                    <span>Beneficio 4</span>
-                </div>
-                <button class="btn btn-primary btn-teacher">Aplica Ahora</button>
-            </div>
-            <div class="teacher-image">
-                <img src="mujer-profesora.png" alt="Profesora feliz">
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials-section">
-        <div class="container">
-            <h2>Testimonios de Estudiantes</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="profile-placeholder"></div>
-                    <p class="testimony-text">"¡Experiencia increíble! El curso me ayudó a conseguir mi primer trabajo."</p>
-                    <p class="testimony-name">Laura Pérez</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="profile-placeholder"></div>
-                    <p class="testimony-text">"Clases muy bien explicadas y tutores siempre disponibles. ¡Recomendado!"</p>
-                    <p class="testimony-name">Carlos Ruiz</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="profile-placeholder"></div>
-                    <p class="testimony-text">"La flexibilidad horaria fue lo mejor para mí. Aprendí a mi propio ritmo."</p>
-                    <p class="testimony-name">Sofía Gómez</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-col">
-                <h4>Etech.</h4>
-                <p>Aprende de los mejores.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Compañía</h4>
-                <ul><li>Acerca de</li><li>Blog</li><li>Carreras</li></ul>
-            </div>
-            <div class="footer-col">
-                <h4>Soporte</h4>
-                <ul><li>Ayuda</li><li>Términos</li><li>Privacidad</li></ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contacto</h4>
-                <p>info@etech.com</p>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2025 Etech. Todos los derechos reservados.
-        </div>
-    </footer>
-
+  <script src="scripts/script.js"></script>
 </body>
 </html>
