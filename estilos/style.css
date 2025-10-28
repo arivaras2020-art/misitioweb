@@ -1,194 +1,133 @@
-/* Estilos generales */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+/* ===== RESETEO ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
+body { background: #fff; color: #222; scroll-behavior: smooth; }
 
-body {
-  background: #f5f9ff;
-  color: #1a1a1a;
-  overflow-x: hidden;
-}
-
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  width: 100%;
-  background: rgba(10, 30, 60, 0.8);
+/* ===== HEADER ===== */
+header {
+  background: #0b2b4c;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 12px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
   z-index: 1000;
 }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo img { height: 45px; }
+.header-right { display: flex; align-items: center; gap: 15px; }
+.busqueda { display: flex; background: white; border-radius: 20px; overflow: hidden; }
+.busqueda input { border: none; padding: 6px 10px; outline: none; width: 150px; }
+.busqueda button { background: #ffd700; border: none; padding: 6px 10px; cursor: pointer; }
+.header-right i { font-size: 22px; cursor: pointer; }
 
-.logo {
-  color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.menu-toggle {
-  cursor: pointer;
-}
-
-.bar {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background: #fff;
-  margin: 5px auto;
-  transition: all 0.3s ease;
-}
-
-/* Overlay Menu */
-.overlay {
+/* ===== MENÚ HAMBURGUESA ===== */
+.side-menu {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 0;
-  background: rgba(0, 25, 60, 0.97);
-  overflow: hidden;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 43, 76, 0.95);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: left 0.4s ease;
   z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: height 0.5s ease;
 }
+.side-menu.active { left: 0; }
+#close-menu { font-size: 30px; align-self: flex-end; margin: 20px; cursor: pointer; }
+.side-menu ul { list-style: none; text-align: center; margin-top: 100px; }
+.side-menu ul li { margin: 25px 0; }
+.side-menu ul li a { color: white; text-decoration: none; font-size: 22px; transition: 0.3s; }
+.side-menu ul li a:hover { color: #ffd700; }
 
-.overlay ul {
-  list-style: none;
-  text-align: center;
-}
-
-.overlay ul li {
-  margin: 20px 0;
-}
-
-.overlay ul li a {
-  color: white;
-  font-size: 28px;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.overlay ul li a:hover {
-  color: #7ec8ff;
-}
-
-/* HERO */
+/* ===== HERO ===== */
 .hero {
+  background: url("../imagenes/campusafuera.jpeg") center/cover no-repeat;
   height: 100vh;
-  background: url('ruta-de-tu-imagen.jpg') center/cover no-repeat;
-  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: white;
-  text-align: center;
+  justify-content: center;
+  position: relative;
 }
-
-.overlay-hero {
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.4);
   position: absolute;
   inset: 0;
-  background: rgba(0, 30, 60, 0.5);
-}
-
-.hero-content {
-  z-index: 2;
-  max-width: 700px;
-}
-
-/* SECCIONES */
-.section {
-  padding: 80px 10%;
-}
-
-.about, .tecnicaturas {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
 }
-
-.img-container {
-  background: #c9d8f2;
-  width: 100%;
-  max-width: 500px;
-  height: 300px;
-  border-radius: 12px;
-}
-
-.text-container a {
-  display: inline-block;
-  margin-top: 15px;
-  color: #0a3d91;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.noticias {
-  background: #0a3d91;
+.hero-text {
   color: white;
   text-align: center;
-}
-
-.noticias .noticia {
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.testimonios {
-  background: #eaf2ff;
-  text-align: center;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.card {
-  background: white;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  width: 280px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+.hero-logo { width: 100px; margin-bottom: 20px; }
 
-.contacto {
-  text-align: center;
-}
-
-footer {
-  background: #061b3a;
+/* ===== SECCIONES ===== */
+.seccion { padding: 80px 20px; max-width: 1100px; margin: auto; }
+.franja { background: #0b2b4c; color: white; text-align: center; padding: 15px; margin-bottom: 30px; }
+.fila { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; }
+.fila img { width: 45%; border-radius: 10px; }
+.texto { flex: 1; }
+.boton {
+  display: inline-block;
+  background: #0b2b4c;
   color: white;
-  text-align: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+.boton:hover { background: #ffd700; color: #0b2b4c; }
+
+/* ===== TESTIMONIOS ===== */
+.testimonios-contenedor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.testimonio {
+  background: #f4f4f4;
   padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Scroll Reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 1s ease;
-}
+/* ===== CONTACTO ===== */
+.contacto { list-style: none; text-align: center; }
+.contacto li { margin: 10px 0; font-size: 1.1em; }
+.contacto i { color: #0b2b4c; margin-right: 8px; }
 
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+/* ===== FOOTER ===== */
+footer { color: white; text-align: center; }
+.footer-fondo {
+  background: url("../imagenes/footer.jpg") center/cover no-repeat;
+  padding: 60px 20px;
 }
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .about, .tecnicaturas {
-    flex-direction: column;
-  }
+.footer-contenedor {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: auto;
 }
+.logo-footer img { height: 60px; margin-bottom: 10px; }
+.columna h3 { margin-bottom: 10px; }
+.columna ul { list-style: none; padding: 0; }
+.columna ul li a { color: white; text-decoration: none; }
+.columna ul li a:hover { color: #ffd700; }
+.redes a { color: white; margin: 0 10px; font-size: 24px; transition: 0.3s; }
+.redes a:hover { color: #ffd700; }
+.copy { background: #0b2b4c; padding: 15px; font-size: 14px; }

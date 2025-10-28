@@ -3,110 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Industrial N°4 "José Hernández"</title>
+  <title>Industrial N°4 “José Menéndez”</title>
   <link rel="stylesheet" href="estilos/style.css">
+  <script src="https://kit.fontawesome.com/a2e0b2b6e2.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="navbar">
-    <div class="logo">Industrial N°4</div>
-    <div class="menu-toggle" id="mobile-menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="imagenes/logo.png" alt="Logo Industrial 4">
+      <h1>Industrial N°4 “José Menéndez”</h1>
     </div>
-  </nav>
-
-  <!-- Overlay Menu -->
-  <div class="overlay" id="overlay">
-    <ul>
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#nosotros">Sobre Nosotros</a></li>
-      <li><a href="#tecnicaturas">Tecnicaturas</a></li>
-      <li><a href="#noticias">Noticias</a></li>
-      <li><a href="#testimonios">Testimonios</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </div>
-
-  <!-- HERO -->
-  <header id="inicio" class="hero">
-    <!-- Imagen aquí -->
-    <div class="overlay-hero"></div>
-    <div class="hero-content">
-      <h1>Bienvenidos a la Industrial N°4 "José Hernández"</h1>
-      <p>"La técnica abre puertas, tu esfuerzo las cruza"</p>
+    <div class="header-right">
+      <div class="busqueda">
+        <input type="text" placeholder="Buscar...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <i class="fas fa-user" title="Iniciar sesión"></i>
+      <i class="fas fa-bars" id="menu-btn"></i>
     </div>
   </header>
 
-  <!-- SOBRE NOSOTROS -->
-  <section id="nosotros" class="reveal section about">
-    <div class="img-container"><!-- Imagen aquí --></div>
-    <div class="text-container">
-      <h2>Sobre Nosotros</h2>
-      <p>Acompañamos a nuestros estudiantes en su desarrollo personal y profesional, fomentando el respeto, el esfuerzo y la creatividad.</p>
-      <p>Nuestra misión es formar personas íntegras y comprometidas con su comunidad, con una visión centrada en la innovación y el trabajo en equipo.</p>
-      <a href="#">Ver más sobre nuestra institución</a>
+  <!-- MENÚ HAMBURGUESA -->
+  <nav class="side-menu" id="side-menu">
+    <i class="fas fa-times" id="close-menu"></i>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#institucion">Institución</a></li>
+      <li><a href="#tecnicaturas">Tecnicaturas</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-overlay">
+      <div class="hero-text">
+        <img src="imagenes/logo.png" alt="Logo grande" class="hero-logo">
+        <h1>Bienvenidos a la Industrial N°4 “José Menéndez”</h1>
+        <p>“La técnica abre puertas, tu esfuerzo las cruza”</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN INSTITUCIÓN -->
+  <section id="institucion" class="seccion">
+    <div class="franja"><h2>Sobre Nosotros</h2></div>
+    <div class="contenido fila">
+      <img src="imagenes/libreriagigante.jpg" alt="Biblioteca">
+      <div class="texto">
+        <p>Acompañamos a nuestros estudiantes en su desarrollo personal y profesional...</p>
+        <a href="institucion.html" class="boton">Ver más sobre la institución</a>
+      </div>
     </div>
   </section>
 
   <!-- TECNICATURAS -->
-  <section id="tecnicaturas" class="reveal section tecnicaturas">
-    <div class="text-container">
-      <h2>Nuestras Tecnicaturas</h2>
-      <p>Formamos futuros profesionales en distintas áreas técnicas que contribuyen al conocimiento, la práctica y la innovación.</p>
-      <a href="#">Ver todas las tecnicaturas</a>
-    </div>
-    <div class="img-container"><!-- Imagen aquí --></div>
-  </section>
-
-  <!-- NOTICIAS -->
-  <section id="noticias" class="reveal section noticias">
-    <h2>Últimas Noticias</h2>
-    <div class="noticia">
-      <div class="img-container"><!-- Imagen aquí --></div>
-      <div class="text-container">
-        <h3>Participación en la Feria de Ciencia y Tecnología 2025</h3>
-        <p>Estudiantes de distintas tecnicaturas presentaron sus proyectos en la feria regional. Fue una experiencia enriquecedora que destacó el talento y la dedicación de nuestros alumnos.</p>
-        <p class="fecha">📅 Publicado el 10 de octubre de 2025</p>
+  <section id="tecnicaturas" class="seccion">
+    <div class="franja"><h2>Nuestras Tecnicaturas</h2></div>
+    <div class="contenido fila">
+      <img src="imagenes/profesorenseñando.jpeg" alt="Aula">
+      <div class="texto">
+        <p>Formamos futuros profesionales en distintas áreas técnicas...</p>
+        <a href="tecnicaturas.html" class="boton">Ver más sobre tecnicaturas</a>
       </div>
     </div>
   </section>
 
   <!-- TESTIMONIOS -->
-  <section id="testimonios" class="reveal section testimonios">
-    <h2>Testimonios</h2>
-    <div class="cards">
-      <div class="card">
-        <div class="img-container"><!-- Imagen aquí --></div>
-        <h3>María López</h3>
-        <p>"Gracias a la Industrial N°4 aprendí no solo conocimientos técnicos, sino también el valor del trabajo en equipo."</p>
+  <section id="testimonios" class="seccion testimonios">
+    <div class="franja"><h2>Testimonios</h2></div>
+    <div class="testimonios-contenedor">
+      <div class="testimonio">
+        <p>"La Industrial N°4 me dio las herramientas para construir mi futuro."</p>
+        <span>- Exalumno 2022</span>
       </div>
-      <div class="card">
-        <div class="img-container"><!-- Imagen aquí --></div>
-        <h3>Sofía Ramírez</h3>
-        <p>"Los profesores siempre nos apoyaron en cada proyecto. Participar en la feria de ciencia me ayudó a descubrir mi pasión."</p>
+      <div class="testimonio">
+        <p>"Una escuela con un gran compromiso humano y técnico."</p>
+        <span>- Docente</span>
       </div>
-      <div class="card">
-        <div class="img-container"><!-- Imagen aquí --></div>
-        <h3>Laura Fernández</h3>
-        <p>"Ver el crecimiento de nuestras alumnas es lo mejor. Cada día demostramos que la educación técnica puede transformar vidas."</p>
+      <div class="testimonio">
+        <p>"El mejor lugar para aprender haciendo."</p>
+        <span>- Alumno actual</span>
       </div>
     </div>
   </section>
 
   <!-- CONTACTO -->
-  <section id="contacto" class="reveal section contacto">
-    <h2>Contacto Rápido</h2>
-    <p>📞 2964-427207</p>
-    <p>✉️ indus4rh@gmail.com</p>
-    <p>📍 Mite 239, Río Gallegos</p>
-    <a href="#">Ver más información</a>
+  <section id="contacto" class="seccion">
+    <div class="franja"><h2>Contacto rápido</h2></div>
+    <ul class="contacto">
+      <li><i class="fas fa-phone"></i> 2966-427707</li>
+      <li><i class="fas fa-envelope"></i> industrial4rg@gmail.com</li>
+      <li><i class="fas fa-map-marker-alt"></i> Mitre 291, Río Gallegos</li>
+    </ul>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Industrial N°4 “José Hernández” - Todos los derechos reservados.</p>
+    <div class="footer-fondo">
+      <div class="footer-contenedor">
+        <div class="columna logo-footer">
+          <img src="imagenes/logo.png" alt="Logo Escuela">
+          <h3>Industrial N°4</h3>
+          <p>“José Menéndez”</p>
+        </div>
+        <div class="columna">
+          <h3>Enlaces útiles</h3>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="institucion.html">Institución</a></li>
+            <li><a href="tecnicaturas.html">Tecnicaturas</a></li>
+          </ul>
+        </div>
+        <div class="columna">
+          <h3>Seguinos</h3>
+          <div class="redes">
+            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="copy">© 2025 Industrial N°4 "José Menéndez" - Todos los derechos reservados.</p>
   </footer>
 
   <script src="scripts/script.js"></script>
