@@ -131,3 +131,90 @@ footer { color: white; text-align: center; }
 .redes a { color: white; margin: 0 10px; font-size: 24px; transition: 0.3s; }
 .redes a:hover { color: #ffd700; }
 .copy { background: #0b2b4c; padding: 15px; font-size: 14px; }
+
+/* ===== MENÚ HAMBURGUESA MODERNO ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  background: #122b49;
+  color: #fff;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  z-index: 9999;
+}
+
+.menu-overlay.active {
+  transform: translateX(0);
+}
+
+.menu-left {
+  width: 40%;
+  padding: 40px 20px;
+  border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+.menu-left i {
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.menu-left ul {
+  list-style: none;
+}
+
+.menu-left ul li {
+  margin: 25px 0;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.menu-left ul li:hover {
+  color: #ffd700;
+}
+
+.menu-right {
+  width: 60%;
+  background: url("../imagenes/imagenes/estudianteslevantandolamano.jpeg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.menu-right::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.submenu {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: left;
+}
+
+.submenu h3 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.submenu ul {
+  list-style: none;
+}
+
+.submenu ul li {
+  margin: 10px 0;
+  font-size: 18px;
+  padding: 6px 10px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.submenu ul li:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
