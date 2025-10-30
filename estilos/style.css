@@ -1,220 +1,451 @@
-/* ===== RESETEO ===== */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Poppins", sans-serif; }
-body { background: #fff; color: #222; scroll-behavior: smooth; }
+/* estilos/style.css */
 
-/* ===== HEADER ===== */
-header {
-  background: #0b2b4c;
-  color: white;
+/* --- DECLARACIÓN DE FUENTE OPEN SAUCE SANS (Regular) con .ttf --- */
+@font-face {
+    font-family: 'Open Sauce Sans';
+    /* Asegúrate que la ruta '../fonts/' y el nombre de archivo sean correctos */
+    src: url('../fonts/OpenSauceSans-Regular.ttf') format('truetype');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+    font-display: swap;
+}
+
+/* --- DECLARACIÓN DE FUENTE OPEN SAUCE SANS (Bold/Negrita) con .ttf --- */
+@font-face {
+    font-family: 'Open Sauce Sans';
+    /* Asegúrate que la ruta '../fonts/' y el nombre de archivo sean correctos */
+    src: url('../fonts/OpenSauceSans-Bold.ttf') format('truetype');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ------------------------------------------------------------- */
+/* Estilos Generales y del Header */
+body {
+    margin: 0;
+    /* --- CORRECCIÓN CLAVE AQUÍ: Aplicar Open Sauce al cuerpo --- */
+    font-family: 'Open Sauce Sans', sans-serif;
+    background-color: #f4f4f4;
+}
+
+.main-header {
+    background-color: #0b1a2b;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.menu-icon {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.search-profile img {
+    height: 50px;
+    margin-left: 1px;
+    cursor: pointer;
+}
+
+/* Overlay Menu */
+.overlay-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: #0b1a2b;
+    overflow-x: hidden;
+    transition: 0.5s;
+    display: flex;
+}
+
+.overlay-menu.open {
+    width: 100%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    left: 45px;
+    font-size: 60px;
+    color: white;
+    cursor: pointer;
+    z-index: 2001;
+}
+
+.menu-content {
+    display: flex;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.overlay-menu.open .menu-content {
+    opacity: 1;
+}
+
+/* Menú principal (izquierda) */
+.main-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 40%;
+    background-color: #1a2a3e;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 100px;
+}
+
+.main-menu-list li {
+    padding: 40px 45px;
+    font-size: 32px;
+}
+
+.main-menu-list a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+    /* Ya está bien aquí, pero el body es la clave */
+    font-family: 'Open Sauce Sans', sans-serif; 
+}
+
+.main-menu-list a:hover {
+    color: #D7E0F7
+}
+
+/* Submenú (derecha) */
+.submenu-container {
+    width: 60%;
+    background-color: #0b1a2b;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 100px;
+    position: relative;
+    color: white;
+    font-size: 32px;
+}
+
+.submenu-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.submenu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    padding-left: 40px;
+}
+
+.submenu-list li {
+    padding: 30px 0;
+}
+
+.submenu-list a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 16px 24px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    /* Ya está bien aquí, pero el body es la clave */
+    font-family: 'Open Sauce Sans', sans-serif;
+}
+
+.submenu-list a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Fondos dinámicos (Ya corregidos en la sesión anterior) */
+.submenu-container.inicio-bg {
+    background-image: url('../imagenes/menuinicio.jpeg');
+}
+
+.submenu-container.contacto-bg {
+    background-image: url('../imagenes/menucontacto.jpeg');
+}
+
+.submenu-container.tecnicaturas-bg {
+    background-image: url('../imagenes/menutecnicaturas.jpeg');
+}
+
+.submenu-container.institucion-bg {
+    background-image: url('../imagenes/menuinstitucion.jpg');
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .main-menu-list, .submenu-container {
+        width: 100%;
+        padding-top: 80px;
+    }
+    .menu-content {
+        flex-direction: column;
+    }
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA LOGIN.HTML --- */
+
+/* Esconder el header en la página de login */
+.login-body .main-header {
+    display: none;
+}
+
+/* Contenedor principal para la división de la página */
+.login-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Lado izquierdo (Sidebar - Fondo oscuro) */
+.login-sidebar {
+    width: 50%;
+    background-color: #0b1a2b; /* Color principal oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-logo {
+    max-width: 70%;
+    height: auto;
+    /* Si tienes la imagen del logo blanco y grande, úsala. Si usas 'logo.png', puede que necesites ajustarlo. */
+}
+
+/* Lado derecho (Formulario) */
+.login-form-area {
+    width: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+}
+
+.login-title {
+    font-size: 2.5em;
+    font-weight: 700; /* Open Sauce Bold */
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.login-form label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+
+.login-form input {
+    padding: 15px;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #fcfcfc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.forgot-password {
+    text-align: right;
+    font-size: 0.9em;
+    color: #0b1a2b;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.login-button {
+    background-color: #0b1a2b;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.login-button:hover {
+    background-color: #1a2a3e;
+}
+
+/* Botones sociales */
+.separator {
+    text-align: center;
+    margin: 30px auto 20px auto;
+    color: #666;
+    max-width: 400px;
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-button {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 15px;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1em;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+    background-color: white;
+}
+
+.social-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.google-button {
+    color: #4285F4;
+}
+
+.facebook-button {
+    color: #1877F2;
+}
+
+.social-button:hover {
+    background-color: #f7f7f7;
+}
+
+/* Responsive para pantallas pequeñas (opcional) */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+    .login-sidebar, .login-form-area {
+        width: 100%;
+        min-height: 50vh;
+    }
+    .login-sidebar {
+        min-height: 200px;
+    }
+    .social-login {
+        flex-direction: column;
+    }
+    .social-button {
+        margin: 5px 0;
+    }
+}
+
+/* --- Estilos de la Barra de Búsqueda --- */
+
+/* Contenedor Flexbox para alinear la barra de búsqueda con los íconos */
+.search-container {
+    display: flex;
+    align-items: center;
+    position: relative; 
+    /* El contenedor inicialmente no ocupa espacio horizontalmente */
+    width: 0; 
+    overflow: hidden; /* Oculta el contenido que esté fuera del ancho (inicialmente 0) */
+    transition: width 0.3s ease; /* Transición para el efecto de deslizado */
+}
+
+/* Estado activo: cuando se muestra la barra */
+.search-container.active {
+    width: 250px; /* Ancho que toma al activarse (Ajusta este valor si quieres que sea más larga) */
+    margin-right: 8px; /* Espacio antes del icono de la lupa (el mismo que usan los otros íconos) */
+}
+
+.search-input {
+    width: 100%; /* El input ocupa el 100% del contenedor padre (.search-container) */
+    padding: 5px 10px; /* Ya no tiene padding 0, el contenedor se encarga del ancho */
+    border: none;
+    border-radius: 4px;
+    background-color: #1a2a3e;
+    color: white;
+    font-size: 16px;
+    box-sizing: border-box; /* Incluye padding en el ancho */
+}
+
+.search-profile{
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
-  position: fixed;
-  top: 0;
+}
+
+.search-profile img[id="searchToggle"],
+.search-profile a img[src*="iniciosesion.png"] {
+  height: 50px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.search-profile img[src*="logo.png"]{
+  height: 50px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.search-container{
+  display: flex;
+  align-items: center;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.3s ease, margin-right 0.3s ease;
+}
+
+.search-container.active{
+  width: 250px;
+  margin-right: 8px;
+}
+
+.search-input{
   width: 100%;
-  z-index: 1000;
-}
-.logo { display: flex; align-items: center; gap: 10px; }
-.logo img { height: 45px; }
-.header-right { display: flex; align-items: center; gap: 15px; }
-.busqueda { display: flex; background: white; border-radius: 20px; overflow: hidden; }
-.busqueda input { border: none; padding: 6px 10px; outline: none; width: 150px; }
-.busqueda button { background: #ffd700; border: none; padding: 6px 10px; cursor: pointer; }
-.header-right i { font-size: 22px; cursor: pointer; }
-
-/* ===== MENÚ HAMBURGUESA ===== */
-.side-menu {
-  position: fixed;
-  left: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(11, 43, 76, 0.95);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #1a2a3e;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: left 0.4s ease;
-  z-index: 999;
-}
-.side-menu.active { left: 0; }
-#close-menu { font-size: 30px; align-self: flex-end; margin: 20px; cursor: pointer; }
-.side-menu ul { list-style: none; text-align: center; margin-top: 100px; }
-.side-menu ul li { margin: 25px 0; }
-.side-menu ul li a { color: white; text-decoration: none; font-size: 22px; transition: 0.3s; }
-.side-menu ul li a:hover { color: #ffd700; }
-
-/* ===== HERO ===== */
-.hero {
-  background: url("../imagenes/campusafuera.jpeg") center/cover no-repeat;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hero-text {
-  color: white;
-  text-align: center;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
-}
-.hero-logo { width: 100px; margin-bottom: 20px; }
-
-/* ===== SECCIONES ===== */
-.seccion { padding: 80px 20px; max-width: 1100px; margin: auto; }
-.franja { background: #0b2b4c; color: white; text-align: center; padding: 15px; margin-bottom: 30px; }
-.fila { display: flex; flex-wrap: wrap; align-items: center; gap: 30px; }
-.fila img { width: 45%; border-radius: 10px; }
-.texto { flex: 1; }
-.boton {
-  display: inline-block;
-  background: #0b2b4c;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  margin-top: 15px;
-  transition: 0.3s;
-}
-.boton:hover { background: #ffd700; color: #0b2b4c; }
-
-/* ===== TESTIMONIOS ===== */
-.testimonios-contenedor {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-.testimonio {
-  background: #f4f4f4;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* ===== CONTACTO ===== */
-.contacto { list-style: none; text-align: center; }
-.contacto li { margin: 10px 0; font-size: 1.1em; }
-.contacto i { color: #0b2b4c; margin-right: 8px; }
-
-/* ===== FOOTER ===== */
-footer { color: white; text-align: center; }
-.footer-fondo {
-  background: url("../imagenes/footer.jpg") center/cover no-repeat;
-  padding: 60px 20px;
-}
-.footer-contenedor {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  max-width: 1100px;
-  margin: auto;
-}
-.logo-footer img { height: 60px; margin-bottom: 10px; }
-.columna h3 { margin-bottom: 10px; }
-.columna ul { list-style: none; padding: 0; }
-.columna ul li a { color: white; text-decoration: none; }
-.columna ul li a:hover { color: #ffd700; }
-.redes a { color: white; margin: 0 10px; font-size: 24px; transition: 0.3s; }
-.redes a:hover { color: #ffd700; }
-.copy { background: #0b2b4c; padding: 15px; font-size: 14px; }
-
-/* ===== MENÚ HAMBURGUESA MODERNO ===== */
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  background: #122b49;
-  color: #fff;
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-  z-index: 9999;
-}
-
-.menu-overlay.active {
-  transform: translateX(0);
-}
-
-.menu-left {
-  width: 40%;
-  padding: 40px 20px;
-  border-right: 1px solid rgba(255,255,255,0.3);
-}
-
-.menu-left i {
-  font-size: 24px;
-  cursor: pointer;
-  margin-bottom: 40px;
-}
-
-.menu-left ul {
-  list-style: none;
-}
-
-.menu-left ul li {
-  margin: 25px 0;
-  font-size: 20px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.menu-left ul li:hover {
-  color: #ffd700;
-}
-
-.menu-right {
-  width: 60%;
-  background: url("../imagenes/imagenes/estudianteslevantandolamano.jpeg") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.menu-right::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.submenu {
-  position: relative;
-  z-index: 2;
-  color: white;
-  text-align: left;
-}
-
-.submenu h3 {
-  margin-bottom: 20px;
-  font-size: 22px;
-}
-
-.submenu ul {
-  list-style: none;
-}
-
-.submenu ul li {
-  margin: 10px 0;
-  font-size: 18px;
-  padding: 6px 10px;
-  transition: background 0.3s;
-  cursor: pointer;
-}
-
-.submenu ul li:hover {
-  background: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  box-sizing: border-box;
 }
