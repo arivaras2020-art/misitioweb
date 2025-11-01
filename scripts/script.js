@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
-    // Lógica del Menú Overlay
+    // Lógica del Menú Overlay (CÓDIGO EXISTENTE)
     // ----------------------------------------------------
     const menuIcon = document.getElementById('menuIcon');
     const closeBtn = document.getElementById('closeBtn');
@@ -27,9 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lógica para mostrar los submenús (se mantiene la que ya tenías)
     function showSubmenu(menuType) {
-        // ... (Tu código showSubmenu con switch case aquí) ...
         let submenuHtml = '';
         let backgroundImageClass = '';
 
@@ -98,17 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ----------------------------------------------------
-    // Lógica de la Barra de Búsqueda (CORREGIDA Y AMPLIADA)
+    // Lógica de la Barra de Búsqueda (CÓDIGO EXISTENTE)
     // ----------------------------------------------------
     const searchToggle = document.getElementById('searchToggle');
     const searchContainer = document.getElementById('searchContainer');
     const searchInput = document.getElementById('searchInput');
 
     if (searchToggle && searchContainer && searchInput) {
-        // Tarea 1: Alternar (Toggle) la barra al hacer clic en la lupa
         searchToggle.addEventListener('click', () => {
             searchContainer.classList.toggle('active');
-
             if (searchContainer.classList.contains('active')) {
                 searchInput.focus();
             } else {
@@ -116,26 +112,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Tarea 2: Manejar la búsqueda al presionar ENTER
         searchInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
 
                 const query = searchInput.value.toLowerCase().trim();
 
-                // ----------------------------------------------------------
-                // Diccionario de Redirecciones (Todas tus opciones solicitadas)
-                // ----------------------------------------------------------
                 const redirectMap = {
-                    // Páginas Principales
                     'inicio': 'index.html',
                     'contacto': 'contacto.html',
                     'informacion de contacto': 'contacto.html',
                     'horarios': 'contacto.html',
                     'institucion': 'institucion.html',
                     'tecnicaturas': 'tecnicaturas.html',
-
-                    // Páginas de Tecnicaturas
                     'informatica': 'informatica.html',
                     'construcciones': 'construcciones.html',
                     'electronica': 'electronica.html',
@@ -144,24 +133,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 let destination = null;
 
-                // Buscar la palabra clave en el diccionario
                 for (const keyword in redirectMap) {
                     if (query.includes(keyword)) {
                         destination = redirectMap[keyword];
-                        break; // Encontró la mejor coincidencia
+                        break;
                     }
                 }
 
                 if (destination) {
                     window.location.href = destination;
                 } else if (query.length > 0) {
-                    // Opción genérica si no hay coincidencia
                     window.location.href = `resultados.html?q=${encodeURIComponent(query)}`;
                 }
 
-                // Limpieza y cierre
                 searchContainer.classList.remove('active');
                 searchInput.value = '';
+            }
+        });
+    }
+
+    // ----------------------------------------------------
+    // Lógica del Inicio de Sesión y Selector de Rol (NUEVO)
+    // ----------------------------------------------------
+    
+    const loginForm = document.getElementById('loginForm');
+    const roleButtons = document.querySelectorAll('.role-button');
+    const errorMessage = document.getElementById('error-message');
+    let selectedRole = null; 
+
+    // 1. Manejar la selección de rol
+    roleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remover 'active' de todos los botones
+            roleButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Añadir 'active' al botón clickeado
+            button.classList.add('active');
+            
+            selectedRole = button.dataset.role;
+
+            errorMessage.style.display = 'none';
+        });
+    });
+
+    // 2. Manejar el envío del formulario
+    if (loginForm) {
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault(); 
+
+            // Simulación de credenciales de prueba:
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            
+            const userDatabase = [
+                { email: 'padre@test.com', password: '123', role: 'padre' },
+                { email: 'docente@test.com', password: '123', role: 'docente' },
+                { email: 'alumno@test.com', password: '123', role: 'alumno' },
+            ];
+
+            // 3. Validación de Rol obligatorio
+            if (!selectedRole) {
+                errorMessage.textContent = 'Por favor, selecciona tu rol (Alumno, Padre o Docente).';
+                errorMessage.style.display = 'block';
+                return; 
+            }
+
+            // 4. Simulación de Validación y Coincidencia de Rol
+            const foundUser = userDatabase.find(user => 
+                user.email === email && 
+                user.password === password
+            );
+
+if (foundUser) {
+                if (foundUser.role === selectedRole) {
+                    // 🎉 Éxito: Redirigir SIEMPRE a index.html
+                    window.location.href = 'index.html'; 
+                } else {
+                    // Credenciales correctas, pero Rol incorrecto
+                    errorMessage.textContent = `Tu cuenta es de ${foundUser.role.toUpperCase()}. Selecciona el rol correcto.`;
+                    errorMessage.style.display = 'block';
+                }
+            } else {
+                // Credenciales incorrectas
+                errorMessage.textContent = 'Email o contraseña incorrectos.';
+                errorMessage.style.display = 'block';
             }
         });
     }

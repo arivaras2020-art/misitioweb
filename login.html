@@ -16,7 +16,7 @@
         <div class="login-form-area">
             <h2 class="login-title">Bienvenido de vuelta</h2>
             
-            <form class="login-form" action="index.html" method="get">
+            <form id="loginForm" class="login-form">
                 
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Ingresa tu email" required>
@@ -26,23 +26,21 @@
                 
                 <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
                 
+                <p class="role-prompt">Soy...</p>
+                <div class="role-selector">
+                    <button type="button" class="role-button" data-role="alumno" id="btn-alumno">Alumno</button>
+                    <button type="button" class="role-button" data-role="padre" id="btn-padre">Padre</button>
+                    <button type="button" class="role-button" data-role="docente" id="btn-docente">Docente</button>
+                </div>
+                
                 <button type="submit" class="login-button">Iniciar sesión</button>
 
+                <p id="error-message" class="error-message"></p>
+
             </form>
-
-            <p class="separator">O iniciar sesión con</p>
-
-            <div class="social-login">
-                <a href="#" class="social-button google-button">
-                    <img src="imagenes/googleicon.png" alt="Google icon"> Google
-                </a>
-                
-                <a href="#" class="social-button facebook-button">
-                    <img src="imagenes/facebookicon.png" alt="Facebook icon"> Facebook
-                </a>
-            </div>
         </div>
     </div>
     
+    <script src="scripts/script.js"></script> 
 </body>
 </html>

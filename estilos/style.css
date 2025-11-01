@@ -1,243 +1,310 @@
-/* estilos/style.css */
-
 /* --- DECLARACIÓN DE FUENTE OPEN SAUCE SANS (Regular) con .ttf --- */
 @font-face {
-    font-family: 'Open Sauce Sans';
-    /* Asegúrate que la ruta '../fonts/' y el nombre de archivo sean correctos */
-    src: url('../fonts/OpenSauceSans-Regular.ttf') format('truetype');
-    font-weight: 400; /* Regular */
-    font-style: normal;
-    font-display: swap;
+ font-family: 'Open Sauce Sans';
+ /* Asegúrate que la ruta '../fonts/' y el nombre de archivo sean correctos */
+ src: url('../fonts/OpenSauceSans-Regular.ttf') format('truetype');
+ font-weight: 400; /* Regular */
+ font-style: normal;
+ font-display: swap;
 }
 
 /* --- DECLARACIÓN DE FUENTE OPEN SAUCE SANS (Bold/Negrita) con .ttf --- */
 @font-face {
-    font-family: 'Open Sauce Sans';
-    /* Asegúrate que la ruta '../fonts/' y el nombre de archivo sean correctos */
-    src: url('../fonts/OpenSauceSans-Bold.ttf') format('truetype');
-    font-weight: 700; /* Bold */
-    font-style: normal;
-    font-display: swap;
+ font-family: 'Open Sauce Sans';
+ /* Asegúrate que la ruta '../fonts/' y el nombre de archivo sean correctos */
+ src: url('../fonts/OpenSauceSans-Bold.ttf') format('truetype');
+ font-weight: 700; /* Bold */
+ font-style: normal;
+ font-display: swap;
 }
 
 /* ------------------------------------------------------------- */
 /* Estilos Generales y del Header */
 body {
-    margin: 0;
-    /* --- CORRECCIÓN CLAVE AQUÍ: Aplicar Open Sauce al cuerpo --- */
-    font-family: 'Open Sauce Sans', sans-serif;
-    background-color: #f4f4f4;
+ margin: 0;
+ font-family: 'Open Sauce Sans', sans-serif;
+ background-color: #f4f4f4;
 }
 
 .main-header {
-    background-color: #0b1a2b;
-    color: white;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 1000;
+ background-color: #0b1a2b;
+ color: white;
+ padding: 15px 20px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ position: relative;
+ z-index: 1000;
 }
 
 .menu-icon {
-    cursor: pointer;
-    padding: 10px;
+ cursor: pointer;
+ padding: 10px;
 }
 
 .menu-icon .bar {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px 0;
-    transition: 0.4s;
+ width: 25px;
+ height: 3px;
+ background-color: white;
+ margin: 5px 0;
+ transition: 0.4s;
 }
 
 .search-profile img {
-    height: 50px;
-    margin-left: 1px;
-    cursor: pointer;
+  height: 50px;
+  margin-left: 1px;
+  cursor: pointer;
 }
 
 /* Overlay Menu */
 .overlay-menu {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 2000;
-    top: 0;
-    left: 0;
-    background-color: #0b1a2b;
-    overflow-x: hidden;
-    transition: 0.5s;
-    display: flex;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  background-color: #0b1a2b;
+  overflow-x: hidden;
+  transition: 0.5s;
+  display: flex;
 }
 
 .overlay-menu.open {
-    width: 100%;
+  width: 100%;
 }
 
 .close-btn {
-    position: absolute;
-    top: 20px;
-    left: 45px;
-    font-size: 60px;
-    color: white;
-    cursor: pointer;
-    z-index: 2001;
+  position: absolute;
+  top: 20px;
+  left: 45px;
+  font-size: 60px;
+  color: white;
+  cursor: pointer;
+  z-index: 2001;
 }
 
 .menu-content {
-    display: flex;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+  display: flex;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
 .overlay-menu.open .menu-content {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* Menú principal (izquierda) */
 .main-menu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 40%;
-    background-color: #1a2a3e;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 100px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 40%;
+  background-color: #1a2a3e;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 100px;
 }
 
 .main-menu-list li {
-    padding: 40px 45px;
-    font-size: 32px;
+  padding: 40px 45px;
+  font-size: 32px;
 }
 
 .main-menu-list a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    transition: 0.3s;
-    /* Ya está bien aquí, pero el body es la clave */
-    font-family: 'Open Sauce Sans', sans-serif; 
+  color: white;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+  font-family: 'Open Sauce Sans', sans-serif; 
 }
 
 .main-menu-list a:hover {
-    color: #D7E0F7
+  color: #D7E0F7
 }
 
 /* Submenú (derecha) */
 .submenu-container {
-    width: 60%;
-    background-color: #0b1a2b;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 100px;
-    position: relative;
-    color: white;
-    font-size: 32px;
+  width: 60%;
+  background-color: #0b1a2b;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 100px;
+  position: relative;
+  color: white;
+  font-size: 32px;
 }
 
-.submenu-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
+.submenu-container::before { content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 0, 0, 0.4);
+ z-index: 1;
 }
 
 .submenu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    z-index: 2;
-    padding-left: 40px;
+ list-style: none;
+ padding: 0;
+ margin: 0;
+ position: relative;
+ z-index: 2;
+ padding-left: 40px;
 }
 
 .submenu-list li {
-    padding: 30px 0;
+ padding: 30px 0;
 }
 
 .submenu-list a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 16px 24px;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-    /* Ya está bien aquí, pero el body es la clave */
-    font-family: 'Open Sauce Sans', sans-serif;
+ color: white;
+ text-decoration: none;
+ display: block;
+ padding: 16px 24px;
+ transition: background-color 0.3s ease;
+ border-radius: 5px;
+ font-family: 'Open Sauce Sans', sans-serif;
 }
 
 .submenu-list a:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+ background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Fondos dinámicos (Ya corregidos en la sesión anterior) */
 .submenu-container.inicio-bg {
-    background-image: url('../imagenes/menuinicio.jpeg');
+ background-image: url('../imagenes/menuinicio.jpeg');
 }
 
 .submenu-container.contacto-bg {
-    background-image: url('../imagenes/menucontacto.jpeg');
+ background-image: url('../imagenes/menucontacto.jpeg');
 }
 
 .submenu-container.tecnicaturas-bg {
-    background-image: url('../imagenes/menutecnicaturas.jpeg');
+ background-image: url('../imagenes/menutecnicaturas.jpeg');
 }
 
 .submenu-container.institucion-bg {
-    background-image: url('../imagenes/menuinstitucion.jpg');
+ background-image: url('../imagenes/menuinstitucion.jpg');
 }
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-    .main-menu-list, .submenu-container {
-        width: 100%;
-        padding-top: 80px;
-    }
-    .menu-content {
-        flex-direction: column;
-    }
+ .main-menu-list, .submenu-container {
+ width: 100%;
+ padding-top: 80px;
+ }
+ .menu-content {
+ flex-direction: column;
+ }
 }
 
-/* --- ESTILOS ESPECÍFICOS PARA LOGIN.HTML --- */
+/* --- ESTILOS DE LA BARRA DE BÚSQUEDA (MANTENIDOS) --- */
+.search-container {
+ display: flex;
+ align-items: center;
+ position: relative; 
+ width: 0; 
+ overflow: hidden; 
+ transition: width 0.3s ease; 
+}
+
+.search-container.active {
+ width: 250px; 
+ margin-right: 8px; 
+}
+
+.search-input {
+ width: 100%; 
+ padding: 5px 10px; 
+ border: none;
+ border-radius: 4px;
+ background-color: #1a2a3e;
+ color: white;
+ font-size: 16px;
+ box-sizing: border-box; 
+}
+
+.search-profile{
+ display: flex;
+ align-items: center;
+}
+
+.search-profile img[id="searchToggle"],
+.search-profile a img[src*="iniciosesion.png"] {
+ height: 50px;
+ margin-left: 5px;
+ cursor: pointer;
+}
+
+.search-profile img[src*="logo.png"]{
+ height: 50px;
+ margin-left: 15px;
+ cursor: pointer;
+}
+
+.search-container{
+ display: flex;
+ align-items: center;
+ width: 0;
+ overflow: hidden;
+ transition: width 0.3s ease, margin-right 0.3s ease;
+}
+
+.search-container.active{
+ width: 250px;
+ margin-right: 8px;
+}
+
+.search-input{
+ width: 100%;
+ padding: 5px 10px;
+ border: none;
+ border-radius: 4px;
+ background-color: #1a2a3e;
+ color: white;
+ font-size: 16px;
+ box-sizing: border-box;
+}
+
+/* ------------------------------------------------------------- */
+/* --- ESTILOS ESPECÍFICOS PARA LOGIN.HTML (NUEVOS ESTILOS) --- */
+/* ------------------------------------------------------------- */
 
 /* Esconder el header en la página de login */
 .login-body .main-header {
     display: none;
 }
 
-/* Contenedor principal para la división de la página */
+/* Contenedor principal: división de dos columnas */
 .login-container {
     display: flex;
     min-height: 100vh;
+    background-color: #fcfcfc; /* Fondo de la página completo */
 }
 
-/* Lado izquierdo (Sidebar - Fondo oscuro) */
+/* Lado izquierdo (Sidebar - Logo) */
 .login-sidebar {
     width: 50%;
-    background-color: #0b1a2b; /* Color principal oscuro */
+    background-color: #1A2F4E; /* Fondo muy claro para el logo */
     display: flex;
-    justify-content: center;
+    flex-direction: column; 
+    justify-content: center; /* Centra el logo verticalmente */
     align-items: center;
     padding: 20px;
 }
 
 .login-logo {
-    max-width: 70%;
+    max-width: 50%; 
     height: auto;
-    /* Si tienes la imagen del logo blanco y grande, úsala. Si usas 'logo.png', puede que necesites ajustarlo. */
+    opacity: 0.9; 
+    margin: auto; /* Centrado absoluto */
 }
 
 /* Lado derecho (Formulario) */
@@ -246,21 +313,25 @@ body {
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     padding: 60px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05); /* Sombra para destacar */
 }
 
 .login-title {
-    font-size: 2.5em;
-    font-weight: 700; /* Open Sauce Bold */
-    margin-bottom: 40px;
-    text-align: center;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #0b1a2b;
+    margin-bottom: 25px; 
+    text-align: left;
 }
 
 .login-form {
     display: flex;
     flex-direction: column;
-    max-width: 400px;
+    max-width: 450px;
+    margin-left: 0;
+    margin-right: auto;
     margin: 0 auto;
     width: 100%;
 }
@@ -269,29 +340,81 @@ body {
     font-weight: 600;
     margin-bottom: 8px;
     margin-top: 15px;
+    color: #333;
 }
 
 .login-form input {
-    padding: 15px;
+    /* Estilo de input más plano */
+    padding: 12px 15px; 
     border: 1px solid #c9c9c9;
     border-radius: 4px;
     font-size: 1em;
-    background-color: #fcfcfc;
+    background-color: #f5f5f5; /* Fondo gris claro */
     width: 100%;
     box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.login-form input:focus {
+    border-color: #1A2F4E; /* Púrpura */
+    outline: none;
+    background-color: white;
 }
 
 .forgot-password {
     text-align: right;
     font-size: 0.9em;
-    color: #0b1a2b;
+    color: #1A2F4E; /* Color de enlace morado/púrpura */
     text-decoration: none;
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 20px;
 }
 
+/* Selector de Rol */
+.role-prompt {
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    color: #333; 
+}
+
+.role-selector {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 25px; 
+}
+
+.role-button {
+    flex: 1; 
+    background-color: #f1f1f1; 
+    color: #333;
+    padding: 10px 5px;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+/* Estado Activo: Rol Seleccionado */
+.role-button.active {
+    background-color: #1A2F4E; /* Color principal morado */
+    color: white;
+    border-color: #21395e;
+    font-weight: 700;
+}
+
+.role-button:not(.active):hover {
+    background-color: #e6e6e6;
+}
+
+/* Botón de Iniciar Sesión */
 .login-button {
-    background-color: #0b1a2b;
+    background-color: #0b1a2b; /* Azul oscuro */
     color: white;
     padding: 15px;
     border: none;
@@ -300,152 +423,37 @@ body {
     font-size: 1.1em;
     font-weight: 700;
     transition: background-color 0.3s;
-    margin-top: 20px;
+    margin-top: 10px;
+    width: 100%;
 }
 
 .login-button:hover {
     background-color: #1a2a3e;
 }
 
-/* Botones sociales */
-.separator {
+/* Estilo para mensaje de error */
+.error-message {
+    color: #d9534f; 
     text-align: center;
-    margin: 30px auto 20px auto;
-    color: #666;
-    max-width: 400px;
+    margin-top: 15px;
+    font-weight: 500;
+    display: none; 
 }
 
-.social-login {
-    display: flex;
-    justify-content: space-between;
-    max-width: 400px;
-    margin: 0 auto;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.social-button {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px;
-    border: 1px solid #c9c9c9;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 1em;
-    margin: 0 5px;
-    transition: background-color 0.3s;
-    background-color: white;
-}
-
-.social-button img {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
-.google-button {
-    color: #4285F4;
-}
-
-.facebook-button {
-    color: #1877F2;
-}
-
-.social-button:hover {
-    background-color: #f7f7f7;
-}
-
-/* Responsive para pantallas pequeñas (opcional) */
+/* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
     .login-container {
         flex-direction: column;
     }
     .login-sidebar, .login-form-area {
         width: 100%;
-        min-height: 50vh;
+        min-height: auto;
     }
     .login-sidebar {
         min-height: 200px;
+        padding: 40px;
     }
-    .social-login {
-        flex-direction: column;
+    .login-logo {
+        max-width: 50%; 
     }
-    .social-button {
-        margin: 5px 0;
-    }
-}
-
-/* --- Estilos de la Barra de Búsqueda --- */
-
-/* Contenedor Flexbox para alinear la barra de búsqueda con los íconos */
-.search-container {
-    display: flex;
-    align-items: center;
-    position: relative; 
-    /* El contenedor inicialmente no ocupa espacio horizontalmente */
-    width: 0; 
-    overflow: hidden; /* Oculta el contenido que esté fuera del ancho (inicialmente 0) */
-    transition: width 0.3s ease; /* Transición para el efecto de deslizado */
-}
-
-/* Estado activo: cuando se muestra la barra */
-.search-container.active {
-    width: 250px; /* Ancho que toma al activarse (Ajusta este valor si quieres que sea más larga) */
-    margin-right: 8px; /* Espacio antes del icono de la lupa (el mismo que usan los otros íconos) */
-}
-
-.search-input {
-    width: 100%; /* El input ocupa el 100% del contenedor padre (.search-container) */
-    padding: 5px 10px; /* Ya no tiene padding 0, el contenedor se encarga del ancho */
-    border: none;
-    border-radius: 4px;
-    background-color: #1a2a3e;
-    color: white;
-    font-size: 16px;
-    box-sizing: border-box; /* Incluye padding en el ancho */
-}
-
-.search-profile{
-  display: flex;
-  align-items: center;
-}
-
-.search-profile img[id="searchToggle"],
-.search-profile a img[src*="iniciosesion.png"] {
-  height: 50px;
-  margin-left: 5px;
-  cursor: pointer;
-}
-
-.search-profile img[src*="logo.png"]{
-  height: 50px;
-  margin-left: 15px;
-  cursor: pointer;
-}
-
-.search-container{
-  display: flex;
-  align-items: center;
-  width: 0;
-  overflow: hidden;
-  transition: width 0.3s ease, margin-right 0.3s ease;
-}
-
-.search-container.active{
-  width: 250px;
-  margin-right: 8px;
-}
-
-.search-input{
-  width: 100%;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #1a2a3e;
-  color: white;
-  font-size: 16px;
-  box-sizing: border-box;
 }
