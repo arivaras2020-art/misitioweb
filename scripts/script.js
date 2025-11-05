@@ -90,17 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
                 `;
                 break;
-            case 'portal-docente':
+                case 'portal-docente':
                 backgroundImageClass = 'portaldocente-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="portaldocente.html">Subir notas</a></li>
-                    <li><a href="portaldocente.html">Control de asistencia</a></li>
-                    <li><a href="portaldocente.html">Gestión de boletines</a></li>
-                    <li><a href="portaldocente.html">Avisos institucionales</a></li>
+                    <li><a href="subirnotas.html#subirnotas">Subir notas</a></li>
+                    <li><a href="controldeasistencia.html#controldeasistencia">Control de asistencia</a></li>
+                    <li><a href="gestiondeboletines.html#gestiondeboletines">Gestion de boletines</a></li>
+                    <li><a href="avisosinstitucionales.html#avisosinstitucionales">Avisos institucionales</a></li>
                 </ul>
                 `;
                 break;
+
         }
 
         submenuContainer.innerHTML = submenuHtml;
@@ -144,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const redirectMap = {
                     'inicio': 'index.html',
                     'contacto': 'contacto.html',
-                    'informacion de contacto': 'contacto.html',
                     'horarios': 'contacto.html',
                     'institucion': 'institucion.html',
                     'tecnicaturas': 'tecnicaturas.html',
@@ -175,52 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ====================================================
-    // 🚀 LÓGICA DE LOGIN Y REGISTRO (CORREGIDA Y FINAL) 🚀
-    // ====================================================
-    
-    // Credenciales de Prueba (LAS CORRECTAS: prueba@gmail.com y 123)
-    const VALID_EMAIL = 'prueba@gmail.com';
-    const VALID_PASSWORD = '123';
-    const VALID_NAME = 'prueba';
-    
-    // Elementos de la Vista (Asegúrate de que estos IDs existan en tu HTML)
-    const loginSection = document.getElementById('login-section');
-    const registerSection = document.getElementById('register-section');
-    const showRegisterLink = document.getElementById('show-register');
-    const showLoginLink = document.getElementById('show-login');
-
-
-    // Función para cambiar la vista (AHORA SÓLO GESTIONA EL SCROLL)
-    // Usada para los enlaces "Regístrate" e "Iniciar sesión"
-    function switchView(target) {
-        if (!loginSection || !registerSection) return;
-
-        if (target === 'register') {
-            registerSection.scrollIntoView({ behavior: 'smooth' });
-        } else { // target === 'login'
-            loginSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-    
-    // Inicialización: Asegurarse que la vista esté arriba (login) al cargar la página
-    window.scrollTo(0, 0); 
-
-    // Eventos para los enlaces de cambio de vista (si usas un solo HTML)
-    if (showRegisterLink) {
-        showRegisterLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            switchView('register');
-        });
-    }
-
-    if (showLoginLink) {
-        showLoginLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            switchView('login');
-        });
-    }
-    
     // ----------------------------------------------------
     // Lógica del Formulario de INICIO DE SESIÓN
     // ----------------------------------------------------
