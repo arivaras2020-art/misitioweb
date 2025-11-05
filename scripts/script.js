@@ -152,72 +152,105 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+ const loginSection = document.getElementById('login-section');
+    const registerSection = document.getElementById('register-section');
+    const showRegisterLink = document.getElementById('show-register');
+    const showLoginLink = document.getElementById('show-login');
+
+    // Función para cambiar la vista
+    function switchView(target) {
+        if (target === 'register') {
+            loginSection.classList.remove('active');
+            registerSection.classList.add('active');
+        } else {
+            registerSection.classList.remove('active');
+            loginSection.classList.add('active');
+        }
+    }
+
+    // Eventos para los enlaces de cambio de vista
+    if (showRegisterLink) {
+        showRegisterLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchView('register');
+        });
+    }
+
+    if (showLoginLink) {
+        showLoginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchView('login');
+        });
+    }
+
     // ----------------------------------------------------
-    // Lógica del Inicio de Sesión y Selector de Rol (NUEVO)
+    // Lógica del Formulario de Inicio de Sesión (MODIFICADA)
     // ----------------------------------------------------
     
     const loginForm = document.getElementById('loginForm');
-    const roleButtons = document.querySelectorAll('.role-button');
-    const errorMessage = document.getElementById('error-message');
-    let selectedRole = null; 
-
-    // 1. Manejar la selección de rol
-    roleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remover 'active' de todos los botones
-            roleButtons.forEach(btn => btn.classList.remove('active'));
-
-            // Añadir 'active' al botón clickeado
-            button.classList.add('active');
-            
-            selectedRole = button.dataset.role;
-
-            errorMessage.style.display = 'none';
-        });
-    });
-
-    // 2. Manejar el envío del formulario
+    const loginErrorMessage = document.getElementById('login-error-message');
+    
     if (loginForm) {
         loginForm.addEventListener('submit', (event) => {
             event.preventDefault(); 
 
-            // Simulación de credenciales de prueba:
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
+            // Simulación de credenciales de prueba
+            const email = document.getElementById('email-login').value.trim();
+            const password = document.getElementById('password-login').value;
             
-            const userDatabase = [
-                { email: 'padre@test.com', password: '123', role: 'padre' },
-                { email: 'docente@test.com', password: '123', role: 'docente' },
-                { email: 'alumno@test.com', password: '123', role: 'alumno' },
-            ];
+            // Usuario de prueba simple
+            const testUser = { email: 'test@industrial.com', password: '123' };
 
-            // 3. Validación de Rol obligatorio
-            if (!selectedRole) {
-                errorMessage.textContent = 'Por favor, selecciona tu rol (Alumno, Padre o Docente).';
-                errorMessage.style.display = 'block';
-                return; 
-            }
+            loginErrorMessage.style.display = 'none';
 
-            // 4. Simulación de Validación y Coincidencia de Rol
-            const foundUser = userDatabase.find(user => 
-                user.email === email && 
-                user.password === password
-            );
-
-if (foundUser) {
-                if (foundUser.role === selectedRole) {
-                    // 🎉 Éxito: Redirigir SIEMPRE a index.html
-                    window.location.href = 'index.html'; 
-                } else {
-                    // Credenciales correctas, pero Rol incorrecto
-                    errorMessage.textContent = `Tu cuenta es de ${foundUser.role.toUpperCase()}. Selecciona el rol correcto.`;
-                    errorMessage.style.display = 'block';
-                }
+            if (email === testUser.email && password === testUser.password) {
+                // 🎉 Éxito: Redirigir
+                window.location.href = 'index.html'; 
             } else {
                 // Credenciales incorrectas
-                errorMessage.textContent = 'Email o contraseña incorrectos.';
-                errorMessage.style.display = 'block';
+                loginErrorMessage.textContent = 'Email o contraseña incorrectos.';
+                loginErrorMessage.style.display = 'block';
             }
         });
     }
+    
+    // ----------------------------------------------------
+    // Lógica del Formulario de Registro (NUEVA)
+    // ----------------------------------------------------
+    
+    const registerForm = document.getElementById('registerForm');
+    const registerErrorMessage = document.getElementById('register-error-message');
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // En un entorno real, aquí enviarías los datos al servidor.
+            const name = document.getElementById('name-register').value.trim();
+            const email = document.getElementById('email-register').value.trim();
+            const password = document.getElementById('password-register').value;
+
+            registerErrorMessage.style.display = 'none';
+
+            // Validación simple para simular el registro
+            if (name.length < 3) {
+                registerErrorMessage.textContent = 'El nombre debe tener al menos 3 caracteres.';
+                registerErrorMessage.style.display = 'block';
+            } else if (!email.includes('@')) {
+                registerErrorMessage.textContent = 'Por favor, ingresa un email válido.';
+                registerErrorMessage.style.display = 'block';
+            } else if (password.length < 6) {
+                registerErrorMessage.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+                registerErrorMessage.style.display = 'block';
+            } else {
+                // Simulación de registro exitoso
+                alert('¡Registro exitoso! Serás redirigido al inicio de sesión.');
+                // Limpiar formulario
+                registerForm.reset();
+                // Cambiar a la vista de login
+                switchView('login');
+            }
+        });
+    }
+
 });
