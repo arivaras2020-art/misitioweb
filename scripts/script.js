@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     // ----------------------------------------------------
     // Lógica del Menú Overlay (CÓDIGO EXISTENTE)
     // ----------------------------------------------------
@@ -78,6 +79,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
                 `;
                 break;
+            case 'portal-familiar':
+                backgroundImageClass = 'portalfamiliar-bg';
+                submenuHtml = `
+                <ul class="submenu-list">
+                    <li><a href="portalfamiliar.html">Comunicado del día</a></li>
+                    <li><a href="portalfamiliar.html">Informe orientador</a></li>
+                    <li><a href="portalfamiliar.html">Asistencia</a></li>
+                    <li><a href="portalfamilair.html">Boletín</a></li>
+                </ul>
+                `;
+                break;
+            case 'portal-docente':
+                backgroundImageClass = 'portaldocente-bg';
+                submenuHtml = `
+                <ul class="submenu-list">
+                    <li><a href="portaldocente.html">Subir notas</a></li>
+                    <li><a href="portaldocente.html">Control de asistencia</a></li>
+                    <li><a href="portaldocente.html">Gestión de boletines</a></li>
+                    <li><a href="portaldocente.html">Avisos institucionales</a></li>
+                </ul>
+                `;
+                break;
         }
 
         submenuContainer.innerHTML = submenuHtml;
@@ -152,23 +175,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
- const loginSection = document.getElementById('login-section');
+    // ====================================================
+    // 🚀 LÓGICA DE LOGIN Y REGISTRO (CORREGIDA Y FINAL) 🚀
+    // ====================================================
+    
+    // Credenciales de Prueba (LAS CORRECTAS: prueba@gmail.com y 123)
+    const VALID_EMAIL = 'prueba@gmail.com';
+    const VALID_PASSWORD = '123';
+    const VALID_NAME = 'prueba';
+    
+    // Elementos de la Vista (Asegúrate de que estos IDs existan en tu HTML)
+    const loginSection = document.getElementById('login-section');
     const registerSection = document.getElementById('register-section');
     const showRegisterLink = document.getElementById('show-register');
     const showLoginLink = document.getElementById('show-login');
 
-    // Función para cambiar la vista
+
+    // Función para cambiar la vista (AHORA SÓLO GESTIONA EL SCROLL)
+    // Usada para los enlaces "Regístrate" e "Iniciar sesión"
     function switchView(target) {
+        if (!loginSection || !registerSection) return;
+
         if (target === 'register') {
-            loginSection.classList.remove('active');
-            registerSection.classList.add('active');
-        } else {
-            registerSection.classList.remove('active');
-            loginSection.classList.add('active');
+            registerSection.scrollIntoView({ behavior: 'smooth' });
+        } else { // target === 'login'
+            loginSection.scrollIntoView({ behavior: 'smooth' });
         }
     }
+    
+    // Inicialización: Asegurarse que la vista esté arriba (login) al cargar la página
+    window.scrollTo(0, 0); 
 
-    // Eventos para los enlaces de cambio de vista
+    // Eventos para los enlaces de cambio de vista (si usas un solo HTML)
     if (showRegisterLink) {
         showRegisterLink.addEventListener('click', (e) => {
             e.preventDefault();
@@ -182,11 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
             switchView('login');
         });
     }
-
-    // ----------------------------------------------------
-    // Lógica del Formulario de Inicio de Sesión (MODIFICADA)
-    // ----------------------------------------------------
     
+    // ----------------------------------------------------
+    // Lógica del Formulario de INICIO DE SESIÓN
+    // ----------------------------------------------------
     const loginForm = document.getElementById('loginForm');
     const loginErrorMessage = document.getElementById('login-error-message');
     
@@ -194,20 +231,16 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', (event) => {
             event.preventDefault(); 
 
-            // Simulación de credenciales de prueba
             const email = document.getElementById('email-login').value.trim();
             const password = document.getElementById('password-login').value;
             
-            // Usuario de prueba simple
-            const testUser = { email: 'test@industrial.com', password: '123' };
-
             loginErrorMessage.style.display = 'none';
 
-            if (email === testUser.email && password === testUser.password) {
-                // 🎉 Éxito: Redirigir
+            // Validación: prueba@gmail.com y 123
+            if (email === VALID_EMAIL && password === VALID_PASSWORD) {
+                // Éxito: Redirigir a index.html
                 window.location.href = 'index.html'; 
             } else {
-                // Credenciales incorrectas
                 loginErrorMessage.textContent = 'Email o contraseña incorrectos.';
                 loginErrorMessage.style.display = 'block';
             }
@@ -215,9 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // ----------------------------------------------------
-    // Lógica del Formulario de Registro (NUEVA)
+    // Lógica del Formulario de REGISTRO (¡REDIRECCIÓN A login.html!)
     // ----------------------------------------------------
-    
     const registerForm = document.getElementById('registerForm');
     const registerErrorMessage = document.getElementById('register-error-message');
 
@@ -225,32 +257,143 @@ document.addEventListener('DOMContentLoaded', () => {
         registerForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            // En un entorno real, aquí enviarías los datos al servidor.
             const name = document.getElementById('name-register').value.trim();
             const email = document.getElementById('email-register').value.trim();
             const password = document.getElementById('password-register').value;
 
             registerErrorMessage.style.display = 'none';
 
-            // Validación simple para simular el registro
-            if (name.length < 3) {
-                registerErrorMessage.textContent = 'El nombre debe tener al menos 3 caracteres.';
-                registerErrorMessage.style.display = 'block';
-            } else if (!email.includes('@')) {
-                registerErrorMessage.textContent = 'Por favor, ingresa un email válido.';
-                registerErrorMessage.style.display = 'block';
-            } else if (password.length < 6) {
-                registerErrorMessage.textContent = 'La contraseña debe tener al menos 6 caracteres.';
-                registerErrorMessage.style.display = 'block';
-            } else {
+            // VALIDACIÓN: Solo acepta las credenciales de prueba
+            if (name === VALID_NAME && email === VALID_EMAIL && password === VALID_PASSWORD) {
+                
                 // Simulación de registro exitoso
-                alert('¡Registro exitoso! Serás redirigido al inicio de sesión.');
+                alert('¡Registro exitoso! Serás redirigido para iniciar sesión.');
+                
                 // Limpiar formulario
                 registerForm.reset();
-                // Cambiar a la vista de login
-                switchView('login');
+                
+                // === CAMBIO CLAVE: REDIRECCIÓN DIRECTA A LOGIN.HTML ===
+                // Usamos setTimeout para asegurar que la alerta no interfiera con la redirección
+                setTimeout(() => {
+                    window.location.href = 'login.html'; 
+                }, 100); 
+
+            } else {
+                // Mensaje de error si la simulación falla
+                registerErrorMessage.textContent = `Registro fallido. Para la simulación, usa Nombre: "${VALID_NAME}", Email: "${VALID_EMAIL}" y Contraseña: "${VALID_PASSWORD}".`;
+                registerErrorMessage.style.display = 'block';
             }
         });
     }
-
 });
+
+// ... (Tu código JavaScript existente antes de esta sección, como la lógica del menú hamburguesa) ...
+
+    // ====================================================
+    // 🚀 LÓGICA DE VERIFICACIÓN DE PORTALES (CORREGIDA) 🚀
+    // ====================================================
+
+    // --- 0. CREDENCIALES DE PRUEBA Y FUNCIÓN DE REDIRECCIÓN ---
+    const VALID_PARENT_DNI = '12345678';
+    const VALID_TEACHER_DNI = '87654321';
+    
+    // Inicializamos el rol buscando si existe en la sesión. Si no existe, es 'ninguno'.
+    let userRole = sessionStorage.getItem('userRole') || 'ninguno'; 
+
+    function redirectToHome(errorMessageElement) {
+        errorMessageElement.style.display = 'block';
+        
+        // Espera 3 segundos (3000 milisegundos) y luego redirige al inicio
+        setTimeout(() => {
+            // Aseguramos que el rol sea "ninguno" antes de volver al inicio en caso de error
+            sessionStorage.setItem('userRole', 'ninguno'); 
+            window.location.href = 'index.html';
+        }, 3000); 
+    }
+    // ----------------------------------------------------
+
+    // --- 1. Lógica del Portal Familiar (portalfamiliar.html) ---
+    const parentForm = document.getElementById('parentVerificationForm');
+    if (parentForm) {
+        const verificationContainer = document.getElementById('verificationContainer');
+        const mainContent = document.getElementById('mainContent');
+
+        // Si el rol ya está establecido como padre (vía acceso previo), muestra el contenido.
+        if (userRole === 'padre') {
+            if (verificationContainer && mainContent) {
+                verificationContainer.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        } else {
+            // Lógica de verificación con formulario
+            parentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // OBTENEMOS TODOS LOS VALORES (CORREGIDO)
+                const parentName = document.getElementById('parentName').value.trim();
+                const parentDNI = document.getElementById('parentDNI').value.trim();
+                const childName = document.getElementById('childName').value.trim();
+                const childCourse = document.getElementById('childCourse').value.trim();
+                const errorMessage = document.getElementById('parent-error-message');
+                
+                errorMessage.style.display = 'none';
+
+                // SIMULACIÓN DE VERIFICACIÓN: TODOS los campos deben estar completos Y el DNI debe ser correcto
+                if (parentName && parentDNI === VALID_PARENT_DNI && childName && childCourse) {
+                    
+                    // ACCESO EXITOSO: Establecer el rol y recargar
+                    sessionStorage.setItem('userRole', 'padre'); 
+                    window.location.reload(); 
+                    
+                } else {
+                    // ACCESO FALLIDO: Redirigir
+                    redirectToHome(errorMessage);
+                }
+            });
+        }
+    }
+    // ----------------------------------------------------
+
+    // --- 2. Lógica del Portal Docente (portaldocente.html) ---
+    const teacherForm = document.getElementById('teacherVerificationForm');
+    if (teacherForm) {
+        const verificationContainer = document.getElementById('verificationContainer');
+        const mainContent = document.getElementById('mainContent');
+
+        // Si el rol ya está establecido como docente (vía acceso previo), muestra el contenido.
+        if (userRole === 'docente') {
+            if (verificationContainer && mainContent) {
+                verificationContainer.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        } else {
+            // Lógica de verificación con formulario
+            teacherForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // OBTENEMOS TODOS LOS VALORES
+                const teacherName = document.getElementById('teacherName').value.trim();
+                const teacherDNI = document.getElementById('teacherDNI').value.trim();
+                const teacherCourse = document.getElementById('teacherCourse').value.trim();
+                const teacherSubject = document.getElementById('teacherSubject').value.trim();
+                const errorMessage = document.getElementById('teacher-error-message');
+
+                errorMessage.style.display = 'none'; 
+                
+                // SIMULACIÓN DE VERIFICACIÓN: TODOS los campos deben estar completos Y el DNI debe ser correcto
+                if (teacherName && teacherDNI === VALID_TEACHER_DNI && teacherCourse && teacherSubject) {
+                    
+                    // ACCESO EXITOSO: Establecer el rol y recargar
+                    sessionStorage.setItem('userRole', 'docente'); 
+                    window.location.reload(); 
+                    
+                } else {
+                    // ACCESO FALLIDO: Redirigir
+                    redirectToHome(errorMessage);
+                }
+            });
+        }
+    }
+    // ----------------------------------------------------
+
+// ... (El resto de tu código JavaScript existente, si lo tienes) ...
