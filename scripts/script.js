@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // ----------------------------------------------------
-    // Lógica del Menú Overlay (CÓDIGO EXISTENTE)
+    // Lógica del Menú Overlay (RUTAS UNIVERSALES COMPLETAS)
     // ----------------------------------------------------
     const menuIcon = document.getElementById('menuIcon');
     const closeBtn = document.getElementById('closeBtn');
@@ -34,15 +34,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resetSubmenu();
 
+        // Determinar la ruta base según la ubicación actual
+        const currentPath = window.location.pathname;
+        let basePath = '';
+        
+if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/') ||
+    currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
+    currentPath.includes('/institucion/') || currentPath.includes('/inicioyregistro/')) {
+    basePath = '../';
+} else {
+    basePath = '';
+}
+
+        // Para la raíz, basePath queda vacío
+
         switch (menuType) {
             case 'inicio':
                 backgroundImageClass = 'inicio-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="index.html#sobre-nosotros">Sobre nosotros</a></li>
-                    <li><a href="index.html#nuestras-tecnicaturas">Nuestras tecnicaturas</a></li>
-                    <li><a href="index.html#ultimas-noticias">Últimas noticias</a></li>
-                    <li><a href="index.html#testimonios">Testimonios</a></li>
+                    <li><a href="${basePath}index.html#sobre-nosotros">Sobre nosotros</a></li>
+                    <li><a href="${basePath}index.html#nuestras-tecnicaturas">Nuestras tecnicaturas</a></li>
+                    <li><a href="${basePath}index.html#ultimas-noticias">Últimas noticias</a></li>
+                    <li><a href="${basePath}index.html#testimonios">Testimonios</a></li>
                 </ul>
                 `;
                 break;
@@ -50,10 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'contacto-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="contacto/index.html#informacion">Información</a></li>
-                    <li><a href="contacto/index.html#ubicacion">Ubicación</a></li>
-                    <li><a href="contacto/index.html#horario-atencion">Horario de atención</a></li>
-                    <li><a href="contacto/index.html#enviar-mensaje">Enviar mensaje</a></li>
+                    <li><a href="${basePath}contacto/index.html#informacion">Información</a></li>
+                    <li><a href="${basePath}contacto/index.html#ubicacion">Ubicación</a></li>
+                    <li><a href="${basePath}contacto/index.html#horario-atencion">Horario de atención</a></li>
+                    <li><a href="${basePath}contacto/index.html#enviar-mensaje">Enviar mensaje</a></li>
                 </ul>
                 `;
                 break;
@@ -61,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'tecnicaturas-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="tecnicaturas/informatica.html">Informática</a></li>
-                    <li><a href="tecnicaturas/construcciones.html">Construcciones</a></li>
-                    <li><a href="tecnicaturas/electronica.html">Electrónica</a></li>
-                    <li><a href="tecnicaturas/electromecanica.html">Electromecánica</a></li>
+                    <li><a href="${basePath}tecnicaturas/informatica.html">Informática</a></li>
+                    <li><a href="${basePath}tecnicaturas/construcciones.html">Construcciones</a></li>
+                    <li><a href="${basePath}tecnicaturas/electronica.html">Electrónica</a></li>
+                    <li><a href="${basePath}tecnicaturas/electromecanica.html">Electromecánica</a></li>
                 </ul>
                 `;
                 break;
@@ -72,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'institucion-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="institucion/index.html#nuestra-historia">Nuestra historia</a></li>
-                    <li><a href="institucion/index.html#equipo-directivo">Equipo directivo</a></li>
-                    <li><a href="institucion/index.html#vida-escolar">Vida escolar</a></li>
-                    <li><a href="institucion/index.html#mision-vision-valores">Misión, visión y valores</a></li>
+                    <li><a href="${basePath}institucion/index.html#nuestra-historia">Nuestra historia</a></li>
+                    <li><a href="${basePath}institucion/index.html#equipo-directivo">Equipo directivo</a></li>
+                    <li><a href="${basePath}institucion/index.html#vida-escolar">Vida escolar</a></li>
+                    <li><a href="${basePath}institucion/index.html#mision-vision-valores">Misión, visión y valores</a></li>
                 </ul>
                 `;
                 break;
@@ -83,10 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'portalfamiliar-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="portalfamiliar/index.html">Comunicado del día</a></li>
-                    <li><a href="portalfamiliar/index.html">Informe orientador</a></li>
-                    <li><a href="portalfamiliar/index.html">Asistencia</a></li>
-                    <li><a href="portalfamiliar/index.html">Boletín</a></li>
+                    <li><a href="${basePath}portalfamiliar/index.html">Comunicado del día</a></li>
+                    <li><a href="${basePath}portalfamiliar/index.html">Informe orientador</a></li>
+                    <li><a href="${basePath}portalfamiliar/index.html">Asistencia</a></li>
+                    <li><a href="${basePath}portalfamiliar/index.html">Boletín</a></li>
                 </ul>
                 `;
                 break;
@@ -94,50 +108,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'portaldocente-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                <li><a href="portaldocente/subirnotas.html" class="docente-link">Subir notas</a></li>
-                <li><a href="portaldocente/controldeasistencia.html" class="docente-link">Control de asistencia</a></li>
-                <li><a href="portaldocente/gestiondeboletines.html" class="docente-link">Gestión de boletines</a></li>
-                <li><a href="portaldocente/avisosinstitucionales.html" class="docente-link">Avisos institucionales</a></li>
+                <li><a href="${basePath}portaldocente/subirnotas.html" class="docente-link">Subir notas</a></li>
+                <li><a href="${basePath}portaldocente/controldeasistencia.html" class="docente-link">Control de asistencia</a></li>
+                <li><a href="${basePath}portaldocente/gestiondeboletines.html" class="docente-link">Gestión de boletines</a></li>
+                <li><a href="${basePath}portaldocente/avisosinstitucionales.html" class="docente-link">Avisos institucionales</a></li>
                 </ul>
                 `;
                 break;
-
         }
 
         submenuContainer.innerHTML = submenuHtml;
         submenuContainer.classList.add(backgroundImageClass);
 
+        // CORRECCIÓN: Establecer la imagen de fondo con la ruta correcta
+        const imagePaths = {
+            'inicio-bg': 'menuinicio.jpeg',
+            'contacto-bg': 'menucontacto.jpeg',
+            'tecnicaturas-bg': 'menutecnicaturas.jpeg',
+            'institucion-bg': 'menuinstitucion.jpg',
+            'portalfamiliar-bg': 'menuportalfamiliar.jpg',
+            'portaldocente-bg': 'menuportaldocente.webp'
+        };
+
+        // Determinar la ruta base para las imágenes
+        let imageBasePath = 'imagenes/';
+        if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/')) {
+            imageBasePath = '../../imagenes/';
+        } else if (currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
+                   currentPath.includes('/institucion/') || currentPath.includes('/inicioyregistro/')) {
+            imageBasePath = '../imagenes/';
+        }
+
+        const imageUrl = imageBasePath + imagePaths[backgroundImageClass];
+        submenuContainer.style.backgroundImage = `url('${imageUrl}')`;
+
         mainMenuItems.forEach(item => item.classList.remove('active'));
         document.querySelector(`.main-menu-list a[data-submenu="${menuType}"]`)?.classList.add('active');
     }
 
-mainMenuItems.forEach(item => {
-    item.addEventListener('click', e => {
-        const submenuId = e.target.dataset.submenu;
+    mainMenuItems.forEach(item => {
+        item.addEventListener('click', e => {
+            const submenuId = e.target.dataset.submenu;
 
-        if (submenuId) {
-            // Si el enlace tiene submenú, mostrarlo (sin navegar)
-            e.preventDefault();
-            showSubmenu(submenuId);
-        } else {
-            // Si NO tiene submenú, cerrar el menú y navegar normalmente
+            if (submenuId) {
+                e.preventDefault();
+                showSubmenu(submenuId);
+            } else {
+                overlayMenu.classList.remove('open');
+                overlayMenu.style.width = '0%';
+            }
+        });
+    });
+
+    document.addEventListener('click', e => {
+        if (e.target.closest('.submenu-list a')) {
             overlayMenu.classList.remove('open');
             overlayMenu.style.width = '0%';
         }
     });
-});
-
-// Permite cerrar el overlay y navegar al hacer clic en un submenú
-document.addEventListener('click', e => {
-    if (e.target.closest('.submenu-list a')) {
-        overlayMenu.classList.remove('open');
-        overlayMenu.style.width = '0%';
-    }
-});
-
 
     // ----------------------------------------------------
-    // Lógica de la Barra de Búsqueda (CÓDIGO EXISTENTE)
+    // Lógica de la Barra de Búsqueda (RUTAS UNIVERSALES COMPLETAS)
     // ----------------------------------------------------
     const searchToggle = document.getElementById('searchToggle');
     const searchContainer = document.getElementById('searchContainer');
@@ -158,17 +189,28 @@ document.addEventListener('click', e => {
                 event.preventDefault();
 
                 const query = searchInput.value.toLowerCase().trim();
+                
+                // Determinar la ruta base según la ubicación actual
+                const currentPath = window.location.pathname;
+                let basePath = '';
+                
+                if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/')) {
+                    basePath = '../../';
+                } else if (currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
+                           currentPath.includes('/institucion/') || currentPath.includes('/inicioyregistro/')) {
+                    basePath = '../';
+                }
 
                 const redirectMap = {
-                    'inicio': 'index.html',
-                    'contacto': 'contacto/index.html',
-                    'horarios': 'contacto/index.html',
-                    'institucion': 'institucion/index.html',
-                    'tecnicaturas': 'tecnicaturas/index.html',
-                    'informatica': 'tecnicaturas/informatica.html',
-                    'construcciones': 'tecnicaturas/construcciones.html',
-                    'electronica': 'tecnicaturas/electronica.html',
-                    'electromecanica': 'tecnicaturas/electromecanica.html',
+                    'inicio': `${basePath}index.html`,
+                    'contacto': `${basePath}contacto/index.html`,
+                    'horarios': `${basePath}contacto/index.html`,
+                    'institucion': `${basePath}institucion/index.html`,
+                    'tecnicaturas': `${basePath}tecnicaturas/index.html`,
+                    'informatica': `${basePath}tecnicaturas/informatica.html`,
+                    'construcciones': `${basePath}tecnicaturas/construcciones.html`,
+                    'electronica': `${basePath}tecnicaturas/electronica.html`,
+                    'electromecanica': `${basePath}tecnicaturas/electromecanica.html`,
                 };
 
                 let destination = null;
@@ -183,7 +225,7 @@ document.addEventListener('click', e => {
                 if (destination) {
                     window.location.href = destination;
                 } else if (query.length > 0) {
-                    window.location.href = `resultados.html?q=${encodeURIComponent(query)}`;
+                    window.location.href = `${basePath}resultados.html?q=${encodeURIComponent(query)}`;
                 }
 
                 searchContainer.classList.remove('active');
@@ -193,10 +235,15 @@ document.addEventListener('click', e => {
     }
 
     // ----------------------------------------------------
-    // Lógica del Formulario de INICIO DE SESIÓN
+    // Lógica del Formulario de INICIO DE SESIÓN (RUTAS UNIVERSALES COMPLETAS)
     // ----------------------------------------------------
     const loginForm = document.getElementById('loginForm');
     const loginErrorMessage = document.getElementById('login-error-message');
+    
+    // Credenciales de prueba
+    const VALID_EMAIL = 'prueba@gmail.com';
+    const VALID_PASSWORD = '123';
+    const VALID_NAME = 'Usuario Prueba';
     
     if (loginForm) {
         loginForm.addEventListener('submit', (event) => {
@@ -207,10 +254,20 @@ document.addEventListener('click', e => {
             
             loginErrorMessage.style.display = 'none';
 
-            // Validación: prueba@gmail.com y 123
             if (email === VALID_EMAIL && password === VALID_PASSWORD) {
-                // Éxito: Redirigir a index.html
-                window.location.href = 'index.html'; 
+                // Determinar la ruta base según la ubicación actual
+                const currentPath = window.location.pathname;
+                let basePath = '';
+                
+                if (currentPath.includes('/inicioyregistro/')) {
+                    basePath = '../';
+                } else if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/') ||
+                           currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
+                           currentPath.includes('/institucion/')) {
+                    basePath = '../../';
+                }
+
+                window.location.href = `${basePath}index.html`; 
             } else {
                 loginErrorMessage.textContent = 'Email o contraseña incorrectos.';
                 loginErrorMessage.style.display = 'block';
@@ -219,7 +276,7 @@ document.addEventListener('click', e => {
     }
     
     // ----------------------------------------------------
-    // Lógica del Formulario de REGISTRO (¡REDIRECCIÓN A login.html!)
+    // Lógica del Formulario de REGISTRO (RUTAS UNIVERSALES COMPLETAS)
     // ----------------------------------------------------
     const registerForm = document.getElementById('registerForm');
     const registerErrorMessage = document.getElementById('register-error-message');
@@ -234,73 +291,75 @@ document.addEventListener('click', e => {
 
             registerErrorMessage.style.display = 'none';
 
-            // VALIDACIÓN: Solo acepta las credenciales de prueba
             if (name === VALID_NAME && email === VALID_EMAIL && password === VALID_PASSWORD) {
-                
-                // Simulación de registro exitoso
                 alert('¡Registro exitoso! Serás redirigido para iniciar sesión.');
-                
-                // Limpiar formulario
                 registerForm.reset();
-                
-                // === CAMBIO CLAVE: REDIRECCIÓN DIRECTA A LOGIN.HTML ===
-                // Usamos setTimeout para asegurar que la alerta no interfiera con la redirección
                 setTimeout(() => {
-                    window.location.href = 'inicioyregistro/login.html'; 
+                    // Determinar la ruta base según la ubicación actual
+                    const currentPath = window.location.pathname;
+                    let loginPath = 'inicioyregistro/login.html';
+                    
+                    if (currentPath.includes('/inicioyregistro/')) {
+                        loginPath = 'login.html';
+                    } else if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/') ||
+                               currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
+                               currentPath.includes('/institucion/')) {
+                        loginPath = '../../inicioyregistro/login.html';
+                    }
+
+                    window.location.href = loginPath; 
                 }, 100); 
 
             } else {
-                // Mensaje de error si la simulación falla
                 registerErrorMessage.textContent = `Registro fallido. Para la simulación, usa Nombre: "${VALID_NAME}", Email: "${VALID_EMAIL}" y Contraseña: "${VALID_PASSWORD}".`;
                 registerErrorMessage.style.display = 'block';
             }
         });
     }
-});
-
-// ... (Tu código JavaScript existente antes de esta sección, como la lógica del menú hamburguesa) ...
 
     // ====================================================
-    //  LÓGICA DE VERIFICACIÓN DE PORTALES (CORREGIDA) 
+    // LÓGICA DE VERIFICACIÓN DE PORTALES (RUTAS UNIVERSALES COMPLETAS)
     // ====================================================
 
-    // --- 0. CREDENCIALES DE PRUEBA Y FUNCIÓN DE REDIRECCIÓN ---
     const VALID_PARENT_DNI = '12345678';
     const VALID_TEACHER_DNI = '87654321';
     
-    // Inicializamos el rol buscando si existe en la sesión. Si no existe, es 'ninguno'.
     let userRole = sessionStorage.getItem('userRole') || 'ninguno'; 
 
     function redirectToHome(errorMessageElement) {
         errorMessageElement.style.display = 'block';
-        
-        // Espera 3 segundos (3000 milisegundos) y luego redirige al inicio
         setTimeout(() => {
-            // Aseguramos que el rol sea "ninguno" antes de volver al inicio en caso de error
             sessionStorage.setItem('userRole', 'ninguno'); 
-            window.location.href = 'index.html';
+            // Determinar la ruta base según la ubicación actual
+            const currentPath = window.location.pathname;
+            let basePath = '';
+            
+            if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/')) {
+                basePath = '../../';
+            } else if (currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
+                       currentPath.includes('/institucion/') || currentPath.includes('/inicioyregistro/')) {
+                basePath = '../';
+            }
+
+            window.location.href = `${basePath}index.html`;
         }, 3000); 
     }
-    // ----------------------------------------------------
 
-    // --- 1. Lógica del Portal Familiar (portalfamiliar.html) ---
+    // Portal Familiar
     const parentForm = document.getElementById('parentVerificationForm');
     if (parentForm) {
         const verificationContainer = document.getElementById('verificationContainer');
         const mainContent = document.getElementById('mainContent');
 
-        // Si el rol ya está establecido como padre (vía acceso previo), muestra el contenido.
         if (userRole === 'padre') {
             if (verificationContainer && mainContent) {
                 verificationContainer.style.display = 'none';
                 mainContent.style.display = 'block';
             }
         } else {
-            // Lógica de verificación con formulario
             parentForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // OBTENEMOS TODOS LOS VALORES (CORREGIDO)
                 const parentName = document.getElementById('parentName').value.trim();
                 const parentDNI = document.getElementById('parentDNI').value.trim();
                 const childName = document.getElementById('childName').value.trim();
@@ -309,40 +368,31 @@ document.addEventListener('click', e => {
                 
                 errorMessage.style.display = 'none';
 
-                // SIMULACIÓN DE VERIFICACIÓN: TODOS los campos deben estar completos Y el DNI debe ser correcto
                 if (parentName && parentDNI === VALID_PARENT_DNI && childName && childCourse) {
-                    
-                    // ACCESO EXITOSO: Establecer el rol y recargar
                     sessionStorage.setItem('userRole', 'padre'); 
                     window.location.reload(); 
-                    
                 } else {
-                    // ACCESO FALLIDO: Redirigir
                     redirectToHome(errorMessage);
                 }
             });
         }
     }
-    // ----------------------------------------------------
 
-    // --- 2. Lógica del Portal Docente (portaldocente.html) ---
+    // Portal Docente
     const teacherForm = document.getElementById('teacherVerificationForm');
     if (teacherForm) {
         const verificationContainer = document.getElementById('verificationContainer');
         const mainContent = document.getElementById('mainContent');
 
-        // Si el rol ya está establecido como docente (vía acceso previo), muestra el contenido.
         if (userRole === 'docente') {
             if (verificationContainer && mainContent) {
                 verificationContainer.style.display = 'none';
                 mainContent.style.display = 'block';
             }
         } else {
-            // Lógica de verificación con formulario
             teacherForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // OBTENEMOS TODOS LOS VALORES
                 const teacherName = document.getElementById('teacherName').value.trim();
                 const teacherDNI = document.getElementById('teacherDNI').value.trim();
                 const teacherCourse = document.getElementById('teacherCourse').value.trim();
@@ -351,38 +401,168 @@ document.addEventListener('click', e => {
 
                 errorMessage.style.display = 'none'; 
                 
-                // SIMULACIÓN DE VERIFICACIÓN: TODOS los campos deben estar completos Y el DNI debe ser correcto
                 if (teacherName && teacherDNI === VALID_TEACHER_DNI && teacherCourse && teacherSubject) {
-                    
-                // ACCESO EXITOSO: Establecer el rol
-                sessionStorage.setItem('userRole', 'docente'); 
-
-                // Si había una página de destino guardada, ir ahí
-                const destino = sessionStorage.getItem('pendingPage');
-                if (destino) {
-                sessionStorage.removeItem('pendingPage');
-                window.location.href = destino;
+                    sessionStorage.setItem('userRole', 'docente'); 
+                    const destino = sessionStorage.getItem('pendingPage');
+                    if (destino) {
+                        sessionStorage.removeItem('pendingPage');
+                        window.location.href = destino;
+                    } else {
+                        window.location.reload();
+                    }
                 } else {
-                 // Si no hay destino guardado, mostrar el contenido normal
-                window.location.reload();
-}
-                } else {
-                    // ACCESO FALLIDO: Redirigir
                     redirectToHome(errorMessage);
                 }
             });
         }
     }
     
-    // Intercepta los clics en los enlaces del portal docente
-document.addEventListener('click', e => {
-    const link = e.target.closest('.docente-link');
-    if (!link) return;
+    // Interceptar clics en enlaces del portal docente (RUTAS UNIVERSALES COMPLETAS)
+    document.addEventListener('click', e => {
+        const link = e.target.closest('.docente-link');
+        if (!link) return;
 
-    // Si no es docente aún, detener la navegación y guardar destino
-    if (sessionStorage.getItem('userRole') !== 'docente') {
-        e.preventDefault();
-        sessionStorage.setItem('pendingPage', link.getAttribute('href'));
-        window.location.href = 'portaldocente/index.html';
+        if (sessionStorage.getItem('userRole') !== 'docente') {
+            e.preventDefault();
+            sessionStorage.setItem('pendingPage', link.getAttribute('href'));
+            // Determinar la ruta base según la ubicación actual
+            const currentPath = window.location.pathname;
+            let portalPath = 'portaldocente/index.html';
+            
+            if (currentPath.includes('/portaldocente/')) {
+                portalPath = 'index.html';
+            } else if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/contacto/') || 
+                       currentPath.includes('/tecnicaturas/') || currentPath.includes('/institucion/') ||
+                       currentPath.includes('/inicioyregistro/')) {
+                portalPath = '../portaldocente/index.html';
+            }
+
+            window.location.href = portalPath;
+        }
+    });
+
+    // ----------------------------------------------------
+    // Lógica del Carrusel Automático
+    // ----------------------------------------------------
+    let slideIndex = 0;
+    let timer;
+
+    function showSlides() {
+        let i;
+        const slides = document.getElementsByClassName("carousel-slide");
+        const dots = document.getElementsByClassName("dot");
+        
+        if (slides.length === 0) return;
+
+        clearTimeout(timer);
+        
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }    
+        
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+        
+        timer = setTimeout(showSlides, 5000); 
+    }
+
+    function currentSlide(n) {
+        slideIndex = n;
+        clearTimeout(timer);
+        showSlides();
+    }
+
+    // Inicializar carrusel si existe
+    if (document.getElementsByClassName("carousel-slide").length > 0) {
+        showSlides();
+    }
+
+    // ====================================================
+    // LÓGICA DEL FORMULARIO DE CONTACTO (CORREGIDA)
+    // ====================================================
+    const formulario = document.querySelector('.formulario-container form');
+    const notificacion = document.getElementById('notificacion-envio');
+
+    if (formulario && notificacion) { 
+        formulario.addEventListener('submit', function(event) {
+            // PREVENIR COMPORTAMIENTO POR DEFECTO
+            event.preventDefault(); 
+            
+            // Verificar validez del formulario
+            if (formulario.checkValidity()) {
+                // Mostrar notificación de éxito
+                notificacion.textContent = '¡Mensaje enviado con éxito!, gracias por comunicarse con nosotros.';
+                notificacion.classList.remove('notificacion-oculta');
+                notificacion.classList.add('notificacion-visible');
+
+                // Ocultar notificación y resetear formulario después de 4 segundos
+                setTimeout(() => {
+                    notificacion.classList.remove('notificacion-visible');
+                    notificacion.classList.add('notificacion-oculta');
+                    formulario.reset(); 
+                }, 4000); 
+            } else {
+                // Mostrar errores de validación nativos
+                formulario.reportValidity();
+            }
+        });
+    }
+}); // FIN DEL DOMContentLoaded
+
+// =========================================================
+// LÓGICA DEL CARRUSEL (VIDA ESCOLAR) - Funciones Globales
+// =========================================================
+
+let slideIndex = 1;
+
+// Función principal que muestra el slide
+function showSlides(n) {
+    let i;
+    const slides = document.getElementsByClassName("carousel-slide");
+    const dots = document.getElementsByClassName("dot");
+    
+    if (slides.length === 0) return; // Salir si no hay slides
+
+    // Lógica cíclica: si se excede el límite, vuelve al inicio o al final
+    if (n > slides.length) { slideIndex = 1 }    
+    if (n < 1) { slideIndex = slides.length }
+    
+    // Oculta todos los slides
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    // Desactiva todos los puntos
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    
+    // Muestra el slide actual y activa el punto correspondiente
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+}
+
+// Función para avanzar o retroceder (flechas)
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+// Función para ir a un slide específico (puntos)
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+// Inicialización: Asegura que el carrusel se inicie cuando la página cargue
+document.addEventListener('DOMContentLoaded', function() {
+    // Si la sección de carrusel existe, la inicializa
+    if (document.querySelector('.carousel-slide')) {
+        showSlides(slideIndex); 
     }
 });

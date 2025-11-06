@@ -909,7 +909,6 @@ h1, h2, h3, h4 {
     margin-bottom: 20px;
 }
 
-/* --- SECCIÓN HERO / INICIO --- */
 /* (Asegúrate de que tu header ya está estilizado con tu propia configuración) */
 
 /* --- SECCIONES SOBRE NOSOTROS Y TECNICATURAS (usando Flexbox) --- */
@@ -1165,81 +1164,102 @@ h1, h2, h3, h4 {
         text-align: left;
     }
 }
-/* --- ESTILOS PARA LA SECCIÓN HERO / PANTALLA COMPLETA --- */
 
-.hero-section {
+/* --- ESTILOS PARA EL CARRUSEL HERO --- */
+
+.hero-carousel {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden; 
+    height: 600px; 
+}
+
+.carousel-slide {
+    display: none; 
     width: 100%;
-    height: 100vh; 
-    background: url('../imagenes/fondoinicio.jpeg') no-repeat center center/cover;
-    /* Ya no necesitamos display: flex aquí, el overlay se centrará con position absolute */
-    position: relative; /* Importante para que el position: absolute del overlay funcione */
-    text-align: center; /* Centra el texto del overlay horizontalmente por si acaso */
-    overflow: hidden; /* Asegura que la imagen de fondo no se desborde */
+    height: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-.hero-overlay {
-    background-color: rgba(0, 0, 0, 0.5); /* Color negro al 50% de opacidad */
-    width: 100%; 
-    box-sizing: border-box; 
-    padding: 50px 20px; /* Padding vertical y horizontal de la banda */
-
-    /* Volvemos a position absolute para un control preciso del tamaño y centrado */
-    position: absolute; 
-    top: 50%; /* Centra verticalmente */
-    left: 0; /* Ocupa todo el ancho */
-    transform: translateY(-50%); /* Ajuste fino para el centrado vertical */
-
-    /* AHORA LE DAMOS UN TAMAÑO MÁXIMO AL OVERLAY PARA QUE NO SE ESTIRE */
-    max-height: 50vh; /* AJUSTA ESTE VALOR: el 50% de la altura de la ventana */
-    /* o puedes probar con un height fijo si quieres, ej: height: 300px; */
-
-    /* Usamos flexbox DENTRO del overlay para centrar su propio contenido (logo, h1, p) */
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    filter: brightness(0.4); 
 }
 
-.logo-hero {
-    width: 180px;
-    height: auto;
-    margin-bottom: 20px;
-    max-width: 80%; 
-}
-
-.hero-overlay h1, .hero-overlay p {
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
-    margin: 10px 0;
+    text-align: center;
+    width: 80%;
+    z-index: 10; 
+}
+
+.carousel-caption h1 {
+    /* Usamos el estilo JetBrainsMono que ya definiste */
     font-family: 'JetBrainsMono', monospace; 
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: white; /* Asegura que el título sea blanco */
 }
 
-.hero-overlay h1 {
-    font-size: 2.5em; /* AJUSTA ESTE VALOR: Tamaño del título */
-    font-weight: 700;
-    text-transform: uppercase;
-    line-height: 1.2; 
+.carousel-caption p {
+    font-family: 'OpenSauce', sans-serif; 
+    font-size: 1.5em;
 }
 
-.hero-overlay p {
-    font-size: 1.5em; /* AJUSTA ESTE VALOR: Tamaño del subtítulo */
-    font-weight: 400;
-    line-height: 1.4;
+/* Transición de fundido (fade) */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
 
-/* Media Query para pantallas más pequeñas */
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* Dots / Puntos de navegación */
+.carousel-dots {
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    z-index: 10;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #1A2F4E; /* Azul de tu header */
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .hero-overlay {
-        max-height: 70vh; /* Puede ser más alto en móviles si necesitas */
-        padding: 30px 10px;
+    .hero-carousel {
+        height: 400px;
     }
-    .logo-hero {
-        width: 120px; 
+    .carousel-caption h1 {
+        font-size: 1.8em;
     }
-    .hero-overlay h1 {
-        font-size: 1.5em; 
-    }
-    .hero-overlay p {
-        font-size: 1em; 
+    .carousel-caption p {
+        font-size: 1em;
     }
 }
 
@@ -1368,5 +1388,792 @@ h1, h2, h3, h4 {
     .cta-link .fas.fa-arrow-right {
         margin-left: 5px; /* Ajusta margen en móvil */
         margin-right: 0;
+    }
+}
+
+/* ========================================================= */
+/* Estilos Globales y de la Caja con Sombra */
+/* ========================================================= */
+
+/* Aplicar Open Sauce a TODO el texto del cuerpo */
+body {
+    font-family: 'Open Sauce Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #ffffff; 
+}
+
+/* --- Sección del Encabezado (Header) --- */
+.contacto-header {
+    background-image: url('../imagenes/iniciocontacto.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    
+    /* Quitamos el padding aquí y lo pondremos en el overlay */
+    padding: 0; /* Ya no hay padding directo en el header */
+    height: 850px; /* Define una altura para el header */
+    
+    text-align: center;
+    position: relative; /* Necesario para el overlay y el texto */
+    overflow: hidden;
+    /* Sombra para la CAJA/IMAGEN */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
+    margin-bottom: 20px; 
+}
+
+/* NUEVO: Contenedor para el texto y la franja oscura */
+.text-overlay-container {
+    position: absolute;
+    top: 50%; /* Centra verticalmente */
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%); /* Ajuste para centrado perfecto */
+    z-index: 1; /* Asegura que esté sobre la imagen */
+    text-align: center;
+    
+}
+
+/* Franja oscura semi-transparente detrás del texto */
+.text-overlay-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro con 50% de opacidad */
+    z-index: -1; /* Asegura que esté detrás del h1 pero delante de la imagen */
+    padding: 30px 0; /* Un poco de padding vertical para la franja */
+}
+
+/* ========================================================= */
+/* Aplicación de Tipografías a Títulos y Subtítulos */
+/* ========================================================= */
+
+/* TÍTULO PRINCIPAL (h1): JetBrains Mono, Cursiva, Color Blanco */
+.contacto-header h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 3.0em;/* Aumentado de 2.5em a 3.5em como ejemplo */
+    font-weight: normal;
+    font-weight: normal;
+    color: #ffffff;
+    margin: 50px 0 0 0;
+    width: 100%;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1; 
+}
+
+/* SUBTÍTULOS (h3): JetBrains Mono en Negrita */
+.columna h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2em;
+    font-weight: bold; 
+    margin-bottom: 5px;
+    color: #1A2F4E;
+}
+/* Texto Negrita dentro de párrafos: Open Sauce en Negrita */
+.columna span {
+    font-weight: bold; 
+}
+
+/* --- (Estilos de Contenedor y Columnas - sin cambios) --- */
+.info-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.columna {
+    flex: 1;
+    padding: 0 30px;
+}
+
+.columna hr {
+    /* --- CAMBIO AQUÍ: Alargar la línea --- */
+    width: 80%; 
+    /* --- CENTRADO (Importante): Para que la línea quede centrada en el subtítulo --- */
+    margin: 0 auto;
+    
+    margin-top: 0;
+    border: 0;
+    /* --- CAMBIO AQUÍ: Nuevo color de la línea --- */
+    border-top: 1px solid #323232; 
+}
+
+.columna p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* --- MODIFICACIÓN CLAVE: Quitar color azul de los correos electrónicos --- */
+/* -------------------------------------------------------------------------------- */
+.columna a {
+    /* CLAVE: Cambia el color del enlace a gris/negro (color del texto normal) */
+    color: #333 !important; 
+    text-decoration: none;
+}
+
+/* Asegura que los estados visitado/hover/activo tampoco sean azules */
+.columna a:visited,
+.columna a:hover,
+.columna a:active {
+    color: #333 !important; 
+    text-decoration: none;
+}
+/* -------------------------------------------------------------------------------- */
+
+
+/* ========================================================= */
+/* Estilos del Formulario de Contacto */
+/* ========================================================= */
+
+.formulario-container {
+    /* --- MODIFICACIÓN CLAVE: Aumentar el ancho (más amplio horizontalmente) --- */
+    max-width: 900px; /* Incrementado para ser más ancho (más amplio) */
+    width: 90%; /* Asegura que se adapte en móviles */
+    margin: 60px auto; 
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título del formulario (usando JetBrains Mono) */
+.form-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.formulario-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+/* Estilo para todos los campos de entrada y el área de texto */
+.formulario-container input[type="text"],
+.formulario-container input[type="email"],
+.formulario-container textarea {
+    font-family: 'Open Sauce Sans', sans-serif; 
+    font-size: 1em;
+    width: 100%; /* Ocupa el 100% del max-width del contenedor (900px) */
+    padding: 15px;
+    
+    /* Estilo del borde */
+    border: 1px solid #777; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    
+    /* Color del texto de marcador de posición (placeholder) */
+    color: #777; 
+}
+
+/* --- MODIFICACIÓN CLAVE: Aumentar la altura (más largo verticalmente) del textarea --- */
+.formulario-container textarea {
+    /* CLAVE: Este valor controla la altura. 250px es un tamaño generoso para ser "más largo". */
+    min-height: 250px; 
+    resize: none; /* Mantener la altura fija */
+}
+/* -------------------------------------------------------------------------------- */
+
+
+/* Contenedor para alinear el botón a la derecha */
+.submit-button-container {
+    align-self: flex-end; 
+    margin-top: 10px;
+}
+
+/* Estilo del botón "Enviar mensaje" */
+.formulario-container button[type="submit"] {
+    font-family: 'Open Sauce Sans', sans-serif; 
+    font-size: 1em;
+    padding: 10px 20px;
+    
+    background-color: transparent; 
+    border: 1px solid #777; 
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Efecto al pasar el ratón (hover) */
+.formulario-container button[type="submit"]:hover {
+    background-color: #1A2F4E; 
+    border-color: #ffffff; 
+    color: #ffffff; 
+}
+
+/* ========================================================= */
+/* Estilos de la Notificación de Envío (NUEVO) */
+/* ========================================================= */
+
+#notificacion-envio {
+    font-family: 'Open Sauce Sans', sans-serif;
+    font-size: 1.1em;
+    padding: 15px 25px;
+    max-width: 550px;
+    
+    /* Colores */
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    
+    /* Posicionamiento y centrado */
+    text-align: center;
+    margin: 30px auto;
+    
+    /* Transición para un efecto suave */
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+
+/* Estado inicial: Oculto (CRUCIAL para evitar saltos y ocupar espacio) */
+.notificacion-oculta {
+    opacity: 0;
+    visibility: hidden;
+    /* CLAVE: Las propiedades de espacio deben ser 0 */
+    height: 0; 
+    padding: 0 !important; /* Asegurar que no quede padding */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+}
+
+/* Estado de Visibilidad: Visible */
+.notificacion-visible {
+    opacity: 1;
+    visibility: visible;
+    /* CLAVE: Devuelve las propiedades de espacio */
+    height: auto;
+    padding: 15px 25px; /* Tu padding original */
+    margin: 30px auto; /* Tu margen original */
+}
+
+/* ========================================================= */
+/* ESTILOS PARA LA SECCIÓN DE ENCABEZADO "Institución" (PANTALLA COMPLETA) */
+/* ========================================================= */
+
+.institucion-header {
+    /* 1. IMAGEN DE FONDO Y ALTURA */
+    background-image: url('../imagenes/menuinstitucion.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    
+    /* CLAVE: Ocupa el 100% de la altura de la ventana */
+    height: 100vh; /* 100% del viewport height (altura de la pantalla) */
+    
+    /* 2. POSICIONAMIENTO CLAVE */
+    position: relative; /* Contenedor de referencia para el overlay */
+}
+
+/* El "overlay" o franja semi-transparente (EXTREMO A EXTREMO) */
+.header-overlay {
+    /* 1. Dimensiones y Fondo Transparente */
+    width: 100%; /* Ocupa el 100% del ancho de la pantalla (extremo a extremo) */
+    /* La altura será automática según el contenido */
+    min-height: 120px; 
+    
+    background-color: rgba(0, 0, 0, 0.6); /* Color negro con 60% de opacidad */
+    
+    /* 2. Centrado Vertical de la FRANJA sobre el fondo */
+    position: absolute; 
+    top: 50%; /* Mueve el borde superior al 50% de la altura del padre */
+    transform: translateY(-50%); /* Ajusta hacia arriba para centrarse verticalmente */
+    left: 0; /* Asegura que inicie en el borde izquierdo */
+    right: 0; /* Asegura que termine en el borde derecho */
+
+    /* 3. Centrado del Texto DENTRO de la Franja */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    padding: 15px 20px; 
+    
+    /* 4. Estilos de Texto */
+    color: white; 
+    text-align: center;
+}
+
+.header-overlay h1 {
+    color: white; 
+    font-size: 4.5em; /* Tamaño grande para pantalla completa */
+    margin: 10px 0 5px; 
+}
+
+.header-overlay p {
+    color: white;
+    font-size: 1.5em;
+    margin: 2px 0;
+}
+
+/* --- Media Queries (Ajuste en pantallas más pequeñas) --- */
+@media (max-width: 768px) {
+    .header-overlay h1 {
+        font-size: 3em; 
+    }
+    .header-overlay p {
+        font-size: 1.2em;
+    }
+}
+
+/* ========================================================= */
+/* Estilos para la Sección de Contenido Alternado (Historia/Misión) */
+/* ========================================================= */
+
+.institucion-content {
+    max-width: 1200px;
+    margin: 80px auto; /* Espacio superior e inferior */
+    padding: 0 20px;
+}
+
+/* Estilo para el Título Principal (Encabezado del Contenido) */
+.content-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.content-header h2 {
+    font-size: 2.5em;
+    color: #1A2F4E; /* Tu color principal */
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #98A8C3; /* Línea de color de acento */
+}
+
+
+/* Estilo base para cada bloque de información */
+.info-block {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Espacio entre la imagen y el texto */
+    margin-bottom: 80px; /* Espacio entre cada bloque */
+}
+
+/* Estilo de la Imagen */
+.info-image {
+    width: 45%; /* La imagen ocupa el 45% del ancho */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.info-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.info-block:hover .info-image img {
+    transform: scale(1.05); /* Efecto de zoom ligero al pasar el ratón */
+}
+
+/* Estilo del Texto */
+.info-text {
+    width: 55%; /* El texto ocupa el 55% del ancho */
+    /* Aseguramos que el texto esté centrado como lo solicitaste */
+    text-align: center; 
+    padding: 20px 0;
+}
+
+.info-text h3 {
+    font-size: 1.8em;
+    color: #1A2F4E; /* Color de acento para el subtítulo */
+    margin-bottom: 15px;
+}
+
+.info-text p {
+    line-height: 1.7;
+    color: #555;
+    font-size: 1.1em;
+    max-width: 550px; /* Limita el ancho del párrafo para mejor lectura */
+    margin: 0 auto; /* Centra el párrafo dentro del contenedor 55% */
+}
+
+
+/* --- CLASE CLAVE PARA INTERCALAR (Bloque 2, 4, etc.) --- */
+
+.reverse-image {
+    flex-direction: row-reverse; /* Invierte el orden de la imagen y el texto */
+}
+
+
+/* --- Media Queries (Responsividad para Móviles y Tabletas) --- */
+@media (max-width: 900px) {
+    .info-block,
+    .reverse-image {
+        /* En pantallas más pequeñas, apilamos la imagen encima del texto */
+        flex-direction: column; 
+        gap: 30px;
+    }
+
+    .info-image, .info-text {
+        width: 100%; /* Ocupan todo el ancho */
+        padding: 0;
+    }
+    
+    .info-text p {
+        /* Forzamos alineación a la izquierda en móvil para mejor legibilidad */
+        text-align: left; 
+        max-width: 100%;
+    }
+    
+    .info-text h3 {
+        /* Alineamos el subtítulo a la izquierda también */
+        text-align: left;
+    }
+}
+
+/* ========================================================= */
+/* 1. ESTILOS PARA LA SECCIÓN DE ENCABEZADO "Institución" (100vh) */
+/* ========================================================= */
+
+.institucion-header {
+    background-image: url('../imagenes/menuinstitucion.jpg'); /* ¡VERIFICA ESTA RUTA! */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    position: relative; 
+}
+
+/* El "overlay" o franja semi-transparente (EXTREMO A EXTREMO) */
+.header-overlay {
+    width: 100%; 
+    min-height: 120px; 
+    background-color: rgba(0, 0, 0, 0.6); 
+    
+    /* Centrado Vertical de la FRANJA sobre el fondo */
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    left: 0; 
+    right: 0; 
+
+    /* Centrado del Texto DENTRO de la Franja */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    padding: 15px 20px; 
+    
+    color: white; 
+    text-align: center;
+}
+
+.header-overlay h1 {
+    color: white; 
+    font-size: 4.5em; 
+    margin: 10px 0 5px; 
+}
+
+.header-overlay p {
+    color: white;
+    font-size: 1.5em;
+    margin: 2px 0;
+}
+
+
+/* ========================================================= */
+/* 2. Estilos para la Sección de Contenido Alternado */
+/* ========================================================= */
+
+.institucion-content {
+    max-width: 1200px;
+    margin: 80px auto; 
+    padding: 0 20px;
+}
+
+.content-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.content-header h2 {
+    font-size: 2.5em;
+    color: #1A2F4E; 
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #FFC300; 
+}
+
+.info-block {
+    display: flex;
+    align-items: center;
+    gap: 50px; 
+    margin-bottom: 80px; 
+}
+
+.info-image {
+    width: 45%; 
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.info-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.info-block:hover .info-image img {
+    transform: scale(1.05); 
+}
+
+.info-text {
+    width: 55%; 
+    text-align: center; 
+    padding: 20px 0;
+}
+
+.info-text h3 {
+    font-size: 1.8em;
+    color: #007BFF; 
+    margin-bottom: 15px;
+}
+
+.info-text p {
+    line-height: 1.7;
+    color: #555;
+    font-size: 1.1em;
+    max-width: 550px; 
+    margin: 0 auto; 
+}
+
+.reverse-image {
+    flex-direction: row-reverse; /* CLAVE: Invierte el orden para imagen a la derecha */
+}
+
+
+/* ========================================================= */
+/* Estilos para la Sección Equipo Directivo (FRANJA GRANDE) */
+/* ========================================================= */
+
+.directivos-section {
+    position: relative;
+    padding-bottom: 80px; 
+}
+
+/* 1. La Franja Azul Marina de Extremo a Extremo */
+.directivos-franja {
+    background-color: #1A2F4E; /* Azul Marino */
+    width: 100%;
+    /* CLAVE: Aumentamos la altura de la franja */
+    height: 150px; /* Incrementada de 80px a 150px */
+    
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    margin-bottom: 0; 
+}
+
+.directivos-franja h2 {
+    color: white;
+    font-size: 2.2em;
+    margin: 0;
+    /* Centrado simple en la franja */
+    position: static; 
+}
+
+/* 2. Contenedor de la Cuadrícula (Grid) */
+.directivos-grid-container {
+    max-width: 1200px;
+    margin: 0 auto; 
+    padding: 0 20px;
+}
+
+/* Fila Superior (2 fotos) y Fila Inferior (3 fotos) */
+.directivos-row {
+    display: flex;
+    justify-content: center; 
+    gap: 50px; /* Espacio entre las fotos de la fila superior */
+    text-align: center;
+}
+
+/* CLAVE: Aumentamos el margen superior para el nuevo espacio */
+.top-row {
+    margin-top: 80px; /* Separación de la franja azul (se mantiene) */
+    /* CLAVE: Reducimos el margen inferior de 80px a 50px */
+    margin-bottom: 50px; 
+}
+
+/* CLAVE: Mantenemos la mayor separación de las 3 fotos inferiores */
+.bottom-row {
+    /* Mantenemos el gap de 80px para que las 3 fotos sigan separadas horizontalmente */
+    gap: 80px; 
+}
+
+
+/* 3. Estilo de cada Tarjeta de Directivo (Sin cambios) */
+.directivo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px; 
+}
+
+/* Estilo de la Foto (Círculo) */
+.photo-wrapper {
+    width: 180px; 
+    height: 180px;
+    margin-bottom: 15px;
+    
+    border-radius: 50%;
+    overflow: hidden;
+    
+    border: 5px solid white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.directivo-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* Estilos de Texto */
+.directivo-card h3 {
+    font-size: 1.3em;
+    color: #1A2F4E;
+    margin: 5px 0;
+}
+
+.directivo-card p {
+    font-size: 1em;
+    color: #555;
+    margin: 0;
+}
+
+
+/* --- MEDIA QUERIES (Responsividad) --- */
+@media (max-width: 900px) {
+    /* ... (Otros estilos de media query) ... */
+    
+    .directivos-row {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .directivos-row {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+.top-row {
+        margin-top: 40px; /* Margen normal en móvil */
+        margin-bottom: 40px;
+    }
+}
+
+/* ========================================================= */
+/* ESTILOS DEL CARRUSEL (VIDA ESCOLAR) */
+/* ========================================================= */
+.vida-escolar-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.vida-escolar-section h2 {
+    color: #1A2F4E; /* Color oscuro institucional */
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #FFC300; /* Línea de color de acento */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.carousel-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+    overflow: hidden; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Oculta los slides por defecto (¡ESTA LÍNEA ES CLAVE!) */
+.carousel-slide {
+    display: none; 
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+/* Flechas (prev/next) */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Puntos de navegación */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #1A2F4E; /* Color del punto activo */
+}
+
+/* Animación */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+/* Media Query para hacerlo responsivo */
+@media (max-width: 768px) {
+    .prev, .next {
+        font-size: 18px;
+        padding: 10px;
     }
 }

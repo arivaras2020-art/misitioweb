@@ -3,9 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../estilos/main.css">
     <title>Institucion</title>
 </head>
 <body>
+            <header class="main-header">
+        <div class="menu-icon" id="menuIcon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="search-profile">
+          <div class="search-container" id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Buscar..." class="search-input">
+          </div>
+            <img src="../imagenes/lupa.png" alt="buscar icon" id="searchToggle">
+            <a href="inicioyregistro/login.html"><img src="../imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
+            <img src="../imagenes/logo.png" alt="logo icon"> 
+          </div>
+    </header>
+
+    <nav class="overlay-menu" id="overlayMenu">
+        <div class="close-btn" id="closeBtn">&times;</div>
+        <div class="menu-content">
+            <ul class="main-menu-list">
+                <li><a href="../index.html" data-submenu="inicio">Inicio</a></li>
+                <li><a href="../contacto/index.html" data-submenu="contacto">Contacto</a></li>
+                <li><a href="../tecnicaturas/index.html" data-submenu="tecnicaturas">Tecnicaturas</a></li>
+                <li><a href="../institucion/index.html" data-submenu="institucion">Institución</a></li>
+                <li><a href="../portalfamiliar/index.html" data-submenu="portal-familiar">Portal Familiar</a></li>
+                <li><a href="../portaldocente/index.html" data-submenu="portal-docente">Portal Docente</a></li>
+            </ul>
+            <div class="submenu-container" id="submenuContainer">
+                </div>
+        </div>
+    </nav>
+
+    <header class="institucion-header">
+    <div class="header-overlay">
+        <h1>Institución</h1>
+        <p>Bienvenidos a la Industrial N°4</p>
+        <p>Descubre nuestra historia y equipo en esta sección</p>
+    </div>
+    </header>
+
+    <main class="institucion-content">
     
+    <section class="content-header">
+        <h2>Nuestra Institución</h2>
+    </section>
+    
+    <section class="info-block">
+        <div class="info-image">
+            <img src="../imagenes/institucionfundacion.webp" alt="Fundador">
+        </div>
+        <div class="info-text">
+            <h3>1918 - Fundación</h3>
+            <p>El 24 de abril de 1918 fallece el pionero astuariano "José Menéndez", quien deja como legado testamentario la construcción de una escuela en un puerto argentino, marcando el inicio del proyecto educativo que daria vida a nuestra institución.</p>
+        </div>
+    </section>
+
+    <section class="info-block reverse-image">
+        <div class="info-image">
+            <img src="../imagenes/institucionconstruccion.jpg" alt="Construccion">
+        </div>
+        <div class="info-text">
+            <h3>1933 - Construcción</h3>
+            <p>En 1933 se comienza la construcción del edificio en la esquina de Alcorta y Piedra Buena, durante el gobierno de Juan Manuel Gregores. Finalizada la obra, fue ocupada por la gobernación hasta 1941, año en que abre sus puertas la escuela de Artes y Oficios de Ganadería.</p>
+        </div>
+    </section>
+
+    <section class="info-block">
+        <div class="info-image">
+            <img src="../imagenes/institucionprimeroscursos.jpg" alt="Primeros cursos">
+        </div>
+        <div class="info-text">
+            <h3>1943 - Primeros cursos</h3>
+            <p>En 1943 la escuela adopta el nombre "José Menéndez" en honor a su benefactor. Se dictan los primeros cursos de Tornería y Carpintería, sumandose en 1946 la capacitación de Radiooperadores, con el compromiso de brindar formación práctica y útil.</p>
+        </div>
+    </section>
+    
+    <section class="info-block reverse-image">
+        <div class="info-image">
+            <img src="../imagenes/institucion19591978.jpg" alt="Institucion">
+        </div>
+        <div class="info-text">
+            <h3>1959 - 1978</h3>
+            <p>Con la creación del Consejo Nacional de Educación Técnica (CONET) en 1959, se consolidan las modalidades técnicas. A pesar de las dificultades, la escuela se mantuvo activa gracias al esfuerzo conjunto de docebtes, alumnos y comunidad.</p>
+        </div>
+    </section>
+
+    <section class="info-block">
+        <div class="info-image">
+            <img src="../imagenes/institucionactualidad.png" alt="Actualidad">
+        </div>
+        <div class="info-text">
+            <h3>1993 - Actualidad</h3>
+            <p>En 1993 pasa a ser "Escuela Industrial N°4 José Menéndez", y en 1995 se inaugura el nuevo edificio en Mitre y Piedra Buena. Hoy ofrece tecnicaturas en Electromécanica, Electrónica, Construcciónes e Informática, manteniendo el espíritu pionero que la vio nacer.</p>
+        </div>
+    </section>
+</main>
+
+<section class="directivos-section">
+    <div class="directivos-franja">
+        <h2>Equipo Directivo</h2>
+    </div>
+
+    <div class="directivos-grid-container">
+        
+        <div class="directivos-row top-row">
+            
+            <div class="directivo-card">
+                <div class="photo-wrapper">
+                    <img src="../imagenes/instituciondirector.jpeg" alt="Foto del Director" class="directivo-photo">
+                </div>
+                <h3>Director</h3>
+                <p>José Castro</p>
+            </div>
+
+            <div class="directivo-card">
+                <div class="photo-wrapper">
+                    <img src="../imagenes/institucionsubdirector.webp" alt="Foto del Vicedirector" class="directivo-photo">
+                </div>
+                <h3>Vicedirector</h3>
+                <p>Manuel Miranda</p>
+            </div>
+            
+        </div>
+
+        <div class="directivos-row bottom-row">
+            
+            <div class="directivo-card">
+                <div class="photo-wrapper">
+                    <img src="../imagenes/institucionregentemañana.jpeg" alt="Foto del Jefe de Taller" class="directivo-photo">
+                </div>
+                <h3>Regente turno mañana</h3>
+                <p>Liliana García</p>
+            </div>
+
+            <div class="directivo-card">
+                <div class="photo-wrapper">
+                    <img src="../imagenes/institucionregentetarde.jpg" alt="Foto del Secretario" class="directivo-photo">
+                </div>
+                <h3>Regente turno tarde</h3>
+                <p>Graciela Triviño</p>
+            </div>
+
+            <div class="directivo-card">
+                <div class="photo-wrapper">
+                    <img src="../imagenes/institucionregentenoche.jpg" alt="Foto del Jefe de Preceptores" class="directivo-photo">
+                </div>
+                <h3>Regente turno noche</h3>
+                <p>Walter Sánchez</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vida-escolar-section">
+    <div class="content-header">
+        <h2>Vida Escolar</h2>
+    </div>
+    
+    <div class="carousel-container">
+        
+        <div class="carousel-slide fade">
+            <img src="../imagenes/institucioncarrusel1.jpg" alt="Actividad escolar 1">
+        </div>
+
+        <div class="carousel-slide fade">
+            <img src="../imagenes/institucioncarrusel2.jpg" alt="Actividad escolar 2">
+        </div>
+        
+        <div class="carousel-slide fade">
+            <img src="../imagenes/institucioncarrusel3.jpg" alt="Actividad escolar 3">
+        </div>
+        
+        <div class="carousel-slide fade">
+            <img src="../imagenes/institucioncarrusel4.jpeg" alt="Actividad escolar 4">
+        </div>
+        
+        <div class="carousel-slide fade">
+            <img src="../imagenes/institucioncarrusel5.webp" alt="Actividad escolar 5">
+        </div>
+        
+        <div class="carousel-slide fade">
+            <img src="../imagenes/institucioncarrusel6.jpg" alt="Actividad escolar 6">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+    </div>
+
+    <div style="text-align:center; margin-top: 20px;">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+    </div>
+</section>
+
+            <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3><a href="../institucion/index.html">Institución</a></h3>
+                <ul>
+                    <li><a href="../institucion/index.html">Nuestra historia</a></li>
+                    <li><a href="../institucion/index.html">Equipo directivo</a></li>
+                    <li><a href="../institucion/index.html">Vida escolar</a></li>
+                    <li><a href="../institucion/index.html">Mision, vision y valores</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3><a href="../contacto/index.html">Contacto</a></h3>
+                <p>2966-427707</p>
+                <p><a href="mailto:industrial4rg@gmail.com">industrial4rg@gmail.com</a></p>
+                <p>Mitre 291, Río Gallegos</p>
+            </div>
+
+            <div class="footer-column">
+                <h3><a href="../tecnicaturas/index.html">Tecnicaturas</a></h3>
+                <ul>
+                    <li><a href="../tecnicaturas/informatica.html">Informática</a></li>
+                    <li><a href="../tecnicaturas/electronica.html">Electrónica</a></li>
+                    <li><a href="../tecnicaturas/construcciones.html">Construcciones</a></li>
+                    <li><a href="../tecnicaturas/electromecanica.html">Electromécanica</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3><a href="../portalfamiliar/index.html">Portal Familiar</a></h3>
+                <ul>
+                    <li><a href="../portalfamiliar/index.html">Boletín</a></li>
+                    <li><a href="../portalfamiliar/index.html">Asistencia</a></li>
+                    <li><a href="../portalfamiliar/index.html">Informe orientador</a></li>
+                    <li><a href="../portalfamiliar/index.html">Comunicado del día</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3><a href="../portaldocente/index.html">Portal Docente</a></h3>
+                <ul>
+                    <li><a href="../portaldocente/index.html">Subir notas</a></li>
+                    <li><a href="../portaldocente/index.html">Control de asistencia</a></li>
+                    <li><a href="../portaldocente/index.html">Gestion de boletines</a></li>
+                    <li><a href="../portaldocente/index.html">Avisos institucionales</a></li>
+                </ul>
+            </div>
+        </div>
+
+<hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <div class="footer-logo">
+                
+<img src="../imagenes/logo.png" alt="Logo Colegio Industrial N°4" class="school-logo"> 
+                <div class="logo-text">
+                    Colegio Industrial N°4<br>
+                    "Jose Menendez" 
+</div>
+            </div>
+
+            
+<a href="#top" class="footer-back-to-top">
+                <i class="fas fa-home"></i> Volver al inicio
+            </a>
+
+            <div class="footer-social">
+                
+<a href="https://www.instagram.com/cde_industrial4/" target="_blank" class="social-icon instagram-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://www.facebook.com/industrialjosemenendez/?locale=es_LA" target="_blank" class="social-icon facebook-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://www.youtube.com/@EscuelaIndustrial4Jos%C3%A9Menendez" target="_blank" class="social-icon youtube-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>

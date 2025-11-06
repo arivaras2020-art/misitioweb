@@ -3,10 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../estilos/main.css">
     <title>Subir notas</title>
 </head>
 <body>
+        <header class="main-header">
+        <div class="menu-icon" id="menuIcon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="search-profile">
+          <div class="search-container" id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Buscar..." class="search-input">
+          </div>
+            <img src="../imagenes/lupa.png" alt="buscar icon" id="searchToggle">
+            <a href="inicioyregistro/login.html"><img src="../imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
+            <img src="../imagenes/logo.png" alt="logo icon"> 
+          </div>
+    </header>
+
+    <nav class="overlay-menu" id="overlayMenu">
+        <div class="close-btn" id="closeBtn">&times;</div>
+        <div class="menu-content">
+            <ul class="main-menu-list">
+                <li><a href="../index.html" data-submenu="inicio">Inicio</a></li>
+                <li><a href="../contacto/index.html" data-submenu="contacto">Contacto</a></li>
+                <li><a href="../tecnicaturas/index.html" data-submenu="tecnicaturas">Tecnicaturas</a></li>
+                <li><a href="../institucion/index.html" data-submenu="institucion">Institución</a></li>
+                <li><a href="../portalfamiliar/index.html" data-submenu="portal-familiar">Portal Familiar</a></li>
+                <li><a href="../portaldocente/index.html" data-submenu="portal-docente">Portal Docente</a></li>
+            </ul>
+            <div class="submenu-container" id="submenuContainer">
+                </div>
+        </div>
+    </nav>
 <div id="verificationContainer">
   <div class="verification-box">
     <h2>¿Es usted docente?</h2>
@@ -37,7 +70,89 @@
   <h1>✅ Subir notas</h1>
   <p>Aquí irá el contenido de subir asistencia.</p>
 </main>
+        <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3><a href="../institucion/index.html">Institución</a></h3>
+                <ul>
+                    <li><a href="../institucion/index.html">Nuestra historia</a></li>
+                    <li><a href="../institucion/index.html">Equipo directivo</a></li>
+                    <li><a href="../institucion/index.html">Vida escolar</a></li>
+                    <li><a href="../institucion/index.html">Mision, vision y valores</a></li>
+                </ul>
+            </div>
 
-    <script src="scripts/script.js"></script>
+            <div class="footer-column">
+                <h3><a href="../contacto/index.html">Contacto</a></h3>
+                <p>2966-427707</p>
+                <p><a href="mailto:industrial4rg@gmail.com">industrial4rg@gmail.com</a></p>
+                <p>Mitre 291, Río Gallegos</p>
+            </div>
+
+            <div class="footer-column">
+                <h3><a href="../tecnicaturas/index.html">Tecnicaturas</a></h3>
+                <ul>
+                    <li><a href="../tecnicaturas/informatica.html">Informática</a></li>
+                    <li><a href="../tecnicaturas/electronica.html">Electrónica</a></li>
+                    <li><a href="../tecnicaturas/construcciones.html">Construcciones</a></li>
+                    <li><a href="../tecnicaturas/electromecanica.html">Electromécanica</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3><a href="../portalfamiliar/index.html">Portal Familiar</a></h3>
+                <ul>
+                    <li><a href="../portalfamiliar/index.html">Boletín</a></li>
+                    <li><a href="../portalfamiliar/index.html">Asistencia</a></li>
+                    <li><a href="../portalfamiliar/index.html">Informe orientador</a></li>
+                    <li><a href="../portalfamiliar/index.html">Comunicado del día</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3><a href="../portaldocente/index.html">Portal Docente</a></h3>
+                <ul>
+                    <li><a href="../portaldocente/index.html">Subir notas</a></li>
+                    <li><a href="../portaldocente/index.html">Control de asistencia</a></li>
+                    <li><a href="../portaldocente/index.html">Gestion de boletines</a></li>
+                    <li><a href="../portaldocente/index.html">Avisos institucionales</a></li>
+                </ul>
+            </div>
+        </div>
+
+<hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <div class="footer-logo">
+                
+<img src="../imagenes/logo.png" alt="Logo Colegio Industrial N°4" class="school-logo"> 
+                <div class="logo-text">
+                    Colegio Industrial N°4<br>
+                    "Jose Menendez" 
+</div>
+            </div>
+
+            
+<a href="#top" class="footer-back-to-top">
+                <i class="fas fa-home"></i> Volver al inicio
+            </a>
+
+            <div class="footer-social">
+                
+<a href="https://www.instagram.com/cde_industrial4/" target="_blank" class="social-icon instagram-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://www.facebook.com/industrialjosemenendez/?locale=es_LA" target="_blank" class="social-icon facebook-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://www.youtube.com/@EscuelaIndustrial4Jos%C3%A9Menendez" target="_blank" class="social-icon youtube-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>
