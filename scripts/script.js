@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'contacto-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="contacto.html#informacion">Información</a></li>
-                    <li><a href="contacto.html#ubicacion">Ubicación</a></li>
-                    <li><a href="contacto.html#horario-atencion">Horario de atención</a></li>
-                    <li><a href="contacto.html#enviar-mensaje">Enviar mensaje</a></li>
+                    <li><a href="contacto/index.html#informacion">Información</a></li>
+                    <li><a href="contacto/index.html#ubicacion">Ubicación</a></li>
+                    <li><a href="contacto/index.html#horario-atencion">Horario de atención</a></li>
+                    <li><a href="contacto/index.html#enviar-mensaje">Enviar mensaje</a></li>
                 </ul>
                 `;
                 break;
@@ -61,10 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'tecnicaturas-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="informatica.html">Informática</a></li>
-                    <li><a href="construcciones.html">Construcciones</a></li>
-                    <li><a href="electronica.html">Electrónica</a></li>
-                    <li><a href="electromecanica.html">Electromecánica</a></li>
+                    <li><a href="tecnicaturas/informatica.html">Informática</a></li>
+                    <li><a href="tecnicaturas/construcciones.html">Construcciones</a></li>
+                    <li><a href="tecnicaturas/electronica.html">Electrónica</a></li>
+                    <li><a href="tecnicaturas/electromecanica.html">Electromecánica</a></li>
                 </ul>
                 `;
                 break;
@@ -72,10 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'institucion-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="institucion.html#nuestra-historia">Nuestra historia</a></li>
-                    <li><a href="institucion.html#equipo-directivo">Equipo directivo</a></li>
-                    <li><a href="institucion.html#vida-escolar">Vida escolar</a></li>
-                    <li><a href="institucion.html#mision-vision-valores">Misión, visión y valores</a></li>
+                    <li><a href="institucion/index.html#nuestra-historia">Nuestra historia</a></li>
+                    <li><a href="institucion/index.html#equipo-directivo">Equipo directivo</a></li>
+                    <li><a href="institucion/index.html#vida-escolar">Vida escolar</a></li>
+                    <li><a href="institucion/index.html#mision-vision-valores">Misión, visión y valores</a></li>
                 </ul>
                 `;
                 break;
@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'portalfamiliar-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="portalfamiliar.html">Comunicado del día</a></li>
-                    <li><a href="portalfamiliar.html">Informe orientador</a></li>
-                    <li><a href="portalfamiliar.html">Asistencia</a></li>
-                    <li><a href="portalfamilair.html">Boletín</a></li>
+                    <li><a href="portalfamiliar/index.html">Comunicado del día</a></li>
+                    <li><a href="portalfamiliar/index.html">Informe orientador</a></li>
+                    <li><a href="portalfamiliar/index.html">Asistencia</a></li>
+                    <li><a href="portalfamiliar/index.html">Boletín</a></li>
                 </ul>
                 `;
                 break;
@@ -94,10 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'portaldocente-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                <li><a href="subirnotas.html" class="docente-link">Subir notas</a></li>
-                <li><a href="controldeasistencia.html" class="docente-link">Control de asistencia</a></li>
-                <li><a href="gestiondeboletines.html" class="docente-link">Gestión de boletines</a></li>
-                <li><a href="avisosinstitucionales.html" class="docente-link">Avisos institucionales</a></li>
+                <li><a href="portaldocente/subirnotas.html" class="docente-link">Subir notas</a></li>
+                <li><a href="portaldocente/controldeasistencia.html" class="docente-link">Control de asistencia</a></li>
+                <li><a href="portaldocente/gestiondeboletines.html" class="docente-link">Gestión de boletines</a></li>
+                <li><a href="portaldocente/avisosinstitucionales.html" class="docente-link">Avisos institucionales</a></li>
                 </ul>
                 `;
                 break;
@@ -161,14 +161,14 @@ document.addEventListener('click', e => {
 
                 const redirectMap = {
                     'inicio': 'index.html',
-                    'contacto': 'contacto.html',
-                    'horarios': 'contacto.html',
-                    'institucion': 'institucion.html',
-                    'tecnicaturas': 'tecnicaturas.html',
-                    'informatica': 'informatica.html',
-                    'construcciones': 'construcciones.html',
-                    'electronica': 'electronica.html',
-                    'electromecanica': 'electromecanica.html',
+                    'contacto': 'contacto/index.html',
+                    'horarios': 'contacto/index.html',
+                    'institucion': 'institucion/index.html',
+                    'tecnicaturas': 'tecnicaturas/index.html',
+                    'informatica': 'tecnicaturas/informatica.html',
+                    'construcciones': 'tecnicaturas/construcciones.html',
+                    'electronica': 'tecnicaturas/electronica.html',
+                    'electromecanica': 'tecnicaturas/electromecanica.html',
                 };
 
                 let destination = null;
@@ -246,7 +246,7 @@ document.addEventListener('click', e => {
                 // === CAMBIO CLAVE: REDIRECCIÓN DIRECTA A LOGIN.HTML ===
                 // Usamos setTimeout para asegurar que la alerta no interfiera con la redirección
                 setTimeout(() => {
-                    window.location.href = 'login.html'; 
+                    window.location.href = 'inicioyregistro/login.html'; 
                 }, 100); 
 
             } else {
@@ -261,7 +261,7 @@ document.addEventListener('click', e => {
 // ... (Tu código JavaScript existente antes de esta sección, como la lógica del menú hamburguesa) ...
 
     // ====================================================
-    // 🚀 LÓGICA DE VERIFICACIÓN DE PORTALES (CORREGIDA) 🚀
+    //  LÓGICA DE VERIFICACIÓN DE PORTALES (CORREGIDA) 
     // ====================================================
 
     // --- 0. CREDENCIALES DE PRUEBA Y FUNCIÓN DE REDIRECCIÓN ---
@@ -383,6 +383,6 @@ document.addEventListener('click', e => {
     if (sessionStorage.getItem('userRole') !== 'docente') {
         e.preventDefault();
         sessionStorage.setItem('pendingPage', link.getAttribute('href'));
-        window.location.href = 'portaldocente.html';
+        window.location.href = 'portaldocente/index.html';
     }
 });
