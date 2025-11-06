@@ -3,110 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="estilos/style.css">
-    <title>Subir Notas</title>
+    <title>Document</title>
 </head>
 <body>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subir Notas</title>
-  <link rel="stylesheet" href="estilos/style.css">
-</head>
-<body>
+<div id="verificationContainer">
+  <div class="verification-box">
+    <h2>¿Es usted docente?</h2>
+    <p>Por favor, ingrese sus datos para acceder al Portal Docente.</p>
+    <form id="teacherVerificationForm">
+      <label for="teacherName">Nombre y Apellido del Docente:</label>
+      <input type="text" id="teacherName" required>
 
-  <!-- HEADER (igual que tus otras páginas) -->
-  <header class="main-header">
-    <div class="menu-icon" id="menuIcon">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-    <div class="search-profile">
-      <div class="search-container" id="searchContainer">
-        <input type="text" id="searchInput" placeholder="Buscar..." class="search-input">
-      </div>
-      <img src="imagenes/lupa.png" alt="buscar icon" id="searchToggle">
-      <a href="login.html"><img src="imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
-      <img src="imagenes/logo.png" alt="logo icon"> 
-    </div>
-  </header> 
+      <label for="teacherDNI">DNI (Simulación: 87654321):</label>
+      <input type="number" id="teacherDNI" required minlength="7" maxlength="8">
 
-  <!-- NAV (idéntico al resto de páginas) -->
-  <nav class="overlay-menu" id="overlayMenu">
-    <div class="close-btn" id="closeBtn">&times;</div>
-    <div class="menu-content">
-      <ul class="main-menu-list">
-        <li><a href="index.html" data-submenu="inicio">Inicio</a></li>
-        <li><a href="contacto.html" data-submenu="contacto">Contacto</a></li>
-        <li><a href="tecnicaturas.html" data-submenu="tecnicaturas">Tecnicaturas</a></li>
-        <li><a href="institucion.html" data-submenu="institucion">Institución</a></li>
-        <li><a href="portalfamiliar.html" data-submenu="portal-familiar">Portal Familiar</a></li>
-        <li><a href="portaldocente.html" data-submenu="portal-docente">Portal Docente</a></li>
-      </ul>
-      <div class="submenu-container" id="submenuContainer"></div>
-    </div>
-  </nav>
+      <label for="teacherCourse">Curso que dicta (Ej: 3ro 1ra):</label>
+      <input type="text" id="teacherCourse" required>
 
-  <!-- 🔹 FORMULARIO DE VERIFICACIÓN DOCENTE -->
-  <div id="verificationContainer">
-    <div class="verification-box">
-      <h2>¿Es usted docente?</h2>
-      <p>Por favor, ingrese sus datos para acceder al Portal Docente.</p>
-      <form id="teacherVerificationForm">
-        <label for="teacherName">Nombre y Apellido del Docente:</label>
-        <input type="text" id="teacherName" required>
+      <label for="teacherSubject">Materia que dicta:</label>
+      <input type="text" id="teacherSubject" required>
 
-        <label for="teacherDNI">DNI (Simulación: 87654321):</label>
-        <input type="number" id="teacherDNI" required minlength="7" maxlength="8">
+      <button type="submit" class="access-button">Acceder al Portal</button>
 
-        <label for="teacherCourse">Curso que dicta (Ej: 3ro 1ra):</label>
-        <input type="text" id="teacherCourse" required>
-
-        <label for="teacherSubject">Materia que dicta:</label>
-        <input type="text" id="teacherSubject" required>
-
-        <button type="submit" class="access-button">Acceder al Portal</button>
-
-        <p id="teacher-error-message" class="error-message">
-          ERROR: DNI no reconocido o datos incompletos. Será redirigido al inicio.
-        </p>
-      </form>
-    </div>
+      <p id="teacher-error-message" class="error-message">
+        ERROR: DNI no reconocido o datos incompletos. Será redirigido al inicio.
+      </p>
+    </form>
   </div>
+</div>
 
-  <!-- 🔹 CONTENIDO REAL DEL PORTAL -->
-  <main id="mainContent" class="page-content">
-    <h1>✅ Subir Notas</h1>
-    <p>Bienvenido al sistema para subir calificaciones de los alumnos.</p>
-    <p>Aquí podrás cargar las notas de cada curso.</p>
-  </main>
+<main id="mainContent" class="page-content">
+  <h1>✅ Subir notas</h1>
+  <p>Aquí irá el contenido de subir asistencia.</p>
+</main>
 
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const VALID_TEACHER_DNI = '87654321';
-    const verificationContainer = document.getElementById('verificationContainer');
-    const mainContent = document.getElementById('mainContent');
-    const teacherForm = document.getElementById('teacherVerificationForm');
-    const errorMessage = document.getElementById('teacher-error-message');
-
-    // 🔸 Verificamos si el usuario ya tiene sesión de docente
-    const userRole = sessionStorage.getItem('userRole');
-
-    if (userRole === 'docente') {
-      // Ya está verificado → mostrar contenido, ocultar formulario
-      verificationContainer.style.display = 'none';
-      mainContent.style.display = 'block';
-    } else {
-      // Mostrar formulario, ocultar contenido
-      verificationContainer.style.display = 'flex';
-      mainContent.style.display = 'none';
-
-      teacherForm.addEventListener('submit', (e) => {
-        e.preven
     <script src="scripts/script.js"></script>
 </body>
 </html>

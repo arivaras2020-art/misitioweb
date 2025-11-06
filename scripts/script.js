@@ -90,14 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
                 `;
                 break;
-                case 'portal-docente':
+            case 'portal-docente':
                 backgroundImageClass = 'portaldocente-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="subirnotas.html#subirnotas">Subir notas</a></li>
-                    <li><a href="controldeasistencia.html#controldeasistencia">Control de asistencia</a></li>
-                    <li><a href="gestiondeboletines.html#gestiondeboletines">Gestion de boletines</a></li>
-                    <li><a href="avisosinstitucionales.html#avisosinstitucionales">Avisos institucionales</a></li>
+                <li><a href="subirnotas.html" class="docente-link">Subir notas</a></li>
+                <li><a href="controldeasistencia.html" class="docente-link">Control de asistencia</a></li>
+                <li><a href="gestiondeboletines.html" class="docente-link">Gestión de boletines</a></li>
+                <li><a href="avisosinstitucionales.html" class="docente-link">Avisos institucionales</a></li>
                 </ul>
                 `;
                 break;
@@ -111,13 +111,30 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector(`.main-menu-list a[data-submenu="${menuType}"]`)?.classList.add('active');
     }
 
-    mainMenuItems.forEach(item => {
-        item.addEventListener('click', e => {
+mainMenuItems.forEach(item => {
+    item.addEventListener('click', e => {
+        const submenuId = e.target.dataset.submenu;
+
+        if (submenuId) {
+            // Si el enlace tiene submenú, mostrarlo (sin navegar)
             e.preventDefault();
-            const submenuId = e.target.dataset.submenu;
             showSubmenu(submenuId);
-        });
+        } else {
+            // Si NO tiene submenú, cerrar el menú y navegar normalmente
+            overlayMenu.classList.remove('open');
+            overlayMenu.style.width = '0%';
+        }
     });
+});
+
+// Permite cerrar el overlay y navegar al hacer clic en un submenú
+document.addEventListener('click', e => {
+    if (e.target.closest('.submenu-list a')) {
+        overlayMenu.classList.remove('open');
+        overlayMenu.style.width = '0%';
+    }
+});
+
 
     // ----------------------------------------------------
     // Lógica de la Barra de Búsqueda (CÓDIGO EXISTENTE)
@@ -337,10 +354,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 // SIMULACIÓN DE VERIFICACIÓN: TODOS los campos deben estar completos Y el DNI debe ser correcto
                 if (teacherName && teacherDNI === VALID_TEACHER_DNI && teacherCourse && teacherSubject) {
                     
-                    // ACCESO EXITOSO: Establecer el rol y recargar
-                    sessionStorage.setItem('userRole', 'docente'); 
-                    window.location.reload(); 
-                    
+                // ACCESO EXITOSO: Establecer el rol
+                sessionStorage.setItem('userRole', 'docente'); 
+
+                // Si había una página de destino guardada, ir ahí
+                const destino = sessionStorage.getItem('pendingPage');
+                if (destino) {
+                sessionStorage.removeItem('pendingPage');
+                window.location.href = destino;
+                } else {
+                 // Si no hay destino guardado, mostrar el contenido normal
+                window.location.reload();
+}
                 } else {
                     // ACCESO FALLIDO: Redirigir
                     redirectToHome(errorMessage);
@@ -348,6 +373,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-    // ----------------------------------------------------
+    
+    // Intercepta los clics en los enlaces del portal docente
+document.addEventListener('click', e => {
+    const link = e.target.closest('.docente-link');
+    if (!link) return;
 
-// ... (El resto de tu código JavaScript existente, si lo tienes) ...
+    // Si no es docente aún, detener la navegación y guardar destino
+    if (sessionStorage.getItem('userRole') !== 'docente') {
+        e.preventDefault();
+        sessionStorage.setItem('pendingPage', link.getAttribute('href'));
+        window.location.href = 'portaldocente.html';
+    }
+});

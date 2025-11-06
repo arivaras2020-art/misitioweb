@@ -34,7 +34,7 @@ main {
  padding: 20px; 
 }
 .main-header {
- background-color: #0b1a2b;
+ background-color: #1A2F4E;
  color: white;
  padding: 15px 20px;
  display: flex;
@@ -569,6 +569,7 @@ main {
 .footer-column {
     flex: 1; 
     min-width: 120px; 
+    text-align: center;
 }
 
 .footer-column h3 {
@@ -576,6 +577,7 @@ main {
     margin-bottom: 15px;
     font-weight: bold;
     letter-spacing: 0.5px; 
+    text-align: center;
 }
 
 /* CLAVE: Estilo para los enlaces dentro de los H3s (los títulos de las columnas) */
@@ -593,6 +595,7 @@ main {
     list-style: none; 
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 .footer-column ul li {
@@ -604,6 +607,7 @@ main {
     color: #ccc; 
     text-decoration: none;
     line-height: 1.5; 
+    text-align: center;
 }
 
 .footer-column a:hover {
@@ -766,12 +770,13 @@ main {
 }
 
 .verification-box {
-    background-color: white;
+    max-width: 450px;
+    width: 100%;
+    background-color: #fff;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -846,5 +851,522 @@ main {
     }
     .verification-box h2 {
         font-size: 1.5em;
+    }
+}
+
+/* --- 1. Declaración de Fuentes (Ajusta las rutas y pesos) --- */
+
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('fonts/JetBrainsMono-Bold.ttf') format('ttf'); /* Ejemplo */
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('fonts/JetBrainsMono-Regular.ttf') format('ttf'); /* Ejemplo */
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSauce';
+    src: url('fonts/OpenSauceSans-Regular.ttf') format('ttf'); /* Ejemplo */
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSauce';
+    src: url('fonts/OpenSauceSans-Bold.ttf') format('ttf'); /* Ejemplo */
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* --- 2. Base y Tipografía (Aplicando las fuentes) --- */
+
+body {
+    /* Fuente para texto normal */
+    font-family: 'OpenSauce', sans-serif; 
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    /* Fuente para títulos y subtítulos */
+    font-family: 'JetBrainsMono', monospace; 
+    color: #003366; /* Azul oscuro institucional */
+    text-align: center;
+}
+
+/* --- Resto del código CSS (Mantiene los estilos de layout) --- */
+
+.section {
+    padding: 40px 10%;
+    margin-bottom: 20px;
+}
+
+/* --- SECCIÓN HERO / INICIO --- */
+/* (Asegúrate de que tu header ya está estilizado con tu propia configuración) */
+
+/* --- SECCIONES SOBRE NOSOTROS Y TECNICATURAS (usando Flexbox) --- */
+
+.section.sobre-nosotros, .section.nuestras-tecnicaturas {
+    display: flex; 
+    gap: 30px;
+    align-items: center;
+    padding: 40px 5%;
+    flex-wrap: wrap;
+}
+
+.content-text, .content-image {
+    flex: 1;
+    min-width: 300px; 
+}
+
+.content-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.btn-link {
+    color: #003366;
+    text-decoration: none;
+    /* Aplicar fuente de título para el enlace si es parte del diseño */
+    font-family: 'JetBrainsMono', monospace; 
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 15px;
+    position: relative;
+    padding-right: 20px;
+}
+
+.nuestras-tecnicaturas {
+    flex-direction: row-reverse;
+}
+
+
+/* --- SECCIÓN ÚLTIMAS NOTICIAS (Ajustes Finales: Texto Grande y Títulos Centrados) --- */
+
+.ultimas-noticias {
+    background-color: #1A2F4E; 
+    color: white;
+    display: block; 
+    
+    /* ¡CAMBIO AQUÍ! 30px arriba y abajo, y 10% a los lados */
+    padding: 1px 10%; 
+}
+
+.ultimas-noticias h2 {
+    color: white;
+    /* CENTRADO: Título principal */
+    text-align: center; 
+    font-size: 2.5em; 
+    margin-bottom: 30px; 
+    font-family: 'JetBrainsMono', monospace; 
+}
+
+.ultimas-noticias h3 {
+    color: white;
+    /* CENTRADO: Subtítulo de la noticia */
+    text-align: center; 
+    margin-bottom: 40px; 
+    font-size: 1.8em; 
+    font-family: 'JetBrainsMono', monospace; 
+}
+
+.noticia-content {
+    display: flex;
+    gap: 40px; 
+    justify-content: center; 
+    align-items: flex-start;
+    margin-bottom: 40px; 
+    /* Limita el ancho del contenido y lo centra en la página */
+    max-width: 1200px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.noticia-imagen {
+    width: 35%; 
+    height: auto;
+    object-fit: cover;
+    max-width: 450px;
+}
+
+.noticia-texto {
+    width: 65%;
+    text-align: left; 
+    /* CLAVE: Usamos Flexbox para posicionar la fecha */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    
+    /* Le damos una altura mínima para que la fecha tenga espacio para caer */
+    min-height: 250px; 
+}
+
+.noticia-texto p {
+    color: white; 
+    /* TEXTO MÁS GRANDE */
+    font-size: 1.15em; 
+    line-height: 1.7;
+    margin-bottom: 1.5em; 
+    font-family: 'OpenSauce', sans-serif; 
+}
+
+.noticia-fecha {
+    font-style: italic;
+    font-size: 1em; 
+    text-align: right; 
+    color: white; 
+    
+    /* CLAVE: Empuja este bloque hacia el fondo del contenedor '.noticia-texto' */
+    margin-top: auto; 
+    
+    display: flex;
+    justify-content: flex-end; /* Ícono y texto a la derecha */
+    align-items: center; 
+    gap: 8px; 
+    font-family: 'OpenSauce', sans-serif; 
+}
+
+.icono-fecha-noticia {
+    width: 80px; 
+    height: 80px; 
+    object-fit: contain;
+}
+
+/* Media Queries para Móviles */
+@media (max-width: 768px) {
+    .ultimas-noticias h2, .ultimas-noticias h3 {
+        text-align: center;
+    }
+    .noticia-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .noticia-imagen, .noticia-texto {
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+    }
+    .noticia-texto p {
+        text-align: left; /* Alineamos a la izquierda para mejor lectura en móviles */
+    }
+    .noticia-fecha {
+        justify-content: center; /* Centra la fecha en móviles */
+    }
+}
+
+/* --- SECCIÓN TESTIMONIOS (Usando CSS Grid) --- */
+
+.testimonios {
+    display: block;
+    padding: 40px 10%;
+}
+
+.testimonios h2 {
+    margin-bottom: 40px;
+    font-size: 2em;
+}
+
+.testimonio-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; 
+    gap: 20px;
+    border-top: 1px solid #ccc;
+    padding: 20px 0;
+    align-items: center;
+}
+
+.testimonio-item:last-child {
+    border-bottom: 1px solid #ccc;
+}
+
+.persona-info {
+    text-align: right;
+    padding-right: 10px;
+    /* Fuente para el texto de la persona */
+    font-family: 'OpenSauce', sans-serif; 
+}
+
+.persona-info h4 {
+    color: #333;
+    margin-bottom: 5px;
+    text-align: right;
+    /* Fuente para el nombre (título) */
+    font-family: 'JetBrainsMono', monospace; 
+}
+
+.testimonio-texto {
+    font-style: italic;
+    color: #555;
+    margin: 0;
+    font-size: 1.1em;
+    /* Fuente para el texto del testimonio */
+    font-family: 'OpenSauce', sans-serif; 
+}
+
+.testimonio-foto {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: auto; 
+}
+
+/* --- Adaptación para Móviles (Media Queries) --- */
+@media (max-width: 768px) {
+    /* ... (Mismo código de Media Query para mantener la responsividad) ... */
+    .section.sobre-nosotros, .section.nuestras-tecnicaturas {
+        flex-direction: column;
+    }
+    
+    .nuestras-tecnicaturas {
+        flex-direction: column-reverse; 
+    }
+
+    .noticia-content {
+        flex-direction: column;
+    }
+
+    .noticia-imagen, .noticia-texto {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .testimonio-item {
+        grid-template-columns: 2fr 1fr; 
+        grid-template-areas:
+            "texto foto"
+            "info info";
+    }
+
+    .persona-info {
+        grid-area: info;
+        text-align: left;
+    }
+
+    .testimonio-texto {
+        grid-area: texto;
+    }
+
+    .testimonio-foto {
+        grid-area: foto;
+        margin: 0 0 0 auto;
+    }
+
+    .persona-info h4 {
+        text-align: left;
+    }
+}
+/* --- ESTILOS PARA LA SECCIÓN HERO / PANTALLA COMPLETA --- */
+
+.hero-section {
+    width: 100%;
+    height: 100vh; 
+    background: url('../imagenes/fondoinicio.jpeg') no-repeat center center/cover;
+    /* Ya no necesitamos display: flex aquí, el overlay se centrará con position absolute */
+    position: relative; /* Importante para que el position: absolute del overlay funcione */
+    text-align: center; /* Centra el texto del overlay horizontalmente por si acaso */
+    overflow: hidden; /* Asegura que la imagen de fondo no se desborde */
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Color negro al 50% de opacidad */
+    width: 100%; 
+    box-sizing: border-box; 
+    padding: 50px 20px; /* Padding vertical y horizontal de la banda */
+
+    /* Volvemos a position absolute para un control preciso del tamaño y centrado */
+    position: absolute; 
+    top: 50%; /* Centra verticalmente */
+    left: 0; /* Ocupa todo el ancho */
+    transform: translateY(-50%); /* Ajuste fino para el centrado vertical */
+
+    /* AHORA LE DAMOS UN TAMAÑO MÁXIMO AL OVERLAY PARA QUE NO SE ESTIRE */
+    max-height: 50vh; /* AJUSTA ESTE VALOR: el 50% de la altura de la ventana */
+    /* o puedes probar con un height fijo si quieres, ej: height: 300px; */
+
+    /* Usamos flexbox DENTRO del overlay para centrar su propio contenido (logo, h1, p) */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.logo-hero {
+    width: 180px;
+    height: auto;
+    margin-bottom: 20px;
+    max-width: 80%; 
+}
+
+.hero-overlay h1, .hero-overlay p {
+    color: white;
+    margin: 10px 0;
+    font-family: 'JetBrainsMono', monospace; 
+}
+
+.hero-overlay h1 {
+    font-size: 2.5em; /* AJUSTA ESTE VALOR: Tamaño del título */
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2; 
+}
+
+.hero-overlay p {
+    font-size: 1.5em; /* AJUSTA ESTE VALOR: Tamaño del subtítulo */
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .hero-overlay {
+        max-height: 70vh; /* Puede ser más alto en móviles si necesitas */
+        padding: 30px 10px;
+    }
+    .logo-hero {
+        width: 120px; 
+    }
+    .hero-overlay h1 {
+        font-size: 1.5em; 
+    }
+    .hero-overlay p {
+        font-size: 1em; 
+    }
+}
+
+/* --- ESTILOS BASE DE SECCIONES INFORMATIVAS --- */
+
+.info-content {
+    display: flex; 
+    max-width: 1400px; 
+    margin: 0 auto;
+    gap: 80px;
+    align-items: center; 
+    padding: 0 40px;
+}
+.info-section {
+    /* Aumentamos el padding vertical para asegurar que haya espacio ARRIBA y ABAJO */
+    padding: 20px 0; /* Aumentado de 80px a 100px */
+    background-color: #f7f7f7; 
+}
+
+/* Estilo para las dos columnas */
+.info-image {
+    flex: 0 0 45%; 
+}
+
+.info-text {
+    /* El texto ocupa el 55% restante */
+    flex: 1 1 55%; 
+    min-width: 0; 
+}
+
+.section-img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Estilos de Texto */
+/* TÍTULOS: CENTRADOS */
+/* --- ESTILOS DE TEXTO --- */
+
+.info-text h2 {
+    color: #17375a; 
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: 'JetBrainsMono', monospace;
+    /* CLAVE: Alinea el título a la izquierda (en lugar de centrado) */
+    text-align: center; 
+}
+
+.info-text p {
+    color: #4a4a4a; 
+    /* Texto un poco más grande */
+    font-size: 1.1em; /* Ajustado a 1.1em */
+    line-height: 1.6; /* Un poco más de espacio entre líneas */
+    margin-bottom: 20px; /* Más espacio entre párrafos */
+    font-family: 'OpenSauce', sans-serif;
+    /* CLAVE: Justifica el texto */
+    text-align: justify; 
+}
+
+/* ENLACES: Alineados a la izquierda */
+.cta-link {
+    display: flex;
+    align-items: center;
+    color: #17375a; 
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.15em; 
+    margin-top: 15px;
+    width: fit-content; 
+    justify-content: flex-start; 
+}
+
+.cta-link .fas.fa-arrow-right {
+    font-size: 1.2em; 
+    margin-left: 10px; 
+}
+
+/* --- CLAVE PARA LA SEGUNDA SECCIÓN (Nuestras Tecnicaturas: Imagen Derecha) --- */
+
+.reverse-row .info-content {
+    /* Invierte el orden: Texto (1) - Imagen (2) */
+    flex-direction: row-reverse;
+}
+
+/* En la sección invertida, el título sigue centrado y los párrafos a la izquierda */
+.reverse-row .info-text h2 {
+    text-align: center; 
+}
+.reverse-row .info-text p {
+    text-align: left; 
+}
+
+/* El enlace en la sección invertida también se alinea a la izquierda */
+.reverse-row .cta-link {
+    justify-content: flex-start;
+    width: fit-content; 
+    margin-left: 0;
+}
+
+/* --- Media Queries (Móviles) --- */
+@media (max-width: 768px) {
+    .info-content,
+    .reverse-row .info-content {
+        flex-direction: column; 
+        gap: 30px;
+        padding: 0 20px; 
+    }
+
+    .info-image, .info-text {
+        width: 100%; 
+        flex: 0 0 auto; /* Restablece el flex para móviles */
+    }
+
+    .info-text h2,
+    .info-text p,
+    .cta-link,
+    .reverse-row .info-text h2,
+    .reverse-row .info-text p,
+    .reverse-row .cta-link {
+        text-align: center; /* Centra todo en móviles para mejor lectura */
+        justify-content: center;
+        width: 100%; /* El enlace ocupa todo el ancho para centrar */
+    }
+    .cta-link .fas.fa-arrow-right {
+        margin-left: 5px; /* Ajusta margen en móvil */
+        margin-right: 0;
     }
 }
