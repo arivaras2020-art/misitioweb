@@ -93,28 +93,35 @@ if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldoc
                 </ul>
                 `;
                 break;
-            case 'portal-familiar':
+case 'portal-familiar':
+                // 1. Mantiene la clase para la animación/fondo
                 backgroundImageClass = 'portalfamiliar-bg';
-                submenuHtml = `
-                <ul class="submenu-list">
-                    <li><a href="${basePath}portalfamiliar/index.html">Comunicado del día</a></li>
-                    <li><a href="${basePath}portalfamiliar/index.html">Informe orientador</a></li>
-                    <li><a href="${basePath}portalfamiliar/index.html">Asistencia</a></li>
-                    <li><a href="${basePath}portalfamiliar/index.html">Boletín</a></li>
-                </ul>
-                `;
+                
+                // 2. Vacia el submenú HTML (así no aparece la lista vacía)
+                submenuHtml = ''; 
+                
+                // 3. ¡REDIRECCIÓN CLAVE! Permite que la animación empiece (50ms) y luego navega.
+                setTimeout(() => {
+                    window.location.href = `${basePath}verificacionpf.html`;
+                }, 50); 
+
                 break;
+                
             case 'portal-docente':
+                // 1. Mantiene la clase para la animación/fondo
                 backgroundImageClass = 'portaldocente-bg';
-                submenuHtml = `
-                <ul class="submenu-list">
-                <li><a href="${basePath}portaldocente/subirnotas.html" class="docente-link">Subir notas</a></li>
-                <li><a href="${basePath}portaldocente/controldeasistencia.html" class="docente-link">Control de asistencia</a></li>
-                <li><a href="${basePath}portaldocente/gestiondeboletines.html" class="docente-link">Gestión de boletines</a></li>
-                <li><a href="${basePath}portaldocente/avisosinstitucionales.html" class="docente-link">Avisos institucionales</a></li>
-                </ul>
-                `;
+                
+                // 2. Vacia el submenú HTML
+                submenuHtml = ''; 
+                
+                // 3. ¡REDIRECCIÓN CLAVE!
+                setTimeout(() => {
+                    // Usamos verificacionpd.html (tu archivo subido)
+                    window.location.href = `${basePath}verificacionpd.html`;
+                }, 50); 
+
                 break;
+            // =========================================================
         }
 
         submenuContainer.innerHTML = submenuHtml;
@@ -441,50 +448,6 @@ if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldoc
         }
     });
 
-    // ----------------------------------------------------
-    // Lógica del Carrusel Automático
-    // ----------------------------------------------------
-    let slideIndex = 0;
-    let timer;
-
-    function showSlides() {
-        let i;
-        const slides = document.getElementsByClassName("carousel-slide");
-        const dots = document.getElementsByClassName("dot");
-        
-        if (slides.length === 0) return;
-
-        clearTimeout(timer);
-        
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        
-        slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }    
-        
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-        
-        timer = setTimeout(showSlides, 5000); 
-    }
-
-    function currentSlide(n) {
-        slideIndex = n;
-        clearTimeout(timer);
-        showSlides();
-    }
-
-    // Inicializar carrusel si existe
-    if (document.getElementsByClassName("carousel-slide").length > 0) {
-        showSlides();
-    }
-
     // ====================================================
     // LÓGICA DEL FORMULARIO DE CONTACTO (CORREGIDA)
     // ====================================================
@@ -517,52 +480,60 @@ if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldoc
     }
 }); // FIN DEL DOMContentLoaded
 
-// =========================================================
-// LÓGICA DEL CARRUSEL (VIDA ESCOLAR) - Funciones Globales
-// =========================================================
 
-let slideIndex = 1;
+/*****************************
+ * CARRUSEL AUTOMÁTICO 1 (INDEX)
+ *****************************/
+let heroIndex = 0;
+function showSlidesHero() {
+    const slides = document.getElementsByClassName("carousel-slide-hero");
+    const dots = document.getElementsByClassName("dot-hero");
+    if (slides.length === 0) return;
 
-// Función principal que muestra el slide
-function showSlides(n) {
-    let i;
-    const slides = document.getElementsByClassName("carousel-slide");
-    const dots = document.getElementsByClassName("dot");
-    
-    if (slides.length === 0) return; // Salir si no hay slides
+    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+    for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
 
-    // Lógica cíclica: si se excede el límite, vuelve al inicio o al final
-    if (n > slides.length) { slideIndex = 1 }    
-    if (n < 1) { slideIndex = slides.length }
-    
-    // Oculta todos los slides
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-    }
-    // Desactiva todos los puntos
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    
-    // Muestra el slide actual y activa el punto correspondiente
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
+    heroIndex++;
+    if (heroIndex > slides.length) heroIndex = 1;
+
+    slides[heroIndex - 1].style.display = "block";
+    dots[heroIndex - 1].classList.add("active");
+
+    setTimeout(showSlidesHero, 4000);
 }
 
-// Función para avanzar o retroceder (flechas)
-function plusSlides(n) {
-    showSlides(slideIndex += n);
+function currentSlideHero(n) {
+    heroIndex = n - 1;
+    showSlidesHero();
 }
 
-// Función para ir a un slide específico (puntos)
-function currentSlide(n) {
-    showSlides(slideIndex = n);
+document.addEventListener("DOMContentLoaded", showSlidesHero);
+
+
+/*****************************
+ * CARRUSEL AUTOMÁTICO 2 (INSTITUCION)
+ *****************************/
+let vidaIndex = 0;
+function showSlidesVida() {
+    const slides = document.getElementsByClassName("carousel-slide-vida");
+    const dots = document.getElementsByClassName("dot-vida");
+    if (slides.length === 0) return;
+
+    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+    for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
+
+    vidaIndex++;
+    if (vidaIndex > slides.length) vidaIndex = 1;
+
+    slides[vidaIndex - 1].style.display = "block";
+    dots[vidaIndex - 1].classList.add("active");
+
+    setTimeout(showSlidesVida, 4000);
 }
 
-// Inicialización: Asegura que el carrusel se inicie cuando la página cargue
-document.addEventListener('DOMContentLoaded', function() {
-    // Si la sección de carrusel existe, la inicializa
-    if (document.querySelector('.carousel-slide')) {
-        showSlides(slideIndex); 
-    }
-});
+function currentSlideVida(n) {
+    vidaIndex = n - 1;
+    showSlidesVida();
+}
+
+document.addEventListener("DOMContentLoaded", showSlidesVida);
