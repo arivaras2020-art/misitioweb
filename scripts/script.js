@@ -38,15 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentPath = window.location.pathname;
         let basePath = '';
         
-if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/') ||
-    currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
-    currentPath.includes('/institucion/') || currentPath.includes('/inicioyregistro/')) {
-    basePath = '../';
-} else {
-    basePath = '';
-}
-
-        // Para la raíz, basePath queda vacío
+        // Determina si es necesario retroceder (../)
+        if (currentPath.includes('/formularios/') ||
+            currentPath.includes('/contacto/') || 
+            currentPath.includes('/tecnicaturas/') || 
+            currentPath.includes('/institucion/') || 
+            currentPath.includes('/inicioyregistro/') ||
+            currentPath.includes('/portalfamiliar/') || 
+            currentPath.includes('/portaldocente/')) {  
+            
+            basePath = '../';
+        } else {
+            // Para la raíz, basePath queda vacío
+            basePath = '';
+        }
 
         switch (menuType) {
             case 'inicio':
@@ -93,39 +98,40 @@ if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldoc
                 </ul>
                 `;
                 break;
-case 'portal-familiar':
-                // 1. Mantiene la clase para la animación/fondo
-                backgroundImageClass = 'portalfamiliar-bg';
-                
-                // 2. Vacia el submenú HTML (así no aparece la lista vacía)
-                submenuHtml = ''; 
-                
-                // 3. ¡REDIRECCIÓN CLAVE! Permite que la animación empiece (50ms) y luego navega.
-                setTimeout(() => {
-                    window.location.href = `${basePath}verificacionpf.html`;
-                }, 50); 
 
-                break;
-                
-            case 'portal-docente':
-                // 1. Mantiene la clase para la animación/fondo
-                backgroundImageClass = 'portaldocente-bg';
-                
-                // 2. Vacia el submenú HTML
-                submenuHtml = ''; 
-                
-                // 3. ¡REDIRECCIÓN CLAVE!
-                setTimeout(() => {
-                    // Usamos verificacionpd.html (tu archivo subido)
-                    window.location.href = `${basePath}verificacionpd.html`;
-                }, 50); 
-
-                break;
             // =========================================================
+            // CORRECCIÓN: PORTAL FAMILIAR (Muestra submenú antes de ir a verificación)
+            // =========================================================
+            case 'portal-familiar':
+                backgroundImageClass = 'portalfamiliar-bg';
+                submenuHtml = `
+                <ul class="submenu-list">
+                    <li><a href="${basePath}formularios/verificacionpf.html#comunicado">Comunicado del día</a></li>
+                    <li><a href="${basePath}formularios/verificacionpf.html#informe">Informe orientador</a></li>
+                    <li><a href="${basePath}formularios/verificacionpf.html#asistencia">Asistencia</a></li>
+                    <li><a href="${basePath}formularios/verificacionpf.html#boletin">Boletín</a></li>
+                </ul>
+                `;
+                break;
+                
+            // =========================================================
+            // CORRECCIÓN: PORTAL DOCENTE (Muestra submenú antes de ir a verificación)
+            // =========================================================
+            case 'portal-docente':
+                backgroundImageClass = 'portaldocente-bg';
+                submenuHtml = `
+                <ul class="submenu-list">
+                    <li><a href="${basePath}formularios/verificacionpd.html#notas">Subir notas</a></li>
+                    <li><a href="${basePath}formularios/verificacionpd.html#control">Control de asistencia</a></li>
+                    <li><a href="${basePath}formularios/verificacionpd.html#gestion">Gestión de boletines</a></li>
+                    <li><a href="${basePath}formularios/verificacionpd.html#avisos">Avisos institucionales</a></li>
+                </ul>
+                `;
+                break;
         }
 
+        submenuContainer.className = `submenu-container ${backgroundImageClass}`;
         submenuContainer.innerHTML = submenuHtml;
-        submenuContainer.classList.add(backgroundImageClass);
 
         // CORRECCIÓN: Establecer la imagen de fondo con la ruta correcta
         const imagePaths = {

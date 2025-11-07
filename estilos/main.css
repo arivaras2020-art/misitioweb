@@ -185,28 +185,28 @@ main {
 }
 
 /* Fondos dinámicos (Ya corregidos en la sesión anterior) */
-.submenu-container.inicio-bg {
- background-image: url('../imagenes/menuinicio.jpeg');
+.inicio-bg {
+    background-image: url('../imagenes/menuinicio.jpeg'); 
 }
 
-.submenu-container.contacto-bg {
- background-image: url('../imagenes/menucontacto.jpeg');
+.contacto-bg {
+    background-image: url('../imagenes/menucontacto.jpeg'); 
 }
 
-.submenu-container.tecnicaturas-bg {
- background-image: url('../imagenes/menutecnicaturas.jpeg');
+.tecnicaturas-bg {
+    background-image: url('../imagenes/menutecnicaturas.jpeg'); 
 }
 
-.submenu-container.institucion-bg {
- background-image: url('../imagenes/menuinstitucion.jpg');
+.institucion-bg {
+    background-image: url('../imagenes/menuinstitucion.jpg'); 
 }
 
-.submenu-container.portalfamiliar-bg {
-    background-image: url('../imagenes/menuportalfamiliar.jpg'); 
+.portalfamiliar-bg {
+    background-image: url('../imagenes/menuportalfamiliar.jpg');
 }
 
-.submenu-container.portaldocente-bg {
-    background-image: url('../imagenes/menuportaldocente.webp'); 
+.portaldocente-bg {
+    background-image: url('../imagenes/menuportaldocente.webp');
 }
 
 /* Responsive */
@@ -218,6 +218,47 @@ main {
  .menu-content {
  flex-direction: column;
  }
+}
+
+/* ------------------------------------------------------------- */
+/* Media Queries para Responsive (Submenú en móvil) */
+
+@media (max-width: 768px) {
+  .overlay-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .main-menu-list {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px; 
+    padding-bottom: 20px;
+  }
+
+  .main-menu-list a {
+    font-size: 28px;
+  }
+
+  .submenu-container {
+    width: 100%; 
+    height: auto; 
+    min-height: 200px; /* Altura mínima para mostrar el submenú */
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-oscuro sin imagen visible */
+    background-image: none !important; /* Desactiva la imagen de fondo en móvil para simplificar */
+    order: 2; /* Coloca el submenú debajo del menú principal */
+  }
+
+  .submenu-list {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .close-btn {
+    right: 20px;
+    font-size: 40px;
+  }
 }
 
 /* --- ESTILOS DE LA BARRA DE BÚSQUEDA (MODIFICADOS PARA ESTÉTICA) --- */
@@ -1737,11 +1778,11 @@ body {
 }
 
 /* ========================================================= */
-/* 1. ESTILOS PARA LA SECCIÓN DE ENCABEZADO "Institución" (100vh) */
+/*  ESTILOS PARA LA SECCIÓN DE ENCABEZADO "Institución" (100vh) */
 /* ========================================================= */
 
 .institucion-header {
-    background-image: url('../imagenes/menuinstitucion.jpg'); /* ¡VERIFICA ESTA RUTA! */
+    background-image: url('../imagenes/menuinstitucion.jpg');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
@@ -2136,62 +2177,72 @@ body {
 }
 
 /* ========================================================= */
-/* ESTILOS PARA HERO SECTION DE PORTAL FAMILIAR */
+/* ESTILOS PARA HERO SECTION DE PORTAL FAMILIAR (Estilo 100vh Centrado) */
 /* ========================================================= */
 
 .hero-portal-familiar {
-    width: 100vw; /* Ocupa el 100% del ancho de la ventana */
-    height: 70vh; /* Puedes ajustar esta altura (por ejemplo, 60vh, 80vh) */
-    background-image: url('../imagenes/portalfamiliarheader.jpg'); /* ¡CAMBIA ESTA RUTA POR LA TUYA! */
-    background-size: cover; /* La imagen cubre todo el área sin distorsionarse */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    position: relative; /* Necesario para posicionar el overlay */
-    display: flex; /* Para centrar el overlay dentro */
-    align-items: center; /* Centra verticalmente el overlay */
-    justify-content: center; /* Centra horizontalmente el overlay */
-    color: white; /* Color de texto base para esta sección */
-    overflow: hidden; /* Asegura que la imagen no desborde */
-
-    /* Truco para forzar el ancho completo si hay márgenes en el body/html */
+    /* 🔄 Cambio: Usar la imagen correcta para Portal Familiar */
+    background-image: url('../imagenes/inicioportalfamiliar.webp');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    
+    /* 🔑 CLAVE: Ocupa el 100% de la altura de la ventana */
+    height: 100vh; 
+    position: relative; 
+    
+    /* Truco para forzar el ancho completo (si aún lo necesitas) */
     margin-left: calc(50% - 50vw); 
+    width: 100vw; 
+    overflow: hidden;
 }
 
+/* El "overlay" o franja semi-transparente (EXTREMO A EXTREMO, CENTRADA) */
 .hero-overlay-portal-familiar {
-    position: absolute; /* Posicionamiento absoluto dentro del .hero-portal-familiar */
-    bottom: 0; /* Lo pego al fondo del contenedor principal */
-    left: 0;
-    width: 100%; /* Ocupa el 100% del ancho del padre */
-    height: 30%; /* Altura de la franja (puedes ajustar: 25%, 35%, etc.) */
-    background: rgba(0, 0, 0, 0.6); /* Negro con 60% de transparencia */
+    width: 100%; 
+    min-height: 120px; /* Asegura una altura mínima para la franja */
+    background-color: rgba(0, 0, 0, 0.6); 
+    
+    /* 🔑 CLAVE: Centrado Vertical de la FRANJA sobre el fondo */
+    position: absolute; 
+    top: 50%; /* Empieza en el 50% de la altura */
+    transform: translateY(-50%); /* Sube la franja la mitad de su propia altura para centrarla */
+    left: 0; 
+    right: 0; 
+
+    /* Centrado del Texto DENTRO de la Franja */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra el texto horizontalmente */
-    justify-content: center; /* Centra el texto verticalmente dentro de la franja */
+    align-items: center; /* Centrado horizontal del texto */
+    justify-content: center; /* Centrado vertical del texto dentro de la franja */
+    padding: 15px 20px; 
+    
+    color: white; 
     text-align: center;
-    padding: 20px; /* Espaciado interno para el texto */
-    box-sizing: border-box; /* Incluye padding en el cálculo de ancho/alto */
-    z-index: 2; /* Asegura que esté por encima de la imagen */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    z-index: 2;
 }
 
 .hero-overlay-portal-familiar h1 {
-    font-size: 3.5rem; /* Tamaño del título principal */
-    margin: 0 0 10px 0; /* Espacio debajo del título */
-    color: white; /* Color blanco para el título */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Sombra para el texto */
+    color: white; 
+    /* 🔄 Cambio: Tamaño de fuente grande como en el ejemplo de Institución */
+    font-size: 4.5em; 
+    margin: 10px 0 5px; /* Pequeño margen entre título y subtítulo */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
 .hero-overlay-portal-familiar p {
-    font-size: 1.8rem; /* Tamaño del subtítulo */
-    margin: 0;
-    color: white; /* Color blanco para el subtítulo */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* Sombra para el texto */
+    color: white;
+    /* 🔄 Cambio: Tamaño de fuente como en el ejemplo de Institución */
+    font-size: 1.5em;
+    margin: 2px 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
-/* Ajustes de responsive para tamaños de fuente */
+/* Ajustes de responsive (adaptados del ejemplo original) */
 @media (max-width: 768px) {
     .hero-overlay-portal-familiar h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
     .hero-overlay-portal-familiar p {
         font-size: 1.4rem;
@@ -2200,12 +2251,290 @@ body {
 
 @media (max-width: 480px) {
     .hero-overlay-portal-familiar h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     .hero-overlay-portal-familiar p {
         font-size: 1.2rem;
     }
-    .hero-portal-familiar {
-        height: 60vh; /* Un poco menos alto en móviles si lo deseas */
-    }
+}
+
+/* ========================================================= */
+/* ESTILOS PARA TÍTULO Y TEXTO CENTRADO */
+/* ========================================================= */
+
+.centered-info {
+    /* 🔑 CLAVE: Centra todo el contenido de texto dentro de esta sección */
+    text-align: center; 
+    margin: 50px 0; /* Espacio arriba y abajo para separar de otros elementos */
+    padding: 0 20px; /* Padding para que el contenido no toque los bordes en móviles */
+}
+
+.centered-title {
+    font-size: 2.5rem; /* Tamaño del título */
+    margin-bottom: 20px;
+    color: #1A2F4E; /* Color oscuro para el título */
+}
+
+.centered-text {
+    /* Limita el ancho del párrafo para mejorar la legibilidad, 
+       pero el bloque de texto se mantiene centrado en la página */
+    max-width: 800px; 
+    margin-left: auto; /* Centra el bloque de párrafo horizontalmente */
+    margin-right: auto; /* Centra el bloque de párrafo horizontalmente */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* ========================================================= */
+/* ESTILOS PARA LA SECCIÓN INFORME ORIENTADOR */
+/* ========================================================= */
+
+.informe-orientador-box {
+    background-color: #172a46; 
+    color: white; 
+    max-width: none; 
+    margin: 0; 
+    width: 100%; 
+    margin-left: calc(50% - 50vw); 
+    width: 100vw; 
+    padding: 40px 60px;
+    box-sizing: border-box;
+}
+
+/* Título Centrado */
+.informe-title {
+    text-align: center; /* 🔑 CLAVE: Centra el título */
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    /* Estilo monospace y color claro para simular la imagen */
+    font-family: monospace; 
+    color: #f0f0f0; 
+}
+
+/* Nombre del Alumno Alineado a la Izquierda */
+.informe-student-name {
+    text-align: left; /* 🔑 CLAVE: Alinea el texto a la izquierda */
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding-left: 0;
+    font-family: monospace; 
+}
+
+/* Estilos de la Tabla */
+.informe-table {
+    width: 100%;
+    border-collapse: collapse; /* Elimina el espacio entre los bordes de las celdas */
+    table-layout: fixed; /* Asegura que las columnas tengan anchos iguales (o definidos) */
+    margin-bottom: 20px;
+}
+
+.informe-table th, .informe-table td {
+    border: 2px solid white; /* Bordes blancos gruesos como en la imagen */
+    padding: 15px 10px;
+    text-align: center;
+    /* Estilo monospace */
+    font-family: monospace; 
+    font-size: 1.1rem;
+}
+
+.informe-table th {
+    background-color: transparent; /* Fondo transparente para el encabezado */
+    font-weight: bold;
+    color: white;
+}
+
+/* Contenedor para alinear el botón a la derecha */
+.button-container {
+    text-align: right;
+    padding-right: 0;
+}
+
+/* Estilos del Botón */
+.ver-materias-btn {
+    background-color: white;
+    color: #172a46; /* Color del texto del botón (azul oscuro) */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    font-family: monospace; 
+    /* ... (otros estilos) ... */
+    text-decoration: none; /* 🔑 CLAVE: Elimina el subrayado predeterminado del enlace */
+    display: inline-block; /* Asegura que el enlace se comporte como un bloque para el padding */
+    background-color: white;
+    color: #172a46; 
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    font-family: monospace; 
+}
+
+.ver-materias-btn:hover {
+    background-color: #e0e0e0;
+}
+
+/* ========================================================= */
+/* ESTILOS PARA TÍTULO Y TEXTO DESCRIPTIVO DE ASISTENCIA */
+/* ========================================================= */
+
+.asistencia-header-section {
+padding: 50px 20px 20px 20px; 
+    max-width: 900px; 
+    margin: 0 auto;
+}
+
+/* Subtítulo centrado */
+.asistencia-subtitle {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #1A2F4E;
+    font-family: monospace;
+}
+
+.asistencia-description-text {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px; 
+    margin: 0 auto;
+    padding: 0 10px; 
+}
+
+/* ========================================================= */
+/* ESTILOS PARA TÍTULO Y TEXTO DESCRIPTIVO DE ASISTENCIA */
+/* ========================================================= */
+
+.asistencia-header-section {
+    /* Mantenemos el contenedor de 900px centrado para que el título 'Asistencia' lo esté */
+    padding: 50px 20px 20px 20px; 
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+
+.asistencia-subtitle {
+    text-align: center; 
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #1A2F4E; 
+    font-family: monospace; 
+}
+
+.asistencia-description-text {
+    text-align: center; /* Mantenido CENTRADO, como solicitaste al final de la conversación anterior */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #000000;
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 0 10px; 
+}
+
+/* ========================================================= */
+/* ESTILOS PARA TÍTULO Y TEXTO DESCRIPTIVO DE ASISTENCIA */
+/* (TÍTULO CENTRADO, TEXTO CENTRADO) */
+/* ========================================================= */
+
+/* Contenedor principal: sigue siendo el mismo */
+.asistencia-header-section {
+    padding: 50px 20px 20px 20px; 
+    max-width: 900px; 
+    margin: 0 auto; /* Centra el bloque de 900px en la página */
+}
+
+/* Subtítulo centrado */
+.asistencia-subtitle {
+    text-align: center; 
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333; 
+    font-family: monospace; 
+}
+
+.asistencia-description-text {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 0 10px; 
+}
+
+/* ========================================================= */
+/* SECCIÓN FINAL DE ASISTENCIA (TEXTO IZQUIERDA, GRÁFICO CENTRADO) */
+/* ========================================================= */
+
+/* Contenedor principal: Fija la separación izquierda del texto */
+.asistencia-data-section-final {
+    padding: 50px 20px; 
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 1. Nombre del Alumno (Alineado a la izquierda del bloque de 900px) */
+.data-student-name {
+    text-align: left;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    padding-left: 50px; 
+    margin-left: 0; 
+    margin-right: auto;
+}
+
+/*  Contenedor del Gráfico (NUEVO TRUCO PARA CENTRADO GLOBAL) */
+.pie-chart-wrapper {
+    position: relative;
+    height: 320px;
+    margin-bottom: 30px;
+}
+
+/*  Simulación de la Gráfica Circular (Mockup - Centrado) */
+.pie-chart-mockup {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px; 
+    height: 320px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #172a46 0deg, 
+        #172a46 306deg, 
+        #3b6ba5 306deg, 
+        #3b6ba5 360deg
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*  Etiqueta de porcentaje (Centrado Perfecto) */
+.percentage-label {
+    position: absolute;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white; 
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+}
+
+/*  Detalles de Asistencia (Alineado a la izquierda del bloque de 900px) */
+.data-details-box {
+    text-align: left;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.data-details-box p {
+    max-width: 400px; 
+    margin: 0 auto 0 0;
+    padding-left: 50px; 
 }
