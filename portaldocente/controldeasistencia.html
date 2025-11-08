@@ -41,7 +41,35 @@
 </nav>
 
     <main>
+        <div class="notes-page-wrapper">
+            <h1 class="notes-title">Control de Asistencia</h1>
 
+            <form id="attendanceForm" class="notes-form-container">
+                <div class="form-group">
+                    <input type="text" id="studentNameAttendance" placeholder="Nombre del Alumno:" required>
+                </div>
+                
+                <div class="form-group date-group">
+                    <input type="number" id="day" placeholder="Día" min="1" max="31" required style="width: 30%;">
+                    <input type="number" id="month" placeholder="Mes" min="1" max="12" required style="width: 30%;">
+                    <input type="number" id="year" placeholder="Año" min="2020" required style="width: 30%;">
+                </div>
+
+                <div class="form-group">
+                    <select id="status" required>
+                        <option value="" disabled selected>Seleccione Estado:</option>
+                        <option value="presente">Presente</option>
+                        <option value="ausente">Ausente</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="save-button">Guardar Asistencia</button>
+            </form>
+
+            <a href="../portaldocente/index.html" class="back-to-portal-link">
+                <i class="fas fa-arrow-left"></i> Volver al Portal Docente
+            </a>
+        </div>
     </main>
 
     <footer class="main-footer">
@@ -88,7 +116,7 @@
 <ul>
  <li><a href="../formularios/verificacionpd.html">Subir notas</a></li>
  <li><a href="../formularios/verificacionpd.html">Control de asistencia</a></li>
- <li><a href="../formularios/verificacionpd.html">Gestion de boletines</a></li>
+ <li><a href="../formularios/verificacionpd.html">Informe orientador</a></li>
 <li><a href="../formularios/verificacionpd.html">Avisos institucionales</a></li>
 </ul>
  </div>

@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <ul class="submenu-list">
                     <li><a href="${basePath}formularios/verificacionpd.html#notas">Subir notas</a></li>
                     <li><a href="${basePath}formularios/verificacionpd.html#control">Control de asistencia</a></li>
-                    <li><a href="${basePath}formularios/verificacionpd.html#gestion">Gestión de boletines</a></li>
+                    <li><a href="${basePath}formularios/verificacionpd.html#informe">Informe orientador</a></li>
                     <li><a href="${basePath}formularios/verificacionpd.html#avisos">Avisos institucionales</a></li>
                 </ul>
                 `;
@@ -543,3 +543,251 @@ function currentSlideVida(n) {
 }
 
 document.addEventListener("DOMContentLoaded", showSlidesVida);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('uploadNotesForm');
+    
+    if (!form) return; // Se asegura de que el formulario exista
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Detiene el envío del formulario
+
+        const studentName = document.getElementById('studentName').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const grade = document.getElementById('grade').value;
+        
+        // Validación de nota (aunque el HTML lo maneja, esto es un buen fallback)
+        if (grade < 1 || grade > 10) {
+            alert('La nota debe ser un número entre 1 y 10.');
+            return;
+        }
+        
+        // --- LÓGICA DE SUBIDA DE NOTAS ---
+        // Aquí iría tu código para enviar los datos (studentName, subject, grade, observations)
+        // a una base de datos o servidor. 
+        // Por ahora, solo simulará el éxito.
+        
+        // 1. Mostrar la notificación de éxito
+        const message = `Se subió la nota de ${subject} exitosa`;
+        showNotification(message);
+
+        // 2. Limpiar el formulario
+        form.reset();
+    });
+
+    /**
+     * Muestra una notificación de éxito en la parte inferior de la pantalla.
+     * @param {string} message - El mensaje a mostrar.
+     */
+    function showNotification(message) {
+        // Creamos o encontramos el div de la notificación
+        let notification = document.getElementById('appNotification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'appNotification';
+            // Usamos la clase CSS definida en main.css
+            notification.classList.add('notification-success');
+            document.body.appendChild(notification);
+        }
+
+        notification.textContent = message;
+        notification.classList.add('show');
+
+        // Ocultar la notificación después de 3 segundos
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('attendanceForm');
+    
+    if (!form) return; 
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const studentName = document.getElementById('studentNameAttendance').value.trim();
+        const day = document.getElementById('day').value;
+        const month = document.getElementById('month').value;
+        const year = document.getElementById('year').value;
+        const status = document.getElementById('status').value;
+
+        // Validaciones básicas de fecha y estado
+        if (!studentName || !day || !month || !year || !status) {
+            alert('Por favor, complete todos los campos.');
+            return;
+        }
+
+        if (status !== 'presente' && status !== 'ausente') {
+             alert('Por favor, seleccione un estado válido.');
+             return;
+        }
+
+        // --- LÓGICA DE GUARDADO DE ASISTENCIA ---
+        // Aquí iría el código para enviar los datos al servidor.
+        
+        // 1. Crear el mensaje de notificación
+        const dateString = `${day}/${month}/${year}`;
+        const message = `Se registró la asistencia de ${studentName} como ${status.toUpperCase()} para el día ${dateString}.`;
+        
+        // 2. Mostrar la notificación de éxito
+        showNotification(message);
+
+        // 3. Limpiar el formulario
+        form.reset();
+    });
+
+    /**
+     * Muestra una notificación de éxito con el mismo estilo de la página de notas.
+     * @param {string} message - El mensaje a mostrar.
+     */
+    function showNotification(message) {
+        let notification = document.getElementById('appNotification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'appNotification';
+            // Reutilizamos la clase CSS definida en main.css
+            notification.classList.add('notification-success'); 
+            document.body.appendChild(notification);
+        }
+
+        notification.textContent = message;
+        notification.classList.add('show');
+
+        // Ocultar la notificación después de 3 segundos
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('bulletinForm');
+    const fileInput = document.getElementById('bulletinFile');
+    const fileNameDisplay = document.getElementById('fileNameDisplay');
+    
+    // 1. Lógica para mostrar el nombre del archivo seleccionado
+    fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+            // Muestra el nombre del primer archivo seleccionado
+            fileNameDisplay.textContent = fileInput.files[0].name;
+            fileNameDisplay.style.color = '#1A2F4E';
+        } else {
+            fileNameDisplay.textContent = 'Ningún archivo seleccionado.';
+            fileNameDisplay.style.color = '#555';
+        }
+    });
+
+    // 2. Lógica para manejar el envío del formulario
+    if (!form) return; 
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const studentName = document.getElementById('studentNameBulletin').value.trim();
+        const selectedFile = fileInput.files[0];
+
+        // Validaciones
+        if (!studentName) {
+            alert('Por favor, ingrese el nombre del alumno.');
+            return;
+        }
+
+        if (!selectedFile) {
+            alert('Por favor, seleccione un archivo (PDF o Imagen).');
+            return;
+        }
+
+        // --- LÓGICA DE SUBIDA DE ARCHIVOS ---
+        // En un entorno real, aquí se usaría `FormData` y `fetch` 
+        // para enviar el archivo al servidor.
+
+        // 1. Crear el mensaje de notificación
+        const message = `Se subió el boletín (${selectedFile.name}) para ${studentName} exitosamente.`;
+        
+        // 2. Mostrar la notificación de éxito (reutiliza la función de los scripts anteriores)
+        showNotification(message);
+
+        // 3. Limpiar el formulario y el display
+        form.reset();
+        fileNameDisplay.textContent = 'Ningún archivo seleccionado.';
+        fileNameDisplay.style.color = '#555';
+    });
+
+    /**
+     * Muestra una notificación de éxito (función reutilizada de tus otros scripts).
+     * @param {string} message - El mensaje a mostrar.
+     */
+    function showNotification(message) {
+        let notification = document.getElementById('appNotification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'appNotification';
+            notification.classList.add('notification-success'); 
+            document.body.appendChild(notification);
+        }
+
+        notification.textContent = message;
+        notification.classList.add('show');
+
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('announcementForm');
+    
+    if (!form) return; 
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const title = document.getElementById('announcementTitle').value.trim();
+        const text = document.getElementById('announcementText').value.trim();
+
+        // Validaciones
+        if (!title || !text) {
+            alert('Por favor, complete tanto el título como el contenido del comunicado.');
+            return;
+        }
+
+        // --- LÓGICA DE PUBLICACIÓN DE AVISO ---
+        // Aquí iría la lógica para enviar el título y el texto 
+        // a una base de datos o sistema de gestión de contenido.
+        
+        // 1. Crear el mensaje de notificación
+        const message = `El aviso titulado "${title}" fue publicado exitosamente.`;
+        
+        // 2. Mostrar la notificación de éxito
+        showNotification(message);
+
+        // 3. Limpiar el formulario
+        form.reset();
+    });
+
+    /**
+     * Muestra una notificación de éxito (función reutilizada de tus otros scripts).
+     * @param {string} message - El mensaje a mostrar.
+     */
+    function showNotification(message) {
+        let notification = document.getElementById('appNotification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'appNotification';
+            // Reutilizamos la clase CSS definida en main.css
+            notification.classList.add('notification-success'); 
+            document.body.appendChild(notification);
+        }
+
+        notification.textContent = message;
+        notification.classList.add('show');
+
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+});

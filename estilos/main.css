@@ -1255,33 +1255,31 @@ h1, h2, h3, h4 {
 
 .info-text p {
     color: #4a4a4a; 
-    /* Texto un poco más grande */
-    font-size: 1.1em; /* Ajustado a 1.1em */
-    line-height: 1.6; /* Un poco más de espacio entre líneas */
-    margin-bottom: 20px; /* Más espacio entre párrafos */
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
     font-family: 'OpenSauce', sans-serif;
-    /* CLAVE: Justifica el texto */
-    text-align: justify; 
+    text-align: center;
 }
 
-/* ENLACES: Alineados a la izquierda */
 .cta-link {
     display: flex;
+    flex-direction: row; 
     align-items: center;
-    color: #17375a; 
+    color: #1A2F4E; 
     font-weight: bold;
     text-decoration: none;
     font-size: 1.15em; 
     margin-top: 15px;
     width: fit-content; 
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
 .cta-link .fas.fa-arrow-right {
     font-size: 1.2em; 
     margin-left: 10px; 
+    margin-right: 0; 
 }
-
 /* --- CLAVE PARA LA SEGUNDA SECCIÓN (Nuestras Tecnicaturas: Imagen Derecha) --- */
 
 .reverse-row .info-content {
@@ -1297,8 +1295,8 @@ h1, h2, h3, h4 {
     text-align: left; 
 }
 
-/* El enlace en la sección invertida también se alinea a la izquierda */
 .reverse-row .cta-link {
+    /* Si el texto está anclado a la izquierda, estos estilos se mantienen: */
     justify-content: flex-start;
     width: fit-content; 
     margin-left: 0;
@@ -1347,66 +1345,84 @@ body {
     background-color: #ffffff; 
 }
 
-/* --- Sección del Encabezado (Header) --- */
-.contacto-header {
-    background-image: url('../imagenes/iniciocontacto.jpeg'); 
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    
-    /* Quitamos el padding aquí y lo pondremos en el overlay */
-    padding: 0; /* Ya no hay padding directo en el header */
-    height: 850px; /* Define una altura para el header */
-    
-    text-align: center;
-    position: relative; /* Necesario para el overlay y el texto */
+/* ========================================================= */
+/* ESTILOS PARA HERO SECTION CON VIDEO DE FONDO */
+/* ========================================================= */
+
+.hero-contacto {
+    height: 100vh; 
+    position: relative; 
+    margin-left: calc(50% - 50vw); 
+    width: 100vw; 
     overflow: hidden;
-    /* Sombra para la CAJA/IMAGEN */
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); 
-    margin-bottom: 20px; 
 }
 
-/* NUEVO: Contenedor para el texto y la franja oscura */
-.text-overlay-container {
+.hero-video {
     position: absolute;
-    top: 50%; /* Centra verticalmente */
-    left: 0;
-    width: 100%;
-    transform: translateY(-50%); /* Ajuste para centrado perfecto */
-    z-index: 1; /* Asegura que esté sobre la imagen */
-    text-align: center;
-    
-}
-
-/* Franja oscura semi-transparente detrás del texto */
-.text-overlay-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Color negro con 50% de opacidad */
-    z-index: -1; /* Asegura que esté detrás del h1 pero delante de la imagen */
-    padding: 30px 0; /* Un poco de padding vertical para la franja */
-}
-
-/* ========================================================= */
-/* Aplicación de Tipografías a Títulos y Subtítulos */
-/* ========================================================= */
-
-/* TÍTULO PRINCIPAL (h1): JetBrains Mono, Cursiva, Color Blanco */
-.contacto-header h1 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 3.0em;/* Aumentado de 2.5em a 3.5em como ejemplo */
-    font-weight: normal;
-    font-weight: normal;
-    color: #ffffff;
-    margin: 50px 0 0 0;
-    width: 100%;
-    padding: 20px 0;
-    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
     z-index: 1; 
+}
+
+.hero-overlay-contacto {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px; 
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2; 
+}
+/* El "overlay" o franja semi-transparente (EXTREMO A EXTREMO, CENTRADA) */
+.hero-overlay-contacto {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px; 
+    
+    color: white; 
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.hero-overlay-contacto h1 {
+    color: white; 
+    font-size: 4.5em; 
+    margin: 10px 0 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-overlay-contacto p {
+    color: white;
+    font-size: 1.5em;
+    margin: 2px 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
 /* SUBTÍTULOS (h3): JetBrains Mono en Negrita */
@@ -1602,71 +1618,83 @@ body {
 }
 
 /* ========================================================= */
-/* ESTILOS PARA LA SECCIÓN DE ENCABEZADO "Institución" (PANTALLA COMPLETA) */
+/* ESTILOS PARA HERO SECTION CON VIDEO DE FONDO */
 /* ========================================================= */
 
-.institucion-header {
-    /* 1. IMAGEN DE FONDO Y ALTURA */
-    background-image: url('../imagenes/menuinstitucion.jpg');
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat; 
-    
-    /* CLAVE: Ocupa el 100% de la altura de la ventana */
-    height: 100vh; /* 100% del viewport height (altura de la pantalla) */
-    
-    /* 2. POSICIONAMIENTO CLAVE */
-    position: relative; /* Contenedor de referencia para el overlay */
+.hero-institucion {
+    height: 100vh; 
+    position: relative; 
+    margin-left: calc(50% - 50vw); 
+    width: 100vw; 
+    overflow: hidden;
 }
 
-/* El "overlay" o franja semi-transparente (EXTREMO A EXTREMO) */
-.header-overlay {
-    /* 1. Dimensiones y Fondo Transparente */
-    width: 100%; /* Ocupa el 100% del ancho de la pantalla (extremo a extremo) */
-    /* La altura será automática según el contenido */
-    min-height: 120px; 
-    
-    background-color: rgba(0, 0, 0, 0.6); /* Color negro con 60% de opacidad */
-    
-    /* 2. Centrado Vertical de la FRANJA sobre el fondo */
-    position: absolute; 
-    top: 50%; /* Mueve el borde superior al 50% de la altura del padre */
-    transform: translateY(-50%); /* Ajusta hacia arriba para centrarse verticalmente */
-    left: 0; /* Asegura que inicie en el borde izquierdo */
-    right: 0; /* Asegura que termine en el borde derecho */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; 
+}
 
-    /* 3. Centrado del Texto DENTRO de la Franja */
+.hero-overlay-institucion {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px; 
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2; 
+}
+/* El "overlay" o franja semi-transparente (EXTREMO A EXTREMO, CENTRADA) */
+.hero-overlay-institucion {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 15px 20px; 
     
-    /* 4. Estilos de Texto */
     color: white; 
     text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
 }
 
-.header-overlay h1 {
+.hero-overlay-institucion h1 {
     color: white; 
-    font-size: 4.5em; /* Tamaño grande para pantalla completa */
-    margin: 10px 0 5px; 
+    font-size: 4.5em; 
+    margin: 10px 0 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
-.header-overlay p {
+.hero-overlay-institucion p {
     color: white;
     font-size: 1.5em;
     margin: 2px 0;
-}
-
-/* --- Media Queries (Ajuste en pantallas más pequeñas) --- */
-@media (max-width: 768px) {
-    .header-overlay h1 {
-        font-size: 3em; 
-    }
-    .header-overlay p {
-        font-size: 1.2em;
-    }
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
 /* ========================================================= */
@@ -2469,38 +2497,47 @@ padding: 50px 20px 20px 20px;
 }
 
 /* ========================================================= */
-/* SECCIÓN FINAL DE ASISTENCIA (TEXTO IZQUIERDA, GRÁFICO CENTRADO) */
+/* ESTILOS PARA DATOS Y GRÁFICA DE ASISTENCIA (FINAL CORRECTO) */
 /* ========================================================= */
 
-/* Contenedor principal: Fija la separación izquierda del texto */
-.asistencia-data-section-final {
+/* Contenedor principal: Sin límite de ancho para permitir centrado global */
+.asistencia-data-container-final {
     padding: 50px 20px; 
-    max-width: 900px;
-    margin: 0 auto;
+    font-family: monospace;
 }
 
-/* 1. Nombre del Alumno (Alineado a la izquierda del bloque de 900px) */
+/* 1. Contenedor del texto (fuerza el contenido a la izquierda) */
+.data-left-anchor {
+    max-width: 900px; /* Limita el ancho del texto si fuera necesario */
+    margin: 0 auto; /* Centra este bloque de 900px */
+    text-align: left; /* Alinea el texto a la izquierda DENTRO de este bloque */
+    padding-left: 50px; /* 🔑 CLAVE: Separa el texto del borde izquierdo visible (o del centro de la página) */
+}
+
+/* Estilo del Nombre del Alumno */
 .data-student-name {
-    text-align: left;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 20px;
-    padding-left: 50px; 
-    margin-left: 0; 
-    margin-right: auto;
+    
 }
 
-/*  Contenedor del Gráfico (NUEVO TRUCO PARA CENTRADO GLOBAL) */
+/* 2. Contenedor del Gráfico (Para centrarlo en TODA la página) */
 .pie-chart-wrapper {
+    /* Altura para reservar espacio y permitir centrado absoluto del gráfico */
     position: relative;
-    height: 320px;
+    height: 320px; 
     margin-bottom: 30px;
+    width: 100%;
 }
 
-/*  Simulación de la Gráfica Circular (Mockup - Centrado) */
+/* 2. Gráfica Circular (Centrada Perfecta) */
 .pie-chart-mockup {
+    /* 🔑 CLAVE: Centrado absoluto en el viewport (independiente del texto) */
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); 
+    
+    /* Tamaño y apariencia */
     width: 320px; 
     height: 320px;
     border-radius: 50%;
@@ -2515,7 +2552,7 @@ padding: 50px 20px 20px 20px;
     justify-content: center;
 }
 
-/*  Etiqueta de porcentaje (Centrado Perfecto) */
+/* 2. Etiqueta de porcentaje (Centrado en el círculo) */
 .percentage-label {
     position: absolute;
     font-size: 2.5rem;
@@ -2526,15 +2563,337 @@ padding: 50px 20px 20px 20px;
     transform: translate(-50%, -50%); 
 }
 
-/*  Detalles de Asistencia (Alineado a la izquierda del bloque de 900px) */
-.data-details-box {
-    text-align: left;
+/* 3. Detalles de Asistencia */
+.data-details-box p {
     line-height: 1.8;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
+    max-width: 400px; /* Ancho máximo para el texto de detalles */
+    margin: 0; /* Asegura que no haya márgenes no deseados */
+    padding: 0;
 }
 
-.data-details-box p {
-    max-width: 400px; 
-    margin: 0 auto 0 0;
-    padding-left: 50px; 
+/* Estilos para el nuevo enlace "Contacto" */
+.contact-link {
+    text-decoration: none; /* Elimina el subrayado predeterminado */
+    color: inherit;      /* Hereda el color del texto del párrafo */
+    font-family: inherit; /* Mantiene la fuente monospace */
 }
+
+/* Opcional: Estilo visual al pasar el mouse */
+.contact-link:hover {
+    text-decoration: underline; /* Agrega un subrayado al pasar el mouse */
+}
+
+/* ========================================================= */
+/* ESTILOS PARA HERO SECTION CON VIDEO DE FONDO */
+/* ========================================================= */
+
+.hero-portal-docente {
+    height: 100vh; 
+    position: relative; 
+    margin-left: calc(50% - 50vw); 
+    width: 100vw; 
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; 
+}
+
+.hero-overlay-portal-docente {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px; 
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2; 
+}
+/* El "overlay" o franja semi-transparente (EXTREMO A EXTREMO, CENTRADA) */
+.hero-overlay-portal-docente {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px; 
+    
+    color: white; 
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.hero-overlay-portal-docente h1 {
+    color: white; 
+    font-size: 4.5em; 
+    margin: 10px 0 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-overlay-portal-docente p {
+    color: white;
+    font-size: 1.5em;
+    margin: 2px 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* --- Alinear los enlaces "Ver más..." con el inicio del texto (no con el borde derecho) --- */
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start; /* alinea con el inicio del texto */
+  gap: 8px;
+  text-align: left;
+  margin-left: 0; /* evita desplazamiento innecesario */
+}
+
+/* Asegura que también funcione en la sección invertida (Nuestras Tecnicaturas) */
+.reverse-row .cta-link {
+  justify-content: flex-start;
+  text-align: left;
+  margin-left: 0;
+}
+
+
+/* ========================================================= */
+/* ESTILOS PARA LA PÁGINA SUBIR NOTAS */
+/* ========================================================= */
+
+.notes-page-wrapper {
+    background-color: #ffffff;
+    padding: 40px 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 650px; 
+    width: 90%;
+    margin: 40px auto; 
+    box-sizing: border-box;
+}
+
+.notes-title {
+    font-family: 'JetBrainsMono', monospace;
+    font-size: 2.2em;
+    color: #1A2F4E; 
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.notes-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Estilos de inputs y textarea - Consistentes con tu estilo de formularios */
+.notes-form-container input[type="text"],
+.notes-form-container input[type="number"],
+.notes-form-container textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    font-size: 1.1em;
+    color: #333;
+    box-sizing: border-box;
+    font-family: 'Open Sauce Sans', sans-serif;
+}
+
+.notes-form-container textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.notes-form-container input:focus,
+.notes-form-container textarea:focus {
+    border-color: #1A2F4E;
+    outline: none;
+    background-color: #fcfcfc;
+}
+
+/* Botón Guardar */
+.save-button {
+    background-color: #1A2F4E;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 700;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    
+    /* 🔑 CLAVE: Alinea el botón a la derecha dentro de su contenedor flex */
+    align-self: flex-end; 
+    width: auto;
+}
+
+.save-button:hover {
+    background-color: #0b1a2b; 
+}
+
+/* Enlace Volver al Portal */
+.back-to-portal-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1A2F4E;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    justify-content: flex-start; /* Alineado a la izquierda */
+}
+
+.back-to-portal-link i {
+    margin-right: 8px;
+}
+
+.back-to-portal-link:hover {
+    color: #4a77a9;
+}
+
+/* Estilos para la Notificación de Éxito */
+.notification-success {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745; /* Verde para éxito */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9999;
+    font-family: 'Open Sauce Sans', sans-serif;
+    font-weight: 600;
+}
+
+.notification-success.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Media Query para móviles: Ajustes */
+@media (max-width: 768px) {
+    .notes-page-wrapper {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .notes-title {
+        font-size: 1.8em;
+    }
+    .save-button {
+        /* En móvil, se ve mejor a ancho completo */
+        width: 100%; 
+        align-self: center;
+    }
+    .back-to-portal-link {
+        justify-content: center; /* Centramos el enlace en móvil */
+    }
+}
+
+/* ========================================================= */
+/* ESTILOS ESPECÍFICOS PARA CONTROL ASISTENCIA */
+/* (Aprovecha los estilos existentes) */
+/* ========================================================= */
+
+.date-group {
+    display: flex;
+    gap: 5%; /* Espacio entre los campos de fecha */
+    justify-content: space-between;
+}
+
+.notes-form-container select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #c9c9c9;
+    border-radius: 4px;
+    font-size: 1.1em;
+    color: #333;
+    box-sizing: border-box;
+    font-family: 'Open Sauce Sans', sans-serif;
+    background-color: white; /* Asegura que el fondo sea blanco */
+    appearance: none; /* Oculta la flecha nativa en algunos navegadores */
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231A2F4E%22%20d%3D%22M287%2069.9L146.2%20209.7%205.4%2069.9z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 10px auto;
+}
+
+/* ========================================================= */
+/* ESTILOS ESPECÍFICOS PARA INFORME ORIENTADOR */
+/* ========================================================= */
+
+.file-upload-group {
+    /* Contenedor del campo de archivo y el texto */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea el label y el texto a la izquierda */
+    gap: 8px;
+}
+
+.file-label {
+    /* Estilo del botón visual para seleccionar el archivo */
+    background-color: #f0f0f0; /* Fondo gris claro para simular un botón */
+    color: #4a4a4a;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-label:hover {
+    background-color: #e0e0e0;
+}
+
+/* Ocultar el input de archivo real */
+.file-upload-group input[type="file"] {
+    display: none; 
+}
+
+/* Estilo para el nombre del archivo seleccionado */
+.file-name-display {
+    font-size: 0.95em;
+    color: #555;
+    /* Consistente con el padding horizontal de los inputs */
+    padding-left: 5px; 
+}
+

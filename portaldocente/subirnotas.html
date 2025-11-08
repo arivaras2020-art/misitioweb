@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../estilos/main.css">
-    <title>Verificacion Portal Docente</title> </head>
+    <title>Subir notas</title> </head>
 <body>
     <header class="main-header">
         <div class="menu-icon" id="menuIcon">
@@ -40,8 +40,34 @@
     </div>
 </nav>
 
-    <main">
+    <main>
+        <div class="notes-page-wrapper">
+            <h1 class="notes-title">Subir notas</h1>
 
+            <form id="uploadNotesForm" class="notes-form-container">
+                <div class="form-group">
+                    <input type="text" id="studentName" placeholder="Nombre del Alumno:" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" id="subject" placeholder="Materia:" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="number" id="grade" placeholder="Nota (1-10):" min="1" max="10" required>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="observations" placeholder="Observaciones:"></textarea>
+                </div>
+                
+                <button type="submit" class="save-button">Guardar</button>
+            </form>
+
+            <a href="../portaldocente/index.html" class="back-to-portal-link">
+                <i class="fas fa-arrow-left"></i> Volver al Portal Docente
+            </a>
+        </div>
     </main>
 
     <footer class="main-footer">
@@ -88,7 +114,7 @@
 <ul>
  <li><a href="../formularios/verificacionpd.html">Subir notas</a></li>
  <li><a href="../formularios/verificacionpd.html">Control de asistencia</a></li>
- <li><a href="../formularios/verificacionpd.html">Gestion de boletines</a></li>
+ <li><a href="../formularios/verificacionpd.html">Informe orientador</a></li>
 <li><a href="../formularios/verificacionpd.html">Avisos institucionales</a></li>
 </ul>
  </div>
