@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 backgroundImageClass = 'tecnicaturas-bg';
                 submenuHtml = `
                 <ul class="submenu-list">
-                    <li><a href="${basePath}tecnicaturas/informatica.html">Informática</a></li>
-                    <li><a href="${basePath}tecnicaturas/construcciones.html">Construcciones</a></li>
-                    <li><a href="${basePath}tecnicaturas/electronica.html">Electrónica</a></li>
-                    <li><a href="${basePath}tecnicaturas/electromecanica.html">Electromecánica</a></li>
+                    <li><a href="${basePath}tecnicaturas/index.html">Informática</a></li>
+                    <li><a href="${basePath}tecnicaturas/index.html">Construcciones</a></li>
+                    <li><a href="${basePath}tecnicaturas/index.html">Electrónica</a></li>
+                    <li><a href="${basePath}tecnicaturas/index.html">Electromecánica</a></li>
                 </ul>
                 `;
                 break;
@@ -217,7 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const redirectMap = {
                     'inicio': `${basePath}index.html`,
                     'contacto': `${basePath}contacto/index.html`,
-                    'horarios': `${basePath}contacto/index.html`,
                     'institucion': `${basePath}institucion/index.html`,
                     'tecnicaturas': `${basePath}tecnicaturas/index.html`,
                     'informatica': `${basePath}tecnicaturas/informatica.html`,
@@ -789,5 +788,27 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             notification.classList.remove('show');
         }, 3000);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtener el botón de descarga y el elemento de notificación (toast)
+    const downloadButton = document.getElementById('btn-descargar');
+    const notification = document.getElementById('toast-notification');
+
+    // Verificar que ambos elementos existen antes de añadir el listener
+    if (downloadButton && notification) {
+        downloadButton.addEventListener('click', (event) => {
+            // Prevenir cualquier acción por defecto (aunque ahora es un botón)
+            event.preventDefault(); 
+            
+            // 1. Mostrar la notificación añadiendo la clase 'show'
+            notification.classList.add('show');
+
+            // 2. Ocultar la notificación después de 3000 milisegundos (3 segundos)
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        });
     }
 });

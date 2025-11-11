@@ -20,8 +20,11 @@
             <input type="text" id="searchInput" placeholder="Buscar..." class="search-input">
           </div>
             <img src="../imagenes/lupa.png" alt="buscar icon" id="searchToggle">
-            <a href="inicioyregistro/login.html"><img src="../imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
+            <a href="../inicioyregistro/login.html"><img src="../imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
+            <a href="../index.html"> 
             <img src="../imagenes/logo.png" alt="logo icon"> 
+        </a>
+
           </div>
     </header>
 
@@ -40,9 +43,75 @@
             </div>
     </div>
 </nav>
-    <main>
-        
-    </main>
+<header class="hero-tecnicaturas">
+    
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="../imagenes/menuelectromecanica.mp4" type="video/mp4"> 
+    </video>
+
+    <div class="hero-overlay-tecnicaturas">
+        <h1>Electromecánica</h1>
+    </div>
+</header>
+
+<!-- Contenido principal de la tecnicatura -->
+<main class="content-sections"> 
+    
+    <!-- 1. INTRODUCCIÓN (Fondo Blanco) -->
+    <section class="section container">
+        <!-- H2 para subtítulos de sección, con estilo JetBrains Mono -->
+        <h2>Introducción</h2> 
+        <p>La Tecnicatura en Electromecánica combina principios de electricidad, mecánica y automatización para formar profesionales versátiles en el diseño, instalación y mantenimiento de sistemas integrados. Con énfasis en circuitos eléctricos, máquinas motrices y programación de PLC (Controladores Lógicos Programables), esta formación equipa a los estudiantes para resolver problemas en industrias como la manufactura y la energía, utilizando herramientas prácticas para optimizar procesos productivos. Su importancia radica en la integración de componentes electro-mecánicos con tecnologías emergentes, como redes industriales para monitoreo de equipos en entornos con múltiples usuarios, contribuyendo a la eficiencia y seguridad en operaciones complejas.</p>
+    </section>
+
+    <!-- 2. PLAN DE ESTUDIO (Fondo Oscuro) -->
+    <section class="dark-section">
+        <!-- Para secciones que ocupan todo el ancho, el contenido se centra en un contenedor interno -->
+        <div class="container">
+            <h2>Plan de estudio</h2>
+            <ul>
+                <!-- H3 para sub-ítems, con estilo Open Sans Bold (como en la captura) -->
+                <li>
+                    <p>Materias como Electricidad Industrial (circuitos y motores), Mecánica (diseño de máquinas), Automatización (PLC y sensores), Instalaciones Eléctricas (normas IEC) y Mantenimiento (diagnóstico de fallos).</p>
+                </li>
+                <li>
+                    <p>Objetivos: Formar técnicos para integrar sistemas electro-mecánicos, incluyendo redes industriales (ej. control de dispositivos IoT en fábricas con 100 empleados).</p>
+                </li>
+            </ul>
+            <div class="button-center">
+                <!-- Botón con ID para el JS -->
+                <button id="btn-descargar" class="btn-download">
+                    <i class="fas fa-download"></i> Descargar Plan de estudio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PRÁCTICAS (Fondo Blanco) -->
+    <section class="section container">
+        <h2>Prácticas profesionalizantes</h2>
+        <p>Durante la carrera, realizarás prácticas clave:</p>
+        <ul>
+            <li>En talleres o industrias, practicando montaje de sistemas (ej. instalación de paneles eléctricos para redes), programación de PLC (para automatizar monitoreo de switches), y mantenimiento preventivo (revisión de cableado Ethernet en máquinas).</li>
+            <li> Duración: 80-200 horas. (80 horas en el primer año de la materia, y 120 horas en el segundo año de la materia, por lo tanto, los alumnos deben juntar 200 horas a lo largo de la materia) con supervisión de profesores.</li>
+        </ul>
+    </section>
+
+    <!-- 4. PASANTÍAS (Fondo Oscuro) -->
+    <section class="dark-section">
+        <div class="container">
+            <h2>Pasantías</h2>
+            <ul>
+                <li>En fábricas o empresas de mantenimiento (ej. TechCorp para electromecánica en producción), asistiendo en reparaciones (ej. integración de redes en líneas de ensamblaje para 100 trabajadores).</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+<!-- Contenedor para la notificación de éxito -->
+<div id="toast-notification" class="toast">
+    <i class="fas fa-check-circle"></i>Archivo descargado con éxito!
+</div>
             <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-column">

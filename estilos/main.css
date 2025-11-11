@@ -35,7 +35,7 @@ main {
 }
 .main-header {
  background-color: #1A2F4E;
- color: white;
+ color: rgb(255, 255, 255);
  padding: 15px 20px;
  display: flex;
  justify-content: space-between;
@@ -71,7 +71,7 @@ main {
   z-index: 2000;
   top: 0;
   left: 0;
-  background-color: #0b1a2b;
+  background-color: #1A2F4E;
   overflow-x: hidden;
   transition: 0.5s;
   display: flex;
@@ -108,7 +108,7 @@ main {
   padding: 0;
   margin: 0;
   width: 40%;
-  background-color: #1a2a3e;
+  background-color: #1A2F4E;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -135,7 +135,7 @@ main {
 /* Submenú (derecha) */
 .submenu-container {
   width: 60%;
-  background-color: #0b1a2b;
+  background-color: #1A2F4E;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -310,12 +310,10 @@ main {
 
 .search-input {
     width: 100%;
-    padding: 10px 15px; /* Aumenta el padding para que sea más alto */
-    border: 2px solid #1A2A3E; /* Borde sutil para darle forma */
-    border-radius: 20px; /* Bordes redondeados */
-    
-    /* Colores */
-    background-color: #1A2A3E; /* Azul más oscuro o el mismo del menú principal */
+    padding: 10px 15px;
+    border: 2px solid #1A2A3E;
+    border-radius: 20px;
+    background-color: #1A2A3E;
     color: white;
     font-size: 1em;
     box-sizing: border-box;
@@ -324,15 +322,15 @@ main {
 
 .search-input::placeholder {
     /* Estilo para el texto "Buscar..." */
-    color: #9db0c9; /* Color más claro para mejor visibilidad */
+    color: #98A8C3; /* Color más claro para mejor visibilidad */
     opacity: 1; /* Asegura que se vea bien */
 }
 
 .search-input:focus {
     /* Efecto al hacer clic/escribir */
-    border-color: #4a77a9; /* Borde más claro al enfocarse */
+    border-color: #98A8C3; /* Borde más claro al enfocarse */
     outline: none; /* Quitar el contorno predeterminado del navegador */
-    background-color: #152538; /* Ligeramente más claro al hacer focus */
+    background-color: #1A2A3E; /* Ligeramente más claro al hacer focus */
 }
 
 /* ------------------------------------------------------------- */
@@ -344,7 +342,7 @@ main {
     margin: 0;
     padding: 0;
     font-family: 'Open Sauce Sans', sans-serif;
-    background-color: #e5e5e5; 
+    background-color: #ffffff; 
     /* Eliminamos height: 100vh; y overflow: hidden; para permitir el scroll */
     min-height: 100vh; /* Asegura al menos una pantalla de alto */
     display: flex;
@@ -438,7 +436,7 @@ main {
 .form-title {
     font-size: 2em; /* Aumenta el tamaño del título del formulario */
     font-weight: 700;
-    color: #0b1a2b;
+    color: #000000;
     margin-bottom: 30px; 
     text-align: left;
 }
@@ -454,7 +452,7 @@ main {
     font-weight: 600;
     margin-bottom: 8px; /* Aumenta un poco el margen */
     margin-top: 15px; /* Aumenta el margen */
-    color: #333;
+    color: #000000;
     font-size: 1em;
 }
 
@@ -479,7 +477,7 @@ main {
 .forgot-password {
     text-align: right;
     font-size: 0.9em;
-    color: #1A2F4E; 
+    color: #000000; 
     text-decoration: none;
     margin-top: 10px; /* Aumenta el margen */
     margin-bottom: 20px; /* Aumenta el margen */
@@ -487,7 +485,7 @@ main {
 
 /* Botones de Iniciar Sesión y Registrarse */
 .access-button {
-    background-color: #0b1a2b; 
+    background-color: #1A2F4E; 
     color: white;
     padding: 15px; /* Aumenta el padding del botón */
     border: none;
@@ -592,7 +590,7 @@ main {
 
 /* --- ESTILOS GENERALES DEL FOOTER --- */
 .main-footer {
-    background-color: #1a2a44; 
+    background-color: #1A2F4E; 
     color: #ffffff; 
     padding: 40px 60px; 
     font-family: Arial, sans-serif; 
@@ -822,7 +820,7 @@ main {
 }
 
 .verification-box h2 {
-    color: #0b1a2b;
+    color: #000000;
     margin-bottom: 10px;
     font-size: 1.8em;
     font-weight: 700;
@@ -840,7 +838,7 @@ main {
     text-align: left;
     margin-top: 15px;
     font-weight: 600; /* Similar al login */
-    color: #333;
+    color: #000000;
     font-size: 1em;
 }
 
@@ -939,7 +937,7 @@ body {
 h1, h2, h3, h4 {
     /* Fuente para títulos y subtítulos */
     font-family: 'JetBrainsMono', monospace; 
-    color: #003366; /* Azul oscuro institucional */
+    color: #000000;
     text-align: center;
 }
 
@@ -974,7 +972,7 @@ h1, h2, h3, h4 {
 }
 
 .btn-link {
-    color: #003366;
+    color: #1A2F4E;
     text-decoration: none;
     /* Aplicar fuente de título para el enlace si es parte del diseño */
     font-family: 'JetBrainsMono', monospace; 
@@ -1136,7 +1134,7 @@ h1, h2, h3, h4 {
 }
 
 .persona-info h4 {
-    color: #333;
+    color: #000000;
     margin-bottom: 5px;
     text-align: right;
     /* Fuente para el nombre (título) */
@@ -1245,7 +1243,7 @@ h1, h2, h3, h4 {
 /* --- ESTILOS DE TEXTO --- */
 
 .info-text h2 {
-    color: #17375a; 
+    color: #000000; 
     font-size: 2.5em;
     margin-bottom: 20px;
     font-family: 'JetBrainsMono', monospace;
@@ -1341,7 +1339,7 @@ body {
     font-family: 'Open Sauce Sans', sans-serif;
     margin: 0;
     padding: 0;
-    color: #333;
+    color: #000000;
     background-color: #ffffff; 
 }
 
@@ -1431,7 +1429,7 @@ body {
     font-size: 1.2em;
     font-weight: bold; 
     margin-bottom: 5px;
-    color: #1A2F4E;
+    color: #000000;
 }
 /* Texto Negrita dentro de párrafos: Open Sauce en Negrita */
 .columna span {
@@ -1691,6 +1689,86 @@ body {
 }
 
 .hero-overlay-institucion p {
+    color: white;
+    font-size: 1.5em;
+    margin: 2px 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+/* ========================================================= */
+/* ESTILOS PARA HERO SECTION CON VIDEO DE FONDO INIO */
+/* ========================================================= */
+
+.hero-inicio {
+    height: 100vh; 
+    position: relative; 
+    margin-left: calc(50% - 50vw); 
+    width: 100vw; 
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; 
+}
+
+.hero-overlay-inicio {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px; 
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2; 
+}
+/* El "overlay" o franja semi-transparente (EXTREMO A EXTREMO, CENTRADA) */
+.hero-overlay-inicio {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px; 
+    
+    color: white; 
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.hero-overlay-inicio h1 {
+    color: white; 
+    font-size: 4.5em; 
+    margin: 10px 0 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-overlay-inicio p {
     color: white;
     font-size: 1.5em;
     margin: 2px 0;
@@ -2253,7 +2331,7 @@ body {
 
 .hero-overlay-portal-familiar h1 {
     color: white; 
-    /* 🔄 Cambio: Tamaño de fuente grande como en el ejemplo de Institución */
+    /*  Cambio: Tamaño de fuente grande como en el ejemplo de Institución */
     font-size: 4.5em; 
     margin: 10px 0 5px; /* Pequeño margen entre título y subtítulo */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
@@ -2261,7 +2339,7 @@ body {
 
 .hero-overlay-portal-familiar p {
     color: white;
-    /* 🔄 Cambio: Tamaño de fuente como en el ejemplo de Institución */
+    /*  Cambio: Tamaño de fuente como en el ejemplo de Institución */
     font-size: 1.5em;
     margin: 2px 0;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
@@ -2300,7 +2378,7 @@ body {
 .centered-title {
     font-size: 2.5rem; /* Tamaño del título */
     margin-bottom: 20px;
-    color: #1A2F4E; /* Color oscuro para el título */
+    color: #000000; /* Color oscuro para el título */
 }
 
 .centered-text {
@@ -2777,7 +2855,7 @@ padding: 50px 20px 20px 20px;
 }
 
 .back-to-portal-link:hover {
-    color: #4a77a9;
+    color: #98A8C3;
 }
 
 /* Estilos para la Notificación de Éxito */
@@ -2897,3 +2975,541 @@ padding: 50px 20px 20px 20px;
     padding-left: 5px; 
 }
 
+/* ======================================= */
+/* 1. Declaración de Fuentes Locales @font-face */
+/* ======================================= */
+
+/* --- JetBrains Mono --- */
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fuentes/JetBrainsMono-Regular.woff2') format('woff2'); 
+    font-weight: 400; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fuentes/JetBrainsMono-Bold.woff2') format('woff2'); 
+    font-weight: 700; 
+    font-style: normal;
+}
+
+/* --- Open Sans --- */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fuentes/OpenSans-Regular.woff2') format('woff2'); 
+    font-weight: 400; 
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fuentes/OpenSans-Bold.woff2') format('woff2'); 
+    font-weight: 700; 
+    font-style: normal;
+}
+
+
+/* ======================================= */
+/* 2. Estilos Generales y Tipografía */
+/* ======================================= */
+
+body {
+    /* Open Sans para el texto cooperativo */
+    font-family: 'Open Sans', sans-serif; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ffffff; 
+    color: #000000;
+    font-weight: 400; 
+}
+
+h1, h2 {
+    /* JetBrains Mono para títulos */
+    font-family: 'JetBrains Mono', monospace; 
+    margin-top: 0;
+    font-weight: 700; /* JetBrains Mono Bold */
+}
+
+/* ======================================= */
+/* 3. Encabezado/Banner Principal (VIDEO) */
+/* ======================================= */
+
+.hero-tecnicaturas {
+    height: 100vh; 
+    position: relative; 
+    margin-left: calc(50% - 50vw); 
+    width: 100vw; 
+    overflow: hidden;
+    margin-bottom: 50px; 
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; 
+}
+
+.hero-overlay-tecnicaturas {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    padding: 15px 20px; 
+    
+    color: white; 
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2; 
+}
+
+.hero-overlay-tecnicaturas h1 {
+    color: white; 
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700; 
+    font-size: 4.5em; 
+    margin: 10px 0 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-overlay-tecnicaturas p {
+    color: white;
+    font-family: 'Open Sans', sans-serif; 
+    font-weight: 400; 
+    font-size: 1.5em;
+    margin: 2px 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+
+
+
+/* ========================================================= */
+/* 5. NUEVOS ESTILOS PARA SECCIONES DE TECNICATURAS (2 COLUMNAS) */
+/* ========================================================= */
+
+/* --- ESTILOS BASE DE SECCIONES INFORMATIVAS --- */
+
+.info-content {
+    display: flex; 
+    max-width: 1400px; 
+    margin: 0 auto;
+    gap: 80px;
+    align-items: center; 
+    padding: 0 40px;
+}
+.info-section {
+    /* Aumentamos el padding vertical */
+    padding: 60px 0; 
+    background-color: #ffffff; /* Fondo blanco para las secciones */
+}
+
+/* Estilo para las dos columnas */
+.info-image {
+    flex: 0 0 45%; 
+    /* *************************************** */
+    /* CAMBIO CLAVE 1: Altura fija para el contenedor */
+    /* *************************************** */
+    height: 350px; /* Puedes ajustar este valor si lo deseas */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde */
+    border-radius: 8px; /* Pequeño redondeo al contenedor */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.info-text {
+    /* El texto ocupa el 55% restante */
+    flex: 1 1 55%; 
+    min-width: 0; 
+    /* CLAVE: Alinea el contenido del bloque de texto al centro */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-img {
+    width: 100%; 
+    height: 100%; 
+    display: block;
+    /* *************************************** */
+    /* CAMBIO CLAVE 2: Asegura que la imagen cubra el contenedor */
+    /* *************************************** */
+    object-fit: cover; 
+    /* Quitamos el box-shadow y border-radius de la imagen, ya están en .info-image */
+    border-radius: 8px; 
+}
+
+/* Estilos de Texto */
+.info-text h2 {
+    /* Color a negro */
+    color: #000000; 
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace; 
+    /* Alineado al centro */
+    text-align: center; 
+}
+
+.info-text p {
+    color: #4a4a4a; 
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif; 
+    /* Alineado al centro */
+    text-align: center; 
+}
+
+.cta-link {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    /* Color a negro */
+    color: #000000; 
+    font-weight: 700; /* Open Sans Bold */
+    text-decoration: none;
+    font-size: 1.15em; 
+    margin-top: 15px;
+    width: fit-content; 
+    /* Centra el enlace dentro del contenedor .info-text */
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.cta-link .fas.fa-arrow-right {
+    font-size: 1.2em; 
+    margin-left: 10px; 
+    margin-right: 0; 
+}
+
+.cta-link:hover {
+    color: #4a4a4a; /* Un color gris sutil al pasar el mouse */
+}
+
+/* --- CLAVE PARA LAS SECCIONES INVERTIDAS (No requiere cambios específicos si todo está centrado) --- */
+
+.reverse-row .info-content {
+    /* Invierte el orden: Texto (1) - Imagen (2) */
+    flex-direction: row-reverse;
+}
+
+
+/* ======================================= */
+/* 6. Responsividad (Móviles) */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    
+    /* Reglas para el encabezado con video (Tecnicaturas) */
+    .hero-tecnicaturas {
+        height: 50vh; 
+        margin-bottom: 30px; 
+    }
+    
+    .hero-overlay-tecnicaturas h1 {
+        font-size: 2.5em; 
+    }
+
+    .hero-overlay-tecnicaturas p {
+        font-size: 1.2em; 
+    }
+
+    /* Reglas para el encabezado de Institución (si se usa) */
+    .institucion-header {
+        height: 40vh; 
+    }
+
+    .header-overlay h1 {
+        font-size: 2.5em;
+    }
+    
+    .header-overlay p {
+        font-size: 1.2em;
+    }
+
+    /* Reglas para las nuevas secciones (2 columnas) */
+    .info-content,
+    .reverse-row .info-content {
+        flex-direction: column; 
+        gap: 30px;
+        padding: 0 20px; 
+    }
+
+    .info-image, .info-text {
+        width: 100%; 
+        flex: 0 0 auto; 
+    }
+    
+    /* *************************************** */
+    /* CAMBIO CLAVE 3: Altura en móvil */
+    /* *************************************** */
+    .info-image {
+        height: 250px; /* Ajustamos la altura para dispositivos móviles */
+    }
+
+    .info-text h2,
+    .info-text p {
+        text-align: center; /* Asegura el centrado del texto en móviles */
+    }
+    
+    .cta-link {
+        /* Centra el enlace: ocupa 100% de ancho y centra su contenido */
+        width: 100%; 
+        justify-content: center;
+    }
+}
+
+/* ======================================= */
+/* 1. Declaración de Fuentes Locales @font-face */
+/* ======================================= */
+
+/* --- JetBrains Mono --- */
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fuentes/JetBrainsMono-Regular.woff2') format('woff2'); 
+    font-weight: 400; 
+    font-style: normal;
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('fuentes/JetBrainsMono-Bold.woff2') format('woff2'); 
+    font-weight: 700; 
+    font-style: normal;
+}
+
+/* --- Open Sans --- */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fuentes/OpenSans-Regular.woff2') format('woff2'); 
+    font-weight: 400; 
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fuentes/OpenSans-Bold.woff2') format('woff2'); 
+    font-weight: 700; 
+    font-style: normal;
+}
+
+
+/* ======================================= */
+/* 2. Estilos Generales y Tipografía */
+/* ======================================= */
+
+body {
+    /* Fondo BLANCO y Open Sans para el texto por defecto */
+    font-family: 'Open Sans', sans-serif; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ffffff; /* ¡Fondo Blanco Solicitado! */
+    color: #000000; /* Texto principal oscuro */
+    font-weight: 400; 
+    /* Necesario para posicionar el toast */
+    position: relative; 
+}
+
+/* Títulos y Subtítulos de Secciones (Ej: Introducción, Plan de estudio) */
+h1, h2 {
+    /* JetBrains Mono para títulos */
+    font-family: 'JetBrains Mono', monospace; 
+    margin-top: 0;
+    font-weight: 700; /* Negrita (Bold) */
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em; 
+}
+
+h2 {
+    font-size: 2em; 
+    margin-bottom: 20px;
+}
+
+/* Estilos de párrafos y listas (Texto principal) */
+p, ul {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Contenedor centralizado para el contenido de las secciones */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilo base para todas las secciones de contenido */
+.section {
+    padding: 40px 0;
+}
+
+/* ======================================= */
+/* 3. Encabezado/Banner Principal (VIDEO) */
+/* ======================================= */
+
+.hero-tecnicaturas {
+    height: 100vh; 
+    position: relative; 
+    margin-left: calc(50% - 50vw); 
+    width: 100vw; 
+    overflow: hidden;
+    margin-bottom: 50px; 
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1; 
+
+}
+
+.hero-overlay-tecnicaturas {
+    width: 100%; 
+    min-height: 120px;
+    background-color: rgba(0, 0, 0, 0.6); 
+    
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0; 
+    right: 0; 
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    padding: 15px 20px; 
+    
+    color: white; 
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 2; 
+}
+
+.hero-overlay-tecnicaturas h1 {
+    color: white; 
+    font-size: 4.5em; 
+    margin: 10px 0 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+
+/* ======================================= */
+/* 4. Estilos Específicos de la Carrera */
+/* ======================================= */
+
+/* Estilo para secciones oscuras (Plan de Estudio, Pasantías) */
+.dark-section {
+    /* Color Azul/Gris oscuro de tu imagen */
+    background-color: #1A2F4E; 
+    color: white;
+    padding: 40px 0;
+    /* Para que la sección ocupe el ancho completo */
+    margin-left: calc(50% - 50vw); 
+    width: 100vw;
+}
+
+.dark-section h2 {
+    color: white;
+}
+
+.dark-section ul {
+    list-style: none; /* Quita los puntos por defecto */
+    padding-left: 0;
+}
+
+.dark-section ul li {
+    margin-bottom: 20px;
+}
+
+/* Contenedor del botón */
+.button-center {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Botón de Descarga */
+.btn-download {
+    /* Importante: Botón es ahora un <button>, no un <a> */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Centra el contenido del botón */
+    padding: 12px 25px;
+    background-color: white;
+    color: #1A2F4E; /* Color inverso al fondo */
+    text-decoration: none;
+    font-weight: 700;
+    border: none; /* Quitar borde por defecto del botón */
+    cursor: pointer; /* Indica que es clickeable */
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-download:hover {
+    background-color: #f0f0f0; /* Ligeramente más oscuro en hover */
+    transform: translateY(-1px);
+}
+
+.btn-download i {
+    margin-right: 10px;
+}
+
+
+/* ======================================= */
+/* 5. ESTILOS DE NOTIFICACIÓN (TOAST) */
+/* ======================================= */
+.toast {
+    visibility: hidden; /* Oculto por defecto */
+    min-width: 250px;
+    background-color: #4CAF50; /* Verde para éxito */
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    bottom: 30px; /* 30px desde el borde inferior */
+    transform: translateX(-50%) translateY(100px); /* Inicialmente fuera de la pantalla */
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.toast i {
+    margin-right: 8px;
+}
+
+/* Clase que se añade con JS para mostrar la notificación */
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Se desliza hacia arriba */
+}

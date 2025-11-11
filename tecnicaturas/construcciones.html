@@ -20,8 +20,11 @@
             <input type="text" id="searchInput" placeholder="Buscar..." class="search-input">
           </div>
             <img src="../imagenes/lupa.png" alt="buscar icon" id="searchToggle">
-            <a href="inicioyregistro/login.html"><img src="../imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
+            <a href="../inicioyregistro/login.html"><img src="../imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
+            <a href="../index.html"> 
             <img src="../imagenes/logo.png" alt="logo icon"> 
+        </a>
+
           </div>
     </header>
 
@@ -40,9 +43,75 @@
             </div>
     </div>
 </nav>
-    <main>
-        
-    </main>
+<header class="hero-tecnicaturas">
+    
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="../imagenes/menuconstrucciones.mp4" type="video/mp4"> 
+    </video>
+
+    <div class="hero-overlay-tecnicaturas">
+        <h1>Construcciones</h1>
+    </div>
+</header>
+
+<!-- Contenido principal de la tecnicatura -->
+<main class="content-sections"> 
+    
+    <!-- 1. INTRODUCCIÓN (Fondo Blanco) -->
+    <section class="section container">
+        <!-- H2 para subtítulos de sección, con estilo JetBrains Mono -->
+        <h2>Introducción</h2> 
+        <p>La Tecnicatura en Construcciones se centra en la planificación, ejecución y supervisión de obras civiles y arquitectónicas, formando técnicos competentes en el diseño de estructuras seguras y sostenibles. A través de materias como topografía, materiales de construcción y gestión de proyectos, los estudiantes aprenden a utilizar software como AutoCAD para elaborar planos y presupuestos, asegurando el cumplimiento de normativas locales e internacionales. Esta carrera es esencial en el sector de la construcción, donde los egresados participan en el desarrollo de infraestructuras físicas que soportan tecnologías modernas, como el cableado estructurado para redes en edificios de oficinas, promoviendo entornos funcionales y eficientes para comunidades y empresas.</p>
+    </section>
+
+    <!-- 2. PLAN DE ESTUDIO (Fondo Oscuro) -->
+    <section class="dark-section">
+        <!-- Para secciones que ocupan todo el ancho, el contenido se centra en un contenedor interno -->
+        <div class="container">
+            <h2>Plan de estudio</h2>
+            <ul>
+                <!-- H3 para sub-ítems, con estilo Open Sans Bold (como en la captura) -->
+                <li>
+                    <p>Materias clave: Topografía y Levantamientos (uso de software como AutoCAD), Estructuras (cálculo de cargas y materiales), Instalaciones (eléctricas y sanitarias), Gestión de Proyectos (planificación con Gantt) y Normativas (códigos de construcción).</p>
+                </li>
+                <li>
+                    <p>Objetivos: Preparar técnicos para diseñar y supervisar obras, incluyendo infraestructura para telecomunicaciones (ej. ductos para cableado de redes en edificios de 100 empleados).</p>
+                </li>
+            </ul>
+            <div class="button-center">
+                <!-- Botón con ID para el JS -->
+                <button id="btn-descargar" class="btn-download">
+                    <i class="fas fa-download"></i> Descargar Plan de estudio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PRÁCTICAS (Fondo Blanco) -->
+    <section class="section container">
+        <h2>Prácticas profesionalizantes</h2>
+        <p>Durante la carrera, realizarás prácticas clave:</p>
+        <ul>
+            <li>En obras reales o labs, aplicando medición de terrenos, diseño de planos (ej. layout para cableado estructurado en oficinas), y supervisión de construcción (instalación de conduits para fibra óptica o Ethernet en edificios).</li>
+            <li> Duración: 80-200 horas. (80 horas en el primer año de la materia, y 120 horas en el segundo año de la materia, por lo tanto, los alumnos deben juntar 200 horas a lo largo de la materia) con supervisión de profesores.</li>
+        </ul>
+    </section>
+
+    <!-- 4. PASANTÍAS (Fondo Oscuro) -->
+    <section class="dark-section">
+        <div class="container">
+            <h2>Pasantías</h2>
+            <ul>
+                <li>En constructoras o estudios de arquitectura (ej. empresas como TechCorp para obras de oficinas con redes integradas), asistiendo en proyectos de ampliación (ej. cableado para 100 PCs en departamentos).</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+<!-- Contenedor para la notificación de éxito -->
+<div id="toast-notification" class="toast">
+    <i class="fas fa-check-circle"></i>Archivo descargado con éxito!
+</div>
             <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-column">

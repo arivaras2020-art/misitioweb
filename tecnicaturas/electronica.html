@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../estilos/main.css">
     <title>Electronica</title>
@@ -20,8 +20,11 @@
             <input type="text" id="searchInput" placeholder="Buscar..." class="search-input">
           </div>
             <img src="../imagenes/lupa.png" alt="buscar icon" id="searchToggle">
-            <a href="inicioyregistro/login.html"><img src="../imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
+            <a href="../inicioyregistro/login.html"><img src="../imagenes/iniciosesion.png" alt="inicio sesion icon"></a>
+            <a href="../index.html"> 
             <img src="../imagenes/logo.png" alt="logo icon"> 
+        </a>
+
           </div>
     </header>
 
@@ -40,9 +43,76 @@
             </div>
     </div>
 </nav>
-    <main>
-        
-    </main>
+
+<header class="hero-tecnicaturas">
+    
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="../imagenes/menuelectronica.mp4" type="video/mp4"> 
+    </video>
+
+    <div class="hero-overlay-tecnicaturas">
+        <h1>Electrónica</h1>
+    </div>
+</header>
+
+<!-- Contenido principal de la tecnicatura -->
+<main class="content-sections"> 
+    
+    <!-- 1. INTRODUCCIÓN (Fondo Blanco) -->
+    <section class="section container">
+        <!-- H2 para subtítulos de sección, con estilo JetBrains Mono -->
+        <h2>Introducción</h2> 
+        <p>La Tecnicatura en Electrónica se enfoca en el estudio y desarrollo de circuitos y dispositivos electrónicos, preparando a los estudiantes para innovar en el diseño, reparación y optimización de sistemas digitales y analógicos. Incluyendo temas como microelectrónica, señales y sistemas embebidos, los egresados adquieren habilidades en herramientas como osciloscopios y software de simulación (ej: SPICE), permitiendo la creación de componentes para telecomunicaciones y automatización. Esta carrera es fundamental en la era digital, donde los técnicos contribuyen al avance de tecnologías como las redes inalámbricas y sensores IoT, asegurando la conectividad y funcionalidad en dispositivos para aplicaciones industriales y cotidianas.</p>
+    </section>
+
+    <!-- 2. PLAN DE ESTUDIO (Fondo Oscuro) -->
+    <section class="dark-section">
+        <!-- Para secciones que ocupan todo el ancho, el contenido se centra en un contenedor interno -->
+        <div class="container">
+            <h2>Plan de estudio</h2>
+            <ul>
+                <!-- H3 para sub-ítems, con estilo Open Sans Bold (como en la captura) -->
+                <li>
+                    <p>Materias como Circuitos Electrónicos (diseño con SPICE), Microelectrónica (transistores y chips), Sistemas Digitales (lógica y FPGA), Comunicaciones (señales y modulación) y Robótica (sensores y actuadores).</h3>
+                </li>
+                <li>
+                    <p>Objetivos: Capacitar para desarrollar y reparar dispositivos electrónicos, incluyendo componentes de redes (ej. interfaces Ethernet en dispositivos para 100 usuarios).</h3>
+                </li>
+            </ul>
+            <div class="button-center">
+                <!-- Botón con ID para el JS -->
+                <button id="btn-descargar" class="btn-download">
+                    <i class="fas fa-download"></i> Descargar Plan de estudio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. PRÁCTICAS (Fondo Blanco) -->
+    <section class="section container">
+        <h2>Prácticas profesionalizantes</h2>
+        <p>Durante la carrera, realizarás prácticas clave:</p>
+        <ul>
+            <li>En labs o talleres, ensamblando circuitos (ej. prototipos de interfaces para switches), programación de microcontroladores (Arduino para monitoreo de redes), y pruebas de señales (osciloscopios para diagnosticar cables Ethernet).</li>
+            <li> Duración: 80-200 horas. (80 horas en el primer año de la materia, y 120 horas en el segundo año de la materia, por lo tanto, los alumnos deben juntar 200 horas a lo largo de la materia) con supervisión de profesores.</li>
+        </ul>
+    </section>
+
+    <!-- 4. PASANTÍAS (Fondo Oscuro) -->
+    <section class="dark-section">
+        <div class="container">
+            <h2>Pasantías</h2>
+            <ul>
+                <li>En laboratorios de electrónica o empresas tech (ej. Techcorp para reparación de hardware en IT), asistiendo en diseño de circuitos (ej. módulos para routers en redes de 100 PCs).</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+<!-- Contenedor para la notificación de éxito -->
+<div id="toast-notification" class="toast">
+    <i class="fas fa-check-circle"></i>Archivo descargado con éxito!
+</div>
             <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-column">
@@ -126,6 +196,6 @@
             </div>
         </div>
     </footer>
-    <script src="../scripts/script.js"></script>
+<script src="../scripts/script.js"></script>
 </body>
-</html>l
+</html>
