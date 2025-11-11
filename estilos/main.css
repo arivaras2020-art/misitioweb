@@ -3513,3 +3513,210 @@ p, ul {
     opacity: 1;
     transform: translateX(-50%) translateY(0); /* Se desliza hacia arriba */
 }
+
+.boton-preinscripcion {
+    /* Estilo del botón */
+    display: inline-block; /* Permite definir ancho y alto */
+    padding: 10px 20px; /* Relleno interior */
+    margin-top: 20px; /* Separación del texto de arriba */
+    background-color: #1A2F4E; /* Color de fondo (ejemplo: azul) */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s; /* Transición para el hover */
+}
+
+.boton-preinscripcion:hover {
+    background-color: #041a31; /* Color más oscuro al pasar el ratón */
+}
+
+
+/* ESTILOS GENERALES DEL CONTENEDOR */
+.preinscripcion-container {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Fondo gris claro */
+}
+
+/* HEADER SUPERIOR */
+.preinscripcion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+.titulo-siu {
+    color: #1A2F4E; /* Azul primario */
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+}
+.btn-finalizar {
+    background-color: #1A2F4E;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* CUERPO PRINCIPAL: LAYOUT DE DOS COLUMNAS */
+.preinscripcion-body {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 80vh;
+    background-color: white;
+}
+
+/* BARRA LATERAL (ASIDE) */
+.sidebar-pasos {
+    width: 250px; /* Ancho fijo para la barra lateral */
+    padding: 20px 0;
+    background-color: #eee; /* Gris ligeramente más oscuro */
+    border-right: 1px solid #ddd;
+    flex-shrink: 0; /* Evita que la barra lateral se encoja */
+}
+.menu-pasos {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+.menu-pasos li a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+.menu-pasos li a:hover {
+    background-color: #ddd;
+}
+.menu-pasos .paso-activo {
+    background-color: #1A2F4E; /* Paso activo en azul */
+}
+.menu-pasos .paso-activo a {
+    color: white;
+    font-weight: bold;
+}
+.mensaje-sidebar {
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #666;
+    border-top: 1px solid #ddd;
+}
+
+/* CONTENIDO PRINCIPAL (MAIN) */
+.contenido-principal {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 20px 30px;
+}
+.seccion-documentacion h2 {
+    color: #555;
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    font-weight: normal;
+}
+
+/* BLOQUES DE ARCHIVO */
+.bloque-archivo {
+    background-color: #f8f8f8; /* Gris muy claro para los bloques */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.bloque-archivo h3 {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+.descripcion-archivo {
+    font-size: 14px;
+    color: #555;
+    margin: 0 0 15px 0;
+}
+
+/* Estilos base para los botones de acción */
+.acciones-archivo button {
+    margin-right: 10px; /* Separación entre botones */
+    padding: 10px 15px;
+    border: 1px solid #ccc; /* Añadir un borde para los botones blancos */
+    cursor: pointer;
+    border-radius: 6px; /* Bordes redondeados más suaves */
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+/* 1. Botón DESCARGAR: Fondo azul, Texto blanco */
+.acciones-archivo .descargar {
+    background-color: #1A2F4E; /* Azul fuerte (como el color del SIU) */
+    color: white; /* Texto blanco */
+    border-color: #1A2F4E;
+}
+
+/* 2. Botón MODIFICAR y ELIMINAR: Fondo blanco, Texto azul oscuro */
+.acciones-archivo .modificar,
+.acciones-archivo .eliminar {
+    background-color: white; /* Fondo blanco */
+    color: #0056b3; /* Texto azul oscuro */
+    border-color: #1A2A3E; /* Borde azul oscuro */
+}
+
+/* Estilos de Iconos (para dar un pequeño espacio entre icono y texto) */
+.acciones-archivo button i {
+    margin-right: 5px;
+}
+
+/* Hover effects */
+.acciones-archivo .descargar:hover {
+    background-color: #1A2F4E;
+    border-color: #98A8C3;
+}
+
+.acciones-archivo .modificar:hover,
+.acciones-archivo .eliminar:hover {
+    background-color: #f0f8ff; /* Un ligero color al pasar el mouse */
+}
+
+/* ESTILOS DE BOTONES BASE (se mantienen del paso anterior) */
+/* ... (Mantén los estilos base de .acciones-archivo button si los estás usando) ... */
+
+/* 1. Botón DESCARGAR: Fondo azul, Texto blanco */
+.acciones-archivo .descargar {
+    background-color: #1A2F4E; /* Azul fuerte */
+    color: white; /* Texto blanco */
+    border-color: #1A2F4E;
+}
+.acciones-archivo .descargar:hover {
+    background-color: #1A2F4E;
+    border-color: #1A2F4E;
+}
+
+/* 2. Botón SELECCIONAR ARCHIVO: APLICAMOS LOS MISMOS ESTILOS */
+.btn-seleccion {
+    /* Mismos estilos que el botón Descargar */
+    background-color: #1A2F4E; /* Fondo azul */
+    color: white; /* Texto blanco */
+    border: 1px solid #1A2F4E; /* Borde azul */
+    padding: 10px 15px;
+    border-radius: 6px; 
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px; /* Ajustamos el tamaño de fuente para que coincida */
+    transition: all 0.2s ease;
+}
+
+/* Efecto Hover para el botón Seleccionar archivo */
+.btn-seleccion:hover {
+    background-color: #98A8C3;
+    border-color: #98A8C3;
+}
+
+/* Nota: Los estilos para Modificar y Eliminar se mantienen como los definiste antes. */

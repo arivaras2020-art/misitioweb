@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../estilos/main.css">
-    <title>Contacto</title>
+    <title>Preinscripcion</title>
 </head>
 <body>
-      <header class="main-header">
+                <header class="main-header">
         <div class="menu-icon" id="menuIcon">
             <div class="bar"></div>
             <div class="bar"></div>
@@ -44,62 +44,88 @@
     </div>
 </nav>
 
-<div class="hero-contacto">
-    
-    <video autoplay muted loop playsinline class="hero-video">
-        <source src="../imagenes/menucontacto.mp4" type="video/mp4">
-    </video>
+<main>
+    <div class="preinscripcion-container">
 
-    <div class="hero-overlay-portal-docente">
-        <h1>Contacto</h1>
-        <p>¡Pongase en contacto con nosotros!</p>
+    <header class="preinscripcion-header">
+        <h1 class="titulo-siu">Preinscripción</h1>
+        <button class="btn-finalizar">
+            <span class="icono-finalizar"></span> Finalizar
+        </button>
+    </header>
+
+    <div class="preinscripcion-body">
+
+        <aside class="sidebar-pasos">
+            <ul class="menu-pasos">
+                <li><a href="#">Propuesta</a></li>
+                <li><a href="#">Datos principales</a></li>
+                <li><a href="#">Discapacidad</a></li>
+                <li><a href="#">Datos de salud</a></li>
+                <li class="paso-activo"><a href="#">Documentación</a></li>
+                <li><a href="#">Presentación de documentación</a></li>
+                <li><a href="#">Datos Complementarios</a></li>
+            </ul>
+
+            <div class="mensaje-sidebar">
+                <p>Completá los campos de este formulario. Una vez completado podés imprimirlo y presentarte en la sede, o podés guardarlo e imprimirlo posteriormente.</p>
+                <p>Los campos marcados con (*) son obligatorios.</p>
+            </div>
+        </aside>
+
+        <main class="contenido-principal">
+            
+            <section class="seccion-documentacion">
+                <h2>Documentación</h2>
+                <p>Las extensiones de archivo soportadas son: <strong>pdf, doc, docx, odt, png, jpg, jpeg, gif, bmp</strong></p>
+                <p>El tamaño máximo permitido por archivo es: <strong>8 MB</strong></p>
+            </section>
+
+            <div class="bloque-archivo">
+                <h3>09-certificación de estudios secundarios (*)</h3>
+                <p class="descripcion-archivo">Certificación o Título de estudios secundarios completos, en archivo pdf. Certificación provisoria extendida por las autoridades del Colegio donde conste haber cursado el último año, estar cursando o rindiendo materias. Extranjeros: Título apostillado.</p>
+                
+                <div class="archivo-cargado">
+                    <div class="miniatura-archivo">
+                        Archivo cargado
+                        <small>(vista previa no disponible)</small>
+                    </div>
+<div class="acciones-archivo">
+    <button class="btn-accion descargar">
+        <i class="fas fa-download"></i> Descargar
+    </button>
+    
+    <button class="btn-accion modificar">
+        <i class="fas fa-pen-to-square"></i> Modificar
+    </button>
+    
+    <button class="btn-accion eliminar">
+        <i class="fas fa-trash-can"></i> Eliminar
+    </button>
+</div>
+                </div>
+            </div>
+
+            <div class="bloque-archivo">
+                <h3>09-certificado de título en trámite</h3>
+                <p class="descripcion-archivo">COMPROBANTE DE TÍTULO EN TRÁMITE</p>
+                <button class="btn-seleccion">Seleccionar archivo</button>
+            </div>
+
+            <div class="bloque-archivo">
+                <h3>09-dni anverso (*)</h3>
+                </div>
+
+        </main>
     </div>
 </div>
+</main>
 
-    <div class="info-container">
+                <a href="../institucion/index.html" class="back-to-portal-link">
+               <i class="fas fa-arrow-left"></i> Volver a Institución</a>
 
-        <div class="columna">
-            <h3>Contactenos</h3>
-            <hr>
-            <p>2966-427707</p>
-            <p><a href="mailto:industrial4arg@gmail.com">industrial4arg@gmail.com</a></p>
-            <p>2966-427615</p>
-            <p><a href="mailto:industrial4taller@gmail.com">industrial4taller@gmail.com</a></p>
-        </div>
 
-        <div class="columna">
-            <h3>Ubicación</h3>
-            <hr>
-            <p>Mitre 291, Río Gallegos</p>
-            <p>Gdor. Mayer 300, Río Gallegos</p>
-        </div>
-
-        <div class="columna">
-            <h3>Horario de atención</h3>
-            <hr>
-            <p><span>Teoría:</span> 8:00 AM - 22:00 PM</p>
-            <p><span>Taller:</span> 8:00 AM - 17:00PM</p>
-        </div>
-    </div>
-</div> <section class="formulario-container">
-        <h3 class="form-title">Envíanos un mensaje</h3>
-        
-        <form action="" method="POST"> 
-            
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellido" required>
-            <input type="email" id="email" name="email" placeholder="Correo electronico" required>
-            <textarea id="consulta" name="consulta" rows="8" placeholder="Consulta" required></textarea>
-
-            <div class="submit-button-container">
-                <button type="submit">Enviar mensaje</button>
-            </div>
-            </form>
-    </section>
-<div id="notificacion-envio" class="notificacion-oculta">
-        ¡Mensaje enviado con éxito!, gracias por comunicarse con nosotros.
-    </div>
-
-        <footer class="main-footer">
+            <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-column">
                 <h3><a href="../institucion/index.html">Institución</a></h3>
@@ -128,26 +154,26 @@
                 </ul>
             </div>
 
-            <div class="footer-column">
-                <h3><a href="../formularios/verificacionpf.html">Portal Familiar</a></h3>
-                <ul>
-                    <li><a href="../formularios/verificacionpf.html">Boletín</a></li>
-                    <li><a href="../formularios/verificacionpf.html">Asistencia</a></li>
-                    <li><a href="../formularios/verificacionpf.html">Informe orientador</a></li>
-                    <li><a href="../formularios/verificacionpf.html">Comunicado del día</a></li>
-                </ul>
-            </div>
+ <div class="footer-column">
+<h3><a href="../formularios/verificacionpf.html">Portal Familiar</a></h3>
+ <ul>
+<li><a href="../formularios/verificacionpf.html">Boletín</a></li>
+<li><a href="../formularios/verificacionpf.html">Asistencia</a></li>
+ <li><a href="../formularios/verificacionpf.html">Informe orientador</a></li>
+ <li><a href="../formularios/verificacionpf.html">Comunicado del día</a></li>
+ </ul>
+ </div>
 
-            <div class="footer-column">
-                <h3><a href="../formularios/verificacionpd.html">Portal Docente</a></h3>
-                <ul>
-                    <li><a href="../formularios/verificacionpd.html">Subir notas</a></li>
-                    <li><a href="../formularios/verificacionpd.html">Control de asistencia</a></li>
-                    <li><a href="../formularios/verificacionpd.html">Informe orientador</a></li>
-                    <li><a href="../formularios/verificacionpd.html">Avisos institucionales</a></li>
-                </ul>
-            </div>
-        </div>
+ <div class="footer-column">
+<h3><a href="../formularios/verificacionpd.html">Portal Docente</a></h3>
+<ul>
+ <li><a href="../formularios/verificacionpd.html">Subir notas</a></li>
+ <li><a href="../formularios/verificacionpd.html">Control de asistencia</a></li>
+ <li><a href="../formularios/verificacionpd.html">Informe orientador</a></li>
+<li><a href="../formularios/verificacionpd.html">Avisos institucionales</a></li>
+</ul>
+ </div>
+ </div>
 
 <hr class="footer-divider">
 
