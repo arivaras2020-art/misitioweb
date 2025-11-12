@@ -3719,4 +3719,96 @@ p, ul {
     border-color: #98A8C3;
 }
 
-/* Nota: Los estilos para Modificar y Eliminar se mantienen como los definiste antes. */
+/* --- ESTILOS PARA EL DISEÑO TÍTULO > IMAGEN > TEXTO --- */
+
+.stacked-section {
+    padding: 60px 0; /* Espacio vertical entre las secciones */
+    background-color: #fff; /* Fondo blanco */
+}
+
+/* TÍTULO (Primer elemento, centrado) */
+.stacked-section h2 {
+    font-size: 3em; 
+    text-align: center;
+    margin-bottom: 25px; /* Espacio entre el título y la imagen */
+    font-family: 'JetBrainsMono', monospace; /* Fuente monoespaciada */
+    color: #000000;
+}
+
+/* Contenedor que centra la Imagen y el Texto */
+.info-content.stacked-content {
+    /* CLAVE: Limita el ancho del contenido para que no ocupe toda la pantalla */
+    max-width: 800px; 
+    margin: 0 auto; /* Centra el bloque de contenido */
+    display: block; /* Asegura que los elementos se apilen (imagen, luego texto) */
+    padding: 0 20px;
+}
+
+/* IMAGEN */
+.info-image.full-width-image {
+    width: 100%; /* Ocupa el 100% del contenedor de 800px */
+    margin-bottom: 30px; /* Espacio entre la imagen y el texto */
+}
+
+.stacked-content .section-img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    /* Estilos de la imagen: puede tener sombra o bordes, ajusta según necesites */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+}
+
+/* BLOQUE DE TEXTO */
+.info-text.center-text {
+    width: 100%;
+}
+
+.center-text p {
+    color: #4a4a4a;
+    font-size: 1.1em;
+    line-height: 1.8; /* Mayor interlineado para facilidad de lectura */
+    margin-bottom: 15px;
+    /* CLAVE: Texto Justificado */
+    text-align: justify; 
+    text-justify: inter-word; /* Ayuda a la justificación en algunos navegadores */
+    font-family: 'OpenSauce', sans-serif; /* Usa la fuente de cuerpo de texto */
+}
+
+/* --- Media Queries (Móviles) --- */
+@media (max-width: 768px) {
+    .stacked-section {
+        padding: 40px 0;
+    }
+    .stacked-section h2 {
+        font-size: 2em;
+    }
+    .info-content.stacked-content {
+        padding: 0 15px;
+    }
+    /* En móviles, la justificación a veces se ve mal, es mejor centrar o alinear a la izquierda */
+    .center-text p {
+        text-align: left; 
+    }
+}
+
+/* --- ESTILOS PARA EL BOTÓN DE REGRESO --- */
+
+.back-to-home {
+    padding: 40px 0 80px 0; /* Espaciado generoso debajo del último contenido */
+    text-align: center; /* Centra el contenido de texto (el enlace) */
+}
+
+.centered-cta {
+    /* Reutilizamos el estilo del enlace, pero anulamos 'justify-content: flex-start' */
+    justify-content: center; 
+    /* Aseguramos que el contenedor del enlace ocupe todo el ancho para que el 'justify-content: center' funcione */
+    width: 100%; 
+}
+
+/* Modificamos el ícono para que sea una flecha izquierda */
+.centered-cta .fas.fa-arrow-circle-left {
+    font-size: 1.5em; 
+    margin-right: 10px; 
+    color: #000000; 
+}
