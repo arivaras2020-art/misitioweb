@@ -486,60 +486,6 @@ document.addEventListener('DOMContentLoaded', () => {
 }); // FIN DEL DOMContentLoaded
 
 
-/*****************************
- * CARRUSEL AUTOMÁTICO 1 (INDEX)
- *****************************/
-let heroIndex = 0;
-function showSlidesHero() {
-    const slides = document.getElementsByClassName("carousel-slide-hero");
-    const dots = document.getElementsByClassName("dot-hero");
-    if (slides.length === 0) return;
-
-    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-    for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
-
-    heroIndex++;
-    if (heroIndex > slides.length) heroIndex = 1;
-
-    slides[heroIndex - 1].style.display = "block";
-    dots[heroIndex - 1].classList.add("active");
-
-    setTimeout(showSlidesHero, 4000);
-}
-
-function currentSlideHero(n) {
-    heroIndex = n - 1;
-    showSlidesHero();
-}
-
-document.addEventListener("DOMContentLoaded", showSlidesHero);
-
-
-/*****************************
- * CARRUSEL AUTOMÁTICO 2 (INSTITUCION)
- *****************************/
-let vidaIndex = 0;
-function showSlidesVida() {
-    const slides = document.getElementsByClassName("carousel-slide-vida");
-    const dots = document.getElementsByClassName("dot-vida");
-    if (slides.length === 0) return;
-
-    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-    for (let i = 0; i < dots.length; i++) dots[i].classList.remove("active");
-
-    vidaIndex++;
-    if (vidaIndex > slides.length) vidaIndex = 1;
-
-    slides[vidaIndex - 1].style.display = "block";
-    dots[vidaIndex - 1].classList.add("active");
-
-    setTimeout(showSlidesVida, 4000);
-}
-
-function currentSlideVida(n) {
-    vidaIndex = n - 1;
-    showSlidesVida();
-}
 
 document.addEventListener("DOMContentLoaded", showSlidesVida);
 
@@ -812,3 +758,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
