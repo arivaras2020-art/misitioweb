@@ -3812,3 +3812,116 @@ p, ul {
     margin-right: 10px; 
     color: #000000; 
 }
+
+/* ========================= */
+/* CARRUSEL VIDA ESCOLAR     */
+/* ========================= */
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.slide-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  z-index: 3;
+    /* 🔥 Fondo semitransparente */
+  background: rgba(0, 0, 0, 0.5); /* negro 50% */
+  padding: 30px 50px;
+  border-radius: 15px;
+}
+
+.slide-content h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.slide-button {
+  background-color: #1A2F4E;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.slide-button:hover {
+  background-color: #122036;
+}
+
+/* Flechas */
+.prev-button, .next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 2.5em;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 50%;
+  z-index: 5;
+  transition: background 0.3s;
+}
+
+.prev-button:hover, .next-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.prev-button { left: 30px; }
+.next-button { right: 30px; }
+
+@media (max-width: 768px) {
+  .slide-content h1 {
+    font-size: 1.8em;
+  }
+  .slide-button {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+}

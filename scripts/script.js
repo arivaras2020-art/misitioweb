@@ -1,8 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // ----------------------------------------------------
-    // Lógica del Menú Overlay (RUTAS UNIVERSALES COMPLETAS)
-    // ----------------------------------------------------
+
+    // ====================================================
+    // 1. CONSTANTES GLOBALES Y FUNCIONES DE UTILIDAD (Centralizadas)
+    // ====================================================
+    const VALID_EMAIL = 'prueba@gmail.com';
+    const VALID_PASSWORD = '123';
+    const VALID_NAME = 'Usuario Prueba';
+    const VALID_PARENT_DNI = '12345678';
+    const VALID_TEACHER_DNI = '87654321';
+    let userRole = sessionStorage.getItem('userRole') || 'ninguno'; 
+
+    /**
+     * Muestra una notificación de éxito (toast) en la parte inferior de la pantalla.
+     * Es la versión única y centralizada, utilizada por todos los formularios.
+     * @param {string} message - El mensaje a mostrar.
+     */
+    function showNotification(message) {
+        let notification = document.getElementById('appNotification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'appNotification';
+            notification.classList.add('notification-success'); 
+            document.body.appendChild(notification);
+        }
+
+        notification.textContent = message;
+        notification.classList.add('show');
+
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 3000);
+    }
+
+    /**
+     * Redirige al inicio después de un error de verificación.
+     */
+    function redirectToHome(errorMessageElement) {
+        errorMessageElement.style.display = 'block';
+        setTimeout(() => {
+            sessionStorage.setItem('userRole', 'ninguno'); 
+            const currentPath = window.location.pathname;
+            let basePath = '';
+            
+            if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/')) {
+                basePath = '../../';
+            } else if (currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
+                       currentPath.includes('/institucion/') || currentPath.includes('/inicioyregistro/')) {
+                basePath = '../';
+            }
+
+            window.location.href = `${basePath}index.html`;
+        }, 3000); 
+    }
+
+
+    // ====================================================
+    // 2. LÓGICA DEL MENÚ OVERLAY Y RUTAS
+    // ====================================================
     const menuIcon = document.getElementById('menuIcon');
     const closeBtn = document.getElementById('closeBtn');
     const overlayMenu = document.getElementById('overlayMenu');
@@ -10,11 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const submenuContainer = document.getElementById('submenuContainer');
 
     function resetSubmenu() {
-        submenuContainer.innerHTML = '';
-        submenuContainer.className = 'submenu-container';
+        if (submenuContainer) {
+             submenuContainer.innerHTML = '';
+             submenuContainer.className = 'submenu-container';
+        }
     }
 
-    if (menuIcon && overlayMenu && closeBtn) {
+    if (menuIcon && overlayMenu && closeBtn && submenuContainer) {
         menuIcon.addEventListener('click', () => {
             overlayMenu.classList.add('open');
             overlayMenu.style.width = '100%';
@@ -31,26 +87,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function showSubmenu(menuType) {
         let submenuHtml = '';
         let backgroundImageClass = '';
+        if (!submenuContainer) return; 
 
         resetSubmenu();
 
-        // Determinar la ruta base según la ubicación actual
         const currentPath = window.location.pathname;
         let basePath = '';
         
-        // Determina si es necesario retroceder (../)
-        if (currentPath.includes('/formularios/') ||
-            currentPath.includes('/contacto/') || 
-            currentPath.includes('/tecnicaturas/') || 
-            currentPath.includes('/institucion/') || 
-            currentPath.includes('/inicioyregistro/') ||
-            currentPath.includes('/portalfamiliar/') || 
+        if (currentPath.includes('/formularios/') || currentPath.includes('/contacto/') || 
+            currentPath.includes('/tecnicaturas/') || currentPath.includes('/institucion/') || 
+            currentPath.includes('/inicioyregistro/') || currentPath.includes('/portalfamiliar/') || 
             currentPath.includes('/portaldocente/')) {  
-            
             basePath = '../';
-        } else {
-            // Para la raíz, basePath queda vacío
-            basePath = '';
         }
 
         switch (menuType) {
@@ -98,10 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
                 `;
                 break;
-
-            // =========================================================
-            // CORRECCIÓN: PORTAL FAMILIAR (Muestra submenú antes de ir a verificación)
-            // =========================================================
             case 'portal-familiar':
                 backgroundImageClass = 'portalfamiliar-bg';
                 submenuHtml = `
@@ -113,10 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
                 `;
                 break;
-                
-            // =========================================================
-            // CORRECCIÓN: PORTAL DOCENTE (Muestra submenú antes de ir a verificación)
-            // =========================================================
             case 'portal-docente':
                 backgroundImageClass = 'portaldocente-bg';
                 submenuHtml = `
@@ -128,22 +168,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
                 `;
                 break;
+            default:
+                if (overlayMenu) {
+                    overlayMenu.classList.remove('open');
+                    overlayMenu.style.width = '0%';
+                }
+                return; 
         }
 
         submenuContainer.className = `submenu-container ${backgroundImageClass}`;
         submenuContainer.innerHTML = submenuHtml;
 
-        // CORRECCIÓN: Establecer la imagen de fondo con la ruta correcta
         const imagePaths = {
-            'inicio-bg': 'menuinicio.jpeg',
-            'contacto-bg': 'menucontacto.jpeg',
-            'tecnicaturas-bg': 'menutecnicaturas.jpeg',
-            'institucion-bg': 'menuinstitucion.jpg',
-            'portalfamiliar-bg': 'menuportalfamiliar.jpg',
-            'portaldocente-bg': 'menuportaldocente.webp'
+            'inicio-bg': 'menuinicio.jpeg', 'contacto-bg': 'menucontacto.jpeg',
+            'tecnicaturas-bg': 'menutecnicaturas.jpeg', 'institucion-bg': 'menuinstitucion.jpg',
+            'portalfamiliar-bg': 'menuportalfamiliar.jpg', 'portaldocente-bg': 'menuportaldocente.webp'
         };
 
-        // Determinar la ruta base para las imágenes
         let imageBasePath = 'imagenes/';
         if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/')) {
             imageBasePath = '../../imagenes/';
@@ -162,11 +203,10 @@ document.addEventListener('DOMContentLoaded', () => {
     mainMenuItems.forEach(item => {
         item.addEventListener('click', e => {
             const submenuId = e.target.dataset.submenu;
-
             if (submenuId) {
                 e.preventDefault();
                 showSubmenu(submenuId);
-            } else {
+            } else if (overlayMenu) {
                 overlayMenu.classList.remove('open');
                 overlayMenu.style.width = '0%';
             }
@@ -174,15 +214,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', e => {
-        if (e.target.closest('.submenu-list a')) {
+        if (e.target.closest('.submenu-list a') && overlayMenu) {
             overlayMenu.classList.remove('open');
             overlayMenu.style.width = '0%';
         }
     });
 
-    // ----------------------------------------------------
-    // Lógica de la Barra de Búsqueda (RUTAS UNIVERSALES COMPLETAS)
-    // ----------------------------------------------------
+    // ====================================================
+    // 3. LÓGICA DE LA BARRA DE BÚSQUEDA
+    // ====================================================
     const searchToggle = document.getElementById('searchToggle');
     const searchContainer = document.getElementById('searchContainer');
     const searchInput = document.getElementById('searchInput');
@@ -200,10 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
                 event.preventDefault();
-
                 const query = searchInput.value.toLowerCase().trim();
-                
-                // Determinar la ruta base según la ubicación actual
                 const currentPath = window.location.pathname;
                 let basePath = '';
                 
@@ -215,18 +252,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const redirectMap = {
-                    'inicio': `${basePath}index.html`,
-                    'contacto': `${basePath}contacto/index.html`,
-                    'institucion': `${basePath}institucion/index.html`,
-                    'tecnicaturas': `${basePath}tecnicaturas/index.html`,
-                    'informatica': `${basePath}tecnicaturas/informatica.html`,
-                    'construcciones': `${basePath}tecnicaturas/construcciones.html`,
-                    'electronica': `${basePath}tecnicaturas/electronica.html`,
-                    'electromecanica': `${basePath}tecnicaturas/electromecanica.html`,
+                    'inicio': `${basePath}index.html`, 'contacto': `${basePath}contacto/index.html`,
+                    'institucion': `${basePath}institucion/index.html`, 'tecnicaturas': `${basePath}tecnicaturas/index.html`,
+                    'informatica': `${basePath}tecnicaturas/informatica.html`, 'construcciones': `${basePath}tecnicaturas/construcciones.html`,
+                    'electronica': `${basePath}tecnicaturas/electronica.html`, 'electromecanica': `${basePath}tecnicaturas/electromecanica.html`,
                 };
 
                 let destination = null;
-
                 for (const keyword in redirectMap) {
                     if (query.includes(keyword)) {
                         destination = redirectMap[keyword];
@@ -246,31 +278,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ----------------------------------------------------
-    // Lógica del Formulario de INICIO DE SESIÓN (RUTAS UNIVERSALES COMPLETAS)
-    // ----------------------------------------------------
+    // ====================================================
+    // 4. LÓGICA DE LOGIN Y REGISTRO
+    // ====================================================
+
+    // Login
     const loginForm = document.getElementById('loginForm');
     const loginErrorMessage = document.getElementById('login-error-message');
     
-    // Credenciales de prueba
-    const VALID_EMAIL = 'prueba@gmail.com';
-    const VALID_PASSWORD = '123';
-    const VALID_NAME = 'Usuario Prueba';
-    
-    if (loginForm) {
+    if (loginForm && loginErrorMessage) {
         loginForm.addEventListener('submit', (event) => {
             event.preventDefault(); 
-
             const email = document.getElementById('email-login').value.trim();
             const password = document.getElementById('password-login').value;
-            
             loginErrorMessage.style.display = 'none';
 
             if (email === VALID_EMAIL && password === VALID_PASSWORD) {
-                // Determinar la ruta base según la ubicación actual
                 const currentPath = window.location.pathname;
                 let basePath = '';
-                
                 if (currentPath.includes('/inicioyregistro/')) {
                     basePath = '../';
                 } else if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/') ||
@@ -278,7 +303,6 @@ document.addEventListener('DOMContentLoaded', () => {
                            currentPath.includes('/institucion/')) {
                     basePath = '../../';
                 }
-
                 window.location.href = `${basePath}index.html`; 
             } else {
                 loginErrorMessage.textContent = 'Email o contraseña incorrectos.';
@@ -287,30 +311,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // ----------------------------------------------------
-    // Lógica del Formulario de REGISTRO (RUTAS UNIVERSALES COMPLETAS)
-    // ----------------------------------------------------
+    // Registro
     const registerForm = document.getElementById('registerForm');
     const registerErrorMessage = document.getElementById('register-error-message');
 
-    if (registerForm) {
+    if (registerForm && registerErrorMessage) {
         registerForm.addEventListener('submit', (event) => {
             event.preventDefault();
-
             const name = document.getElementById('name-register').value.trim();
             const email = document.getElementById('email-register').value.trim();
             const password = document.getElementById('password-register').value;
-
             registerErrorMessage.style.display = 'none';
 
             if (name === VALID_NAME && email === VALID_EMAIL && password === VALID_PASSWORD) {
                 alert('¡Registro exitoso! Serás redirigido para iniciar sesión.');
                 registerForm.reset();
                 setTimeout(() => {
-                    // Determinar la ruta base según la ubicación actual
                     const currentPath = window.location.pathname;
                     let loginPath = 'inicioyregistro/login.html';
-                    
                     if (currentPath.includes('/inicioyregistro/')) {
                         loginPath = 'login.html';
                     } else if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/') ||
@@ -318,10 +336,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                currentPath.includes('/institucion/')) {
                         loginPath = '../../inicioyregistro/login.html';
                     }
-
                     window.location.href = loginPath; 
                 }, 100); 
-
             } else {
                 registerErrorMessage.textContent = `Registro fallido. Para la simulación, usa Nombre: "${VALID_NAME}", Email: "${VALID_EMAIL}" y Contraseña: "${VALID_PASSWORD}".`;
                 registerErrorMessage.style.display = 'block';
@@ -330,32 +346,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ====================================================
-    // LÓGICA DE VERIFICACIÓN DE PORTALES (RUTAS UNIVERSALES COMPLETAS)
+    // 5. LÓGICA DE VERIFICACIÓN DE PORTALES
     // ====================================================
-
-    const VALID_PARENT_DNI = '12345678';
-    const VALID_TEACHER_DNI = '87654321';
-    
-    let userRole = sessionStorage.getItem('userRole') || 'ninguno'; 
-
-    function redirectToHome(errorMessageElement) {
-        errorMessageElement.style.display = 'block';
-        setTimeout(() => {
-            sessionStorage.setItem('userRole', 'ninguno'); 
-            // Determinar la ruta base según la ubicación actual
-            const currentPath = window.location.pathname;
-            let basePath = '';
-            
-            if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/')) {
-                basePath = '../../';
-            } else if (currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
-                       currentPath.includes('/institucion/') || currentPath.includes('/inicioyregistro/')) {
-                basePath = '../';
-            }
-
-            window.location.href = `${basePath}index.html`;
-        }, 3000); 
-    }
 
     // Portal Familiar
     const parentForm = document.getElementById('parentVerificationForm');
@@ -371,16 +363,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             parentForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                const parentName = document.getElementById('parentName').value.trim();
                 const parentDNI = document.getElementById('parentDNI').value.trim();
-                const childName = document.getElementById('childName').value.trim();
-                const childCourse = document.getElementById('childCourse').value.trim();
                 const errorMessage = document.getElementById('parent-error-message');
-                
                 errorMessage.style.display = 'none';
 
-                if (parentName && parentDNI === VALID_PARENT_DNI && childName && childCourse) {
+                if (parentDNI === VALID_PARENT_DNI) {
                     sessionStorage.setItem('userRole', 'padre'); 
                     window.location.reload(); 
                 } else {
@@ -404,16 +391,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             teacherForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                
-                const teacherName = document.getElementById('teacherName').value.trim();
                 const teacherDNI = document.getElementById('teacherDNI').value.trim();
-                const teacherCourse = document.getElementById('teacherCourse').value.trim();
-                const teacherSubject = document.getElementById('teacherSubject').value.trim();
                 const errorMessage = document.getElementById('teacher-error-message');
-
                 errorMessage.style.display = 'none'; 
                 
-                if (teacherName && teacherDNI === VALID_TEACHER_DNI && teacherCourse && teacherSubject) {
+                if (teacherDNI === VALID_TEACHER_DNI) {
                     sessionStorage.setItem('userRole', 'docente'); 
                     const destino = sessionStorage.getItem('pendingPage');
                     if (destino) {
@@ -429,7 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Interceptar clics en enlaces del portal docente (RUTAS UNIVERSALES COMPLETAS)
+    // Interceptar clics en enlaces del portal docente
     document.addEventListener('click', e => {
         const link = e.target.closest('.docente-link');
         if (!link) return;
@@ -437,7 +419,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sessionStorage.getItem('userRole') !== 'docente') {
             e.preventDefault();
             sessionStorage.setItem('pendingPage', link.getAttribute('href'));
-            // Determinar la ruta base según la ubicación actual
             const currentPath = window.location.pathname;
             let portalPath = 'portaldocente/index.html';
             
@@ -454,308 +435,172 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ====================================================
-    // LÓGICA DEL FORMULARIO DE CONTACTO (CORREGIDA)
+    // 6. LÓGICA DE FORMULARIOS DEL PORTAL DOCENTE Y CONTACTO
     // ====================================================
+
+    // Formulario de Contacto
     const formulario = document.querySelector('.formulario-container form');
     const notificacion = document.getElementById('notificacion-envio');
 
     if (formulario && notificacion) { 
         formulario.addEventListener('submit', function(event) {
-            // PREVENIR COMPORTAMIENTO POR DEFECTO
             event.preventDefault(); 
-            
-            // Verificar validez del formulario
             if (formulario.checkValidity()) {
-                // Mostrar notificación de éxito
                 notificacion.textContent = '¡Mensaje enviado con éxito!, gracias por comunicarse con nosotros.';
                 notificacion.classList.remove('notificacion-oculta');
                 notificacion.classList.add('notificacion-visible');
 
-                // Ocultar notificación y resetear formulario después de 4 segundos
                 setTimeout(() => {
                     notificacion.classList.remove('notificacion-visible');
                     notificacion.classList.add('notificacion-oculta');
                     formulario.reset(); 
                 }, 4000); 
             } else {
-                // Mostrar errores de validación nativos
                 formulario.reportValidity();
             }
         });
     }
-}); // FIN DEL DOMContentLoaded
 
-
-
-document.addEventListener("DOMContentLoaded", showSlidesVida);
-
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('uploadNotesForm');
-    
-    if (!form) return; // Se asegura de que el formulario exista
-
-    form.addEventListener('submit', (event) => {
-        event.preventDefault(); // Detiene el envío del formulario
-
-        const studentName = document.getElementById('studentName').value.trim();
-        const subject = document.getElementById('subject').value.trim();
-        const grade = document.getElementById('grade').value;
-        
-        // Validación de nota (aunque el HTML lo maneja, esto es un buen fallback)
-        if (grade < 1 || grade > 10) {
-            alert('La nota debe ser un número entre 1 y 10.');
-            return;
-        }
-        
-        // --- LÓGICA DE SUBIDA DE NOTAS ---
-        // Aquí iría tu código para enviar los datos (studentName, subject, grade, observations)
-        // a una base de datos o servidor. 
-        // Por ahora, solo simulará el éxito.
-        
-        // 1. Mostrar la notificación de éxito
-        const message = `Se subió la nota de ${subject} exitosa`;
-        showNotification(message);
-
-        // 2. Limpiar el formulario
-        form.reset();
-    });
-
-    /**
-     * Muestra una notificación de éxito en la parte inferior de la pantalla.
-     * @param {string} message - El mensaje a mostrar.
-     */
-    function showNotification(message) {
-        // Creamos o encontramos el div de la notificación
-        let notification = document.getElementById('appNotification');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.id = 'appNotification';
-            // Usamos la clase CSS definida en main.css
-            notification.classList.add('notification-success');
-            document.body.appendChild(notification);
-        }
-
-        notification.textContent = message;
-        notification.classList.add('show');
-
-        // Ocultar la notificación después de 3 segundos
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 3000);
+    // Formulario Subir Notas
+    const formNotes = document.getElementById('uploadNotesForm');
+    if (formNotes) { 
+        formNotes.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const subject = document.getElementById('subject').value.trim();
+            const grade = document.getElementById('grade').value;
+            
+            if (grade < 1 || grade > 10) {
+                alert('La nota debe ser un número entre 1 y 10.');
+                return;
+            }
+            
+            const message = `Se subió la nota de ${subject} exitosa`;
+            showNotification(message);
+            formNotes.reset();
+        });
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('attendanceForm');
-    
-    if (!form) return; 
+    // Formulario Control Asistencia
+    const formAttendance = document.getElementById('attendanceForm');
+    if (formAttendance) { 
+        formAttendance.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const day = document.getElementById('day').value;
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            const status = document.getElementById('status').value;
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
+            if (status !== 'presente' && status !== 'ausente') {
+                alert('Por favor, seleccione un estado válido.');
+                return;
+            }
 
-        const studentName = document.getElementById('studentNameAttendance').value.trim();
-        const day = document.getElementById('day').value;
-        const month = document.getElementById('month').value;
-        const year = document.getElementById('year').value;
-        const status = document.getElementById('status').value;
-
-        // Validaciones básicas de fecha y estado
-        if (!studentName || !day || !month || !year || !status) {
-            alert('Por favor, complete todos los campos.');
-            return;
-        }
-
-        if (status !== 'presente' && status !== 'ausente') {
-             alert('Por favor, seleccione un estado válido.');
-             return;
-        }
-
-        // --- LÓGICA DE GUARDADO DE ASISTENCIA ---
-        // Aquí iría el código para enviar los datos al servidor.
-        
-        // 1. Crear el mensaje de notificación
-        const dateString = `${day}/${month}/${year}`;
-        const message = `Se registró la asistencia de ${studentName} como ${status.toUpperCase()} para el día ${dateString}.`;
-        
-        // 2. Mostrar la notificación de éxito
-        showNotification(message);
-
-        // 3. Limpiar el formulario
-        form.reset();
-    });
-
-    /**
-     * Muestra una notificación de éxito con el mismo estilo de la página de notas.
-     * @param {string} message - El mensaje a mostrar.
-     */
-    function showNotification(message) {
-        let notification = document.getElementById('appNotification');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.id = 'appNotification';
-            // Reutilizamos la clase CSS definida en main.css
-            notification.classList.add('notification-success'); 
-            document.body.appendChild(notification);
-        }
-
-        notification.textContent = message;
-        notification.classList.add('show');
-
-        // Ocultar la notificación después de 3 segundos
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 3000);
+            const dateString = `${day}/${month}/${year}`;
+            const message = `Se registró la asistencia como ${status.toUpperCase()} para el día ${dateString}.`;
+            
+            showNotification(message);
+            formAttendance.reset();
+        });
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('bulletinForm');
+    // Formulario Subir Boletín
+    const formBulletin = document.getElementById('bulletinForm');
     const fileInput = document.getElementById('bulletinFile');
     const fileNameDisplay = document.getElementById('fileNameDisplay');
     
-    // 1. Lógica para mostrar el nombre del archivo seleccionado
-    fileInput.addEventListener('change', () => {
-        if (fileInput.files.length > 0) {
-            // Muestra el nombre del primer archivo seleccionado
-            fileNameDisplay.textContent = fileInput.files[0].name;
-            fileNameDisplay.style.color = '#1A2F4E';
-        } else {
+    if (fileInput && fileNameDisplay) {
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = fileInput.files[0].name;
+                fileNameDisplay.style.color = '#1A2F4E';
+            } else {
+                fileNameDisplay.textContent = 'Ningún archivo seleccionado.';
+                fileNameDisplay.style.color = '#555';
+            }
+        });
+    }
+
+    if (formBulletin && fileInput) { 
+        formBulletin.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const selectedFile = fileInput.files[0];
+
+            if (!selectedFile) {
+                alert('Por favor, seleccione un archivo (PDF o Imagen).');
+                return;
+            }
+
+            const message = `Se subió el boletín (${selectedFile.name}) exitosamente.`;
+            showNotification(message);
+
+            formBulletin.reset();
             fileNameDisplay.textContent = 'Ningún archivo seleccionado.';
             fileNameDisplay.style.color = '#555';
-        }
-    });
-
-    // 2. Lógica para manejar el envío del formulario
-    if (!form) return; 
-
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const studentName = document.getElementById('studentNameBulletin').value.trim();
-        const selectedFile = fileInput.files[0];
-
-        // Validaciones
-        if (!studentName) {
-            alert('Por favor, ingrese el nombre del alumno.');
-            return;
-        }
-
-        if (!selectedFile) {
-            alert('Por favor, seleccione un archivo (PDF o Imagen).');
-            return;
-        }
-
-        // --- LÓGICA DE SUBIDA DE ARCHIVOS ---
-        // En un entorno real, aquí se usaría `FormData` y `fetch` 
-        // para enviar el archivo al servidor.
-
-        // 1. Crear el mensaje de notificación
-        const message = `Se subió el boletín (${selectedFile.name}) para ${studentName} exitosamente.`;
-        
-        // 2. Mostrar la notificación de éxito (reutiliza la función de los scripts anteriores)
-        showNotification(message);
-
-        // 3. Limpiar el formulario y el display
-        form.reset();
-        fileNameDisplay.textContent = 'Ningún archivo seleccionado.';
-        fileNameDisplay.style.color = '#555';
-    });
-
-    /**
-     * Muestra una notificación de éxito (función reutilizada de tus otros scripts).
-     * @param {string} message - El mensaje a mostrar.
-     */
-    function showNotification(message) {
-        let notification = document.getElementById('appNotification');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.id = 'appNotification';
-            notification.classList.add('notification-success'); 
-            document.body.appendChild(notification);
-        }
-
-        notification.textContent = message;
-        notification.classList.add('show');
-
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 3000);
+        });
     }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('announcementForm');
     
-    if (!form) return; 
+    // Formulario Publicar Comunicado
+    const formAnnouncement = document.getElementById('announcementForm');
+    if (formAnnouncement) { 
+        formAnnouncement.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const title = document.getElementById('announcementTitle').value.trim();
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const title = document.getElementById('announcementTitle').value.trim();
-        const text = document.getElementById('announcementText').value.trim();
-
-        // Validaciones
-        if (!title || !text) {
-            alert('Por favor, complete tanto el título como el contenido del comunicado.');
-            return;
-        }
-
-        // --- LÓGICA DE PUBLICACIÓN DE AVISO ---
-        // Aquí iría la lógica para enviar el título y el texto 
-        // a una base de datos o sistema de gestión de contenido.
-        
-        // 1. Crear el mensaje de notificación
-        const message = `El aviso titulado "${title}" fue publicado exitosamente.`;
-        
-        // 2. Mostrar la notificación de éxito
-        showNotification(message);
-
-        // 3. Limpiar el formulario
-        form.reset();
-    });
-
-    /**
-     * Muestra una notificación de éxito (función reutilizada de tus otros scripts).
-     * @param {string} message - El mensaje a mostrar.
-     */
-    function showNotification(message) {
-        let notification = document.getElementById('appNotification');
-        if (!notification) {
-            notification = document.createElement('div');
-            notification.id = 'appNotification';
-            // Reutilizamos la clase CSS definida en main.css
-            notification.classList.add('notification-success'); 
-            document.body.appendChild(notification);
-        }
-
-        notification.textContent = message;
-        notification.classList.add('show');
-
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 3000);
+            if (!title) {
+                alert('Por favor, complete tanto el título como el contenido del comunicado.');
+                return;
+            }
+            const message = `El aviso titulado "${title}" fue publicado exitosamente.`;
+            showNotification(message);
+            formAnnouncement.reset();
+        });
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Obtener el botón de descarga y el elemento de notificación (toast)
+    // Botón de Descarga (Toast Notification)
     const downloadButton = document.getElementById('btn-descargar');
-    const notification = document.getElementById('toast-notification');
+    const notificationDownload = document.getElementById('toast-notification');
 
-    // Verificar que ambos elementos existen antes de añadir el listener
-    if (downloadButton && notification) {
+    if (downloadButton && notificationDownload) {
         downloadButton.addEventListener('click', (event) => {
-            // Prevenir cualquier acción por defecto (aunque ahora es un botón)
             event.preventDefault(); 
-            
-            // 1. Mostrar la notificación añadiendo la clase 'show'
-            notification.classList.add('show');
-
-            // 2. Ocultar la notificación después de 3000 milisegundos (3 segundos)
+            notificationDownload.classList.add('show');
             setTimeout(() => {
-                notification.classList.remove('show');
+                notificationDownload.classList.remove('show');
             }, 3000);
         });
     }
-});
+
+
+// =============================
+// CARRUSEL DE PANTALLA COMPLETA
+// =============================
+
+const slides = document.querySelectorAll('.carousel-slide');
+const prevBtn = document.querySelector('.prev-button');
+const nextBtn = document.querySelector('.next-button');
+let currentSlide = 0;
+
+if (slides.length && prevBtn && nextBtn) {
+  function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  // Cambio automático cada 6 segundos
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 6000);
+}
+}); // 👈 cierre final del document.addEventListener
 
