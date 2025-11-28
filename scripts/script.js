@@ -32,28 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
 
-    /**
-     * Redirige al inicio después de un error de verificación.
-     */
-    function redirectToHome(errorMessageElement) {
-        errorMessageElement.style.display = 'block';
-        setTimeout(() => {
-            sessionStorage.setItem('userRole', 'ninguno'); 
-            const currentPath = window.location.pathname;
-            let basePath = '';
-            
-            if (currentPath.includes('/portalfamiliar/') || currentPath.includes('/portaldocente/')) {
-                basePath = '../../';
-            } else if (currentPath.includes('/contacto/') || currentPath.includes('/tecnicaturas/') || 
-                       currentPath.includes('/institucion/') || currentPath.includes('/inicioyregistro/')) {
-                basePath = '../';
-            }
-
-            window.location.href = `${basePath}index.html`;
-        }, 3000); 
-    }
-
-
     // ====================================================
     // 2. LÓGICA DEL MENÚ OVERLAY Y RUTAS
     // ====================================================
@@ -602,5 +580,5 @@ if (slides.length && prevBtn && nextBtn) {
     showSlide(currentSlide);
   }, 6000);
 }
-}); // 👈 cierre final del document.addEventListener
+});
 
